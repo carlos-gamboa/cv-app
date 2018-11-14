@@ -23,15 +23,9 @@ import {AuthService} from './services/auth.service';
 // Firebase import
 import { AngularFireModule } from 'angularfire2';
 
-// Firebase config
-export const firebaseConfig = {
-  apiKey: "AIzaSyB2rqJRJVLJsjQT8SQYQ6pJXTub41A81p4",
-  authDomain: "cv-app-40b38.firebaseapp.com",
-  databaseURL: "https://cv-app-40b38.firebaseio.com",
-  projectId: "cv-app-40b38",
-  storageBucket: "cv-app-40b38.appspot.com",
-  messagingSenderId: "557048975608"
-};
+// Environment
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +47,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     CvService,
