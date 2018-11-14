@@ -20,6 +20,18 @@ import {CvService} from './services/cv.service';
 import {DataStorageService} from './services/data-storage.service';
 import {AuthService} from './services/auth.service';
 
+// Firebase import
+import { AngularFireModule } from 'angularfire2';
+
+// Firebase config
+export const firebaseConfig = {
+  apiKey: '',
+  authDomain: '',
+  databaseURL: '',
+  storageBucket: '',
+  messagingSenderId: ''
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +51,8 @@ import {AuthService} from './services/auth.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
     CvService,
