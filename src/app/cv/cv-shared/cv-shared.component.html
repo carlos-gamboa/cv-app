@@ -1,3 +1,31 @@
-<p>
-  cv-shared works!
-</p>
+<form class="mainDetails">
+  <div id="headshot" class="quickFade">
+
+    <img id="preview" [src]="selectFileSrc || '../../../assets/img/profile_default.png'" alt="Alan Smith" />
+
+    <input type="file" accept="image/*" (change)="onFileSelect($event)">
+
+  </div>
+
+  <div id="name" >
+    <label class="quickFade delayTwo">
+      Nombre:
+      <input type="text" placeholder="Gustavo López Herrera" (input)="formData.name = $event.target.value" required="required">
+    </label>
+    <label class="quickFade delayThree">
+      Título:
+      <input type="text" placeholder="Consultor y Gestor de Proyectos"  (input)="formData.title = $event.target.value">
+    </label>
+  </div>
+
+  <div id="contactDetails" class="quickFade delayFour">
+    <ul>
+      <li>Correo Electrónico: <input type="email" placeholder="gustavo.lopez@gmail.com" (input)="formData.email = $event.target.value" required="required"></li>
+      <li>Teléfono 1:  <input type="number" placeholder="1234-5678" (input)="formData.mobile1 = $event.target.value" required="required"></li>
+      <li>Teléfono 2: <input type="number" placeholder="1234-5678" (input)="formData.mobile2 = $event.target.value"></li>
+      <li>Dirección: <input placeholder="Montes de Oca, San Pedro." (input)="formData.address = $event.target.value" required="required"></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</form>
+
