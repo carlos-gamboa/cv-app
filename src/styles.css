@@ -28,8 +28,20 @@ body {
   margin-bottom: 2rem;
 }
 
+.cv {
+  background-color: #181818;
+  min-height: 90vh;
+}
+
+.cv__wrapper {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 90rem;
+}
+
 .cv__shared-info {
   background-color: #ededed;
+  border-bottom: 4px solid #cf8a05;
 }
 
 .inputfile {
