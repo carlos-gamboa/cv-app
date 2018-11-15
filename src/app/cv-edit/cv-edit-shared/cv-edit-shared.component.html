@@ -116,6 +116,25 @@
           </label>
         </div>
       </div>
+    <div>
+      <div class="form__group">
+        <textarea
+          type="text"
+          class="form__input"
+          placeholder="Perfil Personal"
+          id="personal_profile"
+          name="personal_profile"
+          ngModel
+          #personal_profile="ngModel"
+          required
+        ></textarea>
+        <label for="personal_profile" class="form__label">Perfil Personal
+          <span *ngIf="!address.valid && address.touched">
+              : Favor introduzca información referente a su perfil personal.
+            </span>
+        </label>
+      </div>
+    </div>
   </div>
 </form>
 
