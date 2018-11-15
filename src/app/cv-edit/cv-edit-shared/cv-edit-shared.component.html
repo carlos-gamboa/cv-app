@@ -1,3 +1,72 @@
-<p>
-  cv-edit-shared works!
-</p>
+<form #f="ngForm">
+  <div >
+    <img id="preview" [src]="selectFileSrc || '../../../assets/img/profile_default.png'" alt="Alan Smith" />
+    <input type="file" accept="image/*" (change)="OnFileSelect($event)">
+  </div>
+
+  <div class="form__group">
+    <input
+      type="text"
+      class="form__input"
+      placeholder="Nombre"
+      id="name"
+      name="name"
+      ngModel
+      required
+    >
+    <label for="name" class="form__label">Nombre</label>
+  </div>
+
+  <div>
+    <div class="form__group">
+      <input
+        type="text"
+        class="form__input"
+        placeholder="Correo electrónico"
+        id="mail"
+        name="mail"
+        ngModel
+        required
+      >
+      <label for="mail" class="form__label">Correo electrónico</label>
+    </div>
+    <div class="form__group">
+      <input
+        type="number"
+        class="form__input"
+        placeholder="Teléfono 1"
+        id="phone1"
+        name="phone1"
+        ngModel
+        required
+      >
+      <label for="phone1" class="form__label">Teléfono 1</label>
+    </div>
+    <div class="form__group">
+      <input
+        type="number"
+        class="form__input"
+        placeholder="Teléfono 2"
+        id="phone2"
+        name="phone2"
+        ngModel
+        required
+      >
+      <label for="phone2" class="form__label">Teléfono 2</label>
+    </div>
+    <div class="form__group">
+      <input
+        type="text"
+        class="form__input"
+        placeholder="Dirección"
+        id="address"
+        name="address"
+        ngModel
+        required
+      >
+      <label for="address" class="form__label">Dirección</label>
+    </div>
+  </div>
+
+</form>
+
