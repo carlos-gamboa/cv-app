@@ -12,8 +12,8 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'home', component: DashboardComponent },
-  { path: 'cv/:id', component: CvComponent },
   { path: 'cv/new', component: CvEditComponent },
+  { path: 'cv/:id', component: CvComponent },
   { path: 'cv/:id/edit', component: CvEditComponent },
   { path: '**', component: LandingComponent }
 ];

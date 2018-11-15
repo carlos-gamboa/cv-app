@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CvSharedModel} from '../../models/cv-shared.model';
 
 @Component({
   selector: 'app-cv-edit-shared',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvEditSharedComponent implements OnInit {
 
-  constructor() { }
+  selectFileSrc = '../../../assets/img/profile_default.png';
+  formData: CvSharedModel;
+
+  constructor() {
+    this.formData = new CvSharedModel();
+  }
 
   ngOnInit() {
+  }
+
+  OnFileSelect(event) {
+    if (event.target.files && event.target.files[0] && event.target.files.length > 0) {
+      this.formData.profilePicture = event.target.files[0];
+      const file = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = e => this.selectFileSrc = reader.result;
+
+      reader.readAsDataURL(file);
+    }
+
+    console.log(event);
+  }
+
+  display() {
+    console.log(this.formData);
+    return false;
   }
 
 }
