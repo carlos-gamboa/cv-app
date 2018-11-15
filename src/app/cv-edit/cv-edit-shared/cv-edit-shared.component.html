@@ -1,72 +1,121 @@
 <form #f="ngForm">
-  <div >
-    <img id="preview" [src]="selectFileSrc || '../../../assets/img/profile_default.png'" alt="Alan Smith" />
-    <input type="file" accept="image/*" (change)="OnFileSelect($event)">
+  <div class="form">
+    <div class="form__section">
+      <div class="form__group form__group--image">
+        <img class="user__image" id="preview" [src]="selectFileSrc || '../../../assets/img/profile_default.png'" alt="Alan Smith" />
+        <input type="file" accept="image/*" name="file" id="file" class="inputfile" (change)="OnFileSelect($event)" />
+        <label for="file">Elije un archivo</label>
+      </div>
+    </div>
+    <div class="form__section form__section--full">
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Nombre"
+          id="name"
+          name="name"
+          ngModel
+          #name="ngModel"
+          required
+        >
+        <label for="name" class="form__label">Nombre
+          <span *ngIf="!name.valid && name.touched">
+              : Favor introduzca un nombre
+            </span>
+        </label>
+      </div>
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Título"
+          id="title"
+          name="title"
+          ngModel
+          #title="ngModel"
+          required
+        >
+        <label for="title" class="form__label">Título
+          <span *ngIf="!title.valid && title.touched">
+              : Favor introduzca un título
+            </span>
+        </label>
+      </div>
+    </div>
+    <div class="form__section form__section--full">
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="Correo electrónico"
+            id="mail"
+            name="mail"
+            ngModel
+            #email="ngModel"
+            required
+            email
+          >
+          <label for="mail" class="form__label">Correo electrónico
+            <span *ngIf="!email.valid && email.touched">
+              : Favor introduzca un correo electrónico válido
+            </span>
+          </label>
+        </div>
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="Teléfono 1"
+            id="phone1"
+            name="phone1"
+            ngModel
+            #phone1="ngModel"
+            required
+            pattern="/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/"
+          >
+          <label for="phone1" class="form__label">Teléfono 1
+            <span *ngIf="!phone1.valid && phone1.touched">
+              : Favor introduzca un número telefónico válido
+            </span>
+          </label>
+        </div>
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="Teléfono 2"
+            id="phone2"
+            name="phone2"
+            ngModel
+            #phone2="ngModel"
+            required
+            pattern="/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/"
+          >
+          <label for="phone2" class="form__label">Teléfono 2
+            <span *ngIf="!phone2.valid && phone2.touched">
+              : Favor introduzca un número telefónico válido
+            </span>
+          </label>
+        </div>
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="Dirección"
+            id="address"
+            name="address"
+            ngModel
+            #address="ngModel"
+            required
+          >
+          <label for="address" class="form__label">Dirección
+            <span *ngIf="!address.valid && address.touched">
+              : Favor introduzca una dirección
+            </span>
+          </label>
+        </div>
+      </div>
   </div>
-
-  <div class="form__group">
-    <input
-      type="text"
-      class="form__input"
-      placeholder="Nombre"
-      id="name"
-      name="name"
-      ngModel
-      required
-    >
-    <label for="name" class="form__label">Nombre</label>
-  </div>
-
-  <div>
-    <div class="form__group">
-      <input
-        type="text"
-        class="form__input"
-        placeholder="Correo electrónico"
-        id="mail"
-        name="mail"
-        ngModel
-        required
-      >
-      <label for="mail" class="form__label">Correo electrónico</label>
-    </div>
-    <div class="form__group">
-      <input
-        type="number"
-        class="form__input"
-        placeholder="Teléfono 1"
-        id="phone1"
-        name="phone1"
-        ngModel
-        required
-      >
-      <label for="phone1" class="form__label">Teléfono 1</label>
-    </div>
-    <div class="form__group">
-      <input
-        type="number"
-        class="form__input"
-        placeholder="Teléfono 2"
-        id="phone2"
-        name="phone2"
-        ngModel
-        required
-      >
-      <label for="phone2" class="form__label">Teléfono 2</label>
-    </div>
-    <div class="form__group">
-      <input
-        type="text"
-        class="form__input"
-        placeholder="Dirección"
-        id="address"
-        name="address"
-        ngModel
-        required
-      >
-      <label for="address" class="form__label">Dirección</label>
-    </div>
-  </div>
-
 </form>
 
