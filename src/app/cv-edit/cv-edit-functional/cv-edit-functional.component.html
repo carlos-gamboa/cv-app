@@ -1,3 +1,75 @@
-<p>
-  cv-edit-functional works!
-</p>
+<form #f="ngForm">
+  <div class="form">
+    <div class="form__section form__section--full">
+        <div class="form__group">
+          <textarea
+            type="text"
+            class="form__input"
+            placeholder="Experiencia Laboral"
+            id="experiencia"
+            cols="30" 
+            rows="10" 
+            name="experiencia"
+            ngModel
+            #experiencia="ngModel"
+            required
+          >
+          <label for="experiencia" class="form__label">Experiencia Laboral
+            <span *ngIf="!experiencia.valid && experiencia.touched">
+                : Favor introduzca su experiencia laboral
+              </span>
+          </label>
+        </div>
+        <div class="form-group">
+            <label for="experiencia" class="form__label">Experiencia Laboral
+                <span *ngIf="!experiencia.valid && experiencia.touched">
+                    : Favor introduzca su experiencia laboral
+                  </span>
+              </label>
+          <textarea 
+            name="experiencia"
+            id="experiencia" 
+            cols="30" 
+            rows="10" 
+            placeholder="Experiencia Laboral"
+            class="form-control">
+          </textarea>
+        </div>
+      </div>
+      <div class="form__section form__section--full">
+        <div class="form__group">
+            <input
+              type="text"
+              class="form__input"
+              placeholder="Habilidades Clave"
+              id="habilidades"
+              name="habilidades"
+              ngModel
+              #habilidades="ngModel"
+              required
+            >
+            <label for="habilidades" class="form__label">Habilidades Clave
+              <span *ngIf="!habilidades.valid && habilidades.touched">
+                  : Favor introduzca una habilidad clave
+                </span>
+            </label>
+          </div>
+      </div>
+      <!-- Falta terminar tabla dinamica -->
+      <form [formGroup] = "myForm">
+        <div formArrayName="habilidades">
+          <div *ngFor = "let habilidad of habilidadesForms.controls; let i=index" [formGroupName]="i">
+            <input formControlName="habilidad">
+            <label for="habilidad" class="form__label">Habilidades Clave
+              <span *ngIf="!habilidad.valid && habilidad.touched">
+                : Favor introduzca una habilidad clave
+              </span>
+            </label>
+            <button mat-raised-button color='warn' (click)='deleteHabilidad(i)'>Borrar</button>
+          </div>
+          <button mat-raised-button color='primary' (click)='addHabilidad()'>Agregar Habilidad</button>
+        </div>
+      </form>
+
+  </div>
+</form>
