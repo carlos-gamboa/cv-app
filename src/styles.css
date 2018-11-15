@@ -128,10 +128,15 @@ body {
   transition: all .3s;
 }
 
-.form__input:placeholder-shown + .form__label {
+.form__input:not(.ng-touched):placeholder-shown + .form__label {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4rem);
+}
+
+.form__input.ng-touched.ng-invalid + .form__label {
+  display: block;
+  color: darkred;
 }
 
 .form__radio-group {
