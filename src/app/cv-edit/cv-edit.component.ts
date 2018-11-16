@@ -19,7 +19,7 @@ export class CvEditComponent implements OnInit {
   }
 
   onSubmit() {
-    //Do something
+    console.log(this.cvForm.value);
   }
 
   onAddChronologic() {
@@ -42,6 +42,41 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('chronologicData')).controls;
   }
 
+  onAddFunctional() {
+    (<FormArray>this.cvForm.get('functionalData')).push(
+      new FormGroup({
+        'schoolName': new FormControl(null, Validators.required),
+        'schoolTitle': new FormControl(null, [Validators.required]),
+        'schoolCity': new FormControl(null, [Validators.required]),
+        'schoolYear': new FormControl(null, [Validators.required])
+      })
+    );
+  }
+
+  onDeleteFunctional(index: number) {
+    (<FormArray>this.cvForm.get('functionalData')).removeAt(index);
+  }
+
+  getFunctionalControls() {
+    return (<FormArray>this.cvForm.get('functionalData')).controls;
+  }
+
+  onAddSkill() {
+    (<FormArray>this.cvForm.get('skills')).push(
+      new FormGroup({
+        'skillName': new FormControl(null, Validators.required)
+      })
+    );
+  }
+
+  onDeleteSkill(index: number) {
+    (<FormArray>this.cvForm.get('skills')).removeAt(index);
+  }
+
+  getSkillControls() {
+    return (<FormArray>this.cvForm.get('skills')).controls;
+  }
+
   onFileSelect(event) {
     if (event.target.files && event.target.files[0] && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -56,6 +91,8 @@ export class CvEditComponent implements OnInit {
 
   private initForm() {
     const chronologicData = new FormArray([]);
+    const functionalData = new FormArray([]);
+    const skills = new FormArray([]);
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'title': new FormControl(null, Validators.required),
@@ -75,7 +112,9 @@ export class CvEditComponent implements OnInit {
       'personalProfile': new FormControl(null, Validators.required),
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
-      'chronologicData': chronologicData
+      'chronologicData': chronologicData,
+      'functionalData': functionalData,
+      'skills': skills
     });
   }
 

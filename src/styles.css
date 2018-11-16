@@ -38,15 +38,18 @@ body {
   margin: 3rem auto;
   width: 90%;
   max-width: 90rem;
+  border-radius: 3px;
 }
 
 .cv__shared-info-top {
-  background-color: #ededed;
+  background-color: #ddd;
   border-bottom: 4px solid #cf8a05;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .cv__shared-info-bottom {
-  background-color: #eee;
+  background-color: #ededed;
 }
 
 .cv__main {
@@ -62,6 +65,10 @@ body {
   padding: 1rem 5rem;
 }
 
+.cv__main-edit:not(:last-of-type) {
+  border-bottom: 1px solid #bbb;
+}
+
 .cv__main-content {
   width: 100%;
 }
@@ -72,6 +79,15 @@ body {
   font-size: 2.9rem;
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-style: italic;
+}
+
+.cv__submit-area {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ededed;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .cv__name {
@@ -119,7 +135,7 @@ body {
 
 .cv__chronologic,
 .cv__functional {
-  background-color: #eee;
+  background-color: #ededed;
 }
 
 .cv__section-banner {
@@ -302,27 +318,32 @@ body {
   opacity: 1;
 }
 
-.form__chronologic-group {
+.form__chronologic-group,
+.form__functional-group {
   display: grid;
   grid-template-columns: 4.5fr 4.5fr 1fr;
 }
 
-.form__chronologic-company {
+.form__chronologic-company,
+.form__functional-name {
   grid-column: 1 / 2;
   grid-row: 1 / 1;
 }
 
-.form__chronologic-role {
+.form__chronologic-role,
+.form__functional-title {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
 
-.form__chronologic-start {
+.form__chronologic-start,
+.form__functional-city {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
-.form__chronologic-finish {
+.form__chronologic-finish,
+.form__functional-year {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
@@ -332,7 +353,8 @@ body {
   grid-row: 3 / 4;
 }
 
-.form__chronologic-button {
+.form__chronologic-button,
+.form__functional-button {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
   align-self: start;
@@ -345,6 +367,23 @@ body {
 
 .form__chronologic-group:not(:first-of-type) {
   margin-top: 2rem;
+}
+
+.form__skill-group {
+  display: grid;
+  grid-template-columns: 4.5fr 1fr 4.5fr;
+}
+
+.form__skill-name {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.form__skill-button {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  align-self: start;
+  justify-self: center;
 }
 
 /* The switch - the box around the slider */
@@ -422,6 +461,23 @@ input:checked + .slider:before {
   cursor: pointer;
   border-radius: 3px;
   font-size: 1.6rem;
+
+  transition: all .3s;
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .5rem 1rem #ccc;
+}
+
+.button:not(:disabled):active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .button--square {
@@ -431,11 +487,12 @@ input:checked + .slider:before {
 }
 
 .button--error {
-  background-color: red;
+  background-color: #B33A3A;
+  color: white;
 }
 
 .button--error:hover {
-  background-color: darkred;
+  background-color: #933030;
 }
 
 .button--primary {

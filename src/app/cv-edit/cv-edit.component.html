@@ -125,7 +125,7 @@
               ></textarea>
               <label for="personalProfile" class="form__label">Perfil Personal
                 <span *ngIf="!cvForm.get('personalProfile').valid && cvForm.get('personalProfile').touched">
-                  : Favor introduzca información referente a su perfil personal.
+                  : Favor introduzca información referente a su perfil personal
                 </span>
               </label>
             </div>
@@ -169,7 +169,7 @@
                 >
                 <label for="companyName" class="form__label">Compañía
                   <span *ngIf="!chornoCtrl.get('companyName').valid && chornoCtrl.get('companyName').touched">
-                    : Favor introduzca la compañia donde trabajó
+                    : Favor introduzca el nombre de la compañía
                   </span>
                 </label>
               </div>
@@ -184,7 +184,7 @@
                 >
                 <label for="companyRole" class="form__label">Rol en la Compañía
                   <span *ngIf="!chornoCtrl.get('companyRole').valid && chornoCtrl.get('companyRole').touched">
-                    : Favor introduzca un rol válido.
+                    : Favor introduzca un rol
                   </span>
                 </label>
               </div>
@@ -196,9 +196,9 @@
                   name="companyStart"
                   formControlName="companyStart"
                 >
-                <label for="companyStart" class="form__label">Tiempo Ejercido (MM/AA - MM/AA)
+                <label for="companyStart" class="form__label">Fecha de Inicio
                   <span *ngIf="!chornoCtrl.get('companyStart').valid && chornoCtrl.get('companyStart').touched">
-                    : Favor introduzca una dirección válida.
+                    : Favor introduzca la fecha de inicio.
                   </span>
                 </label>
               </div>
@@ -210,9 +210,9 @@
                   name="companyFinish"
                   formControlName="companyFinish"
                 >
-                <label for="companyFinish" class="form__label">Tiempo Ejercido (MM/AA - MM/AA)
+                <label for="companyFinish" class="form__label">Fecha de Finalización
                   <span *ngIf="!chornoCtrl.get('companyFinish').valid && chornoCtrl.get('companyFinish').touched">
-                    : Favor introduzca una dirección válida.
+                    : Favor introduzca la fecha de finalización.
                   </span>
                 </label>
               </div>
@@ -228,7 +228,7 @@
                 ></textarea>
                 <label for="companyFunction" class="form__label">Información de la experiencia
                   <span *ngIf="!chornoCtrl.get('companyFunction').valid && chornoCtrl.get('companyFunction').touched">
-                  : Favor introduzca información referente a su perfil personal.
+                  : Favor introduzca información sobre la experiencia.
                 </span>
                 </label>
               </div>
@@ -264,7 +264,136 @@
         class="cv__functional"
         *ngIf="cvForm.get('functionalActive').value"
       >
-        <app-cv-edit-functional></app-cv-edit-functional>
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-label">
+            <h3 class="cv__main-heading">Educación</h3>
+          </div>
+          <div class="cv__main-edit-content" formArrayName="functionalData">
+            <div
+              class="form__functional-group"
+              *ngFor="let functCtrl of getFunctionalControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__functional-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Institución"
+                  id="schoolName"
+                  name="schoolName"
+                  formControlName="schoolName"
+                >
+                <label for="schoolName" class="form__label">Institución
+                  <span *ngIf="!functCtrl.get('schoolName').valid && functCtrl.get('schoolName').touched">
+                    : Favor introduzca el nombre de la institución
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-title">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Título"
+                  id="schoolTitle"
+                  name="schoolTitle"
+                  formControlName="schoolTitle"
+                >
+                <label for="schoolTitle" class="form__label">Título
+                  <span *ngIf="!functCtrl.get('schoolTitle').valid && functCtrl.get('schoolTitle').touched">
+                    : Favor introduzca el título obtenido
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-city">
+                <input
+                  type="number"
+                  class="form__input"
+                  id="schoolCity"
+                  name="schoolCity"
+                  formControlName="schoolCity"
+                >
+                <label for="schoolCity" class="form__label">País/Ciduad
+                  <span *ngIf="!functCtrl.get('schoolCity').valid && functCtrl.get('schoolCity').touched">
+                    : Favor introduzca el país o ciudad de la institución
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-year">
+                <input
+                  type="date"
+                  class="form__input"
+                  id="schoolYear"
+                  name="schoolYear"
+                  formControlName="schoolYear"
+                >
+                <label for="schoolYear" class="form__label">Fecha de finalización
+                  <span *ngIf="!functCtrl.get('schoolYear').valid && functCtrl.get('schoolYear').touched">
+                    : Favor introduzca la fecha de finalización
+                  </span>
+                </label>
+              </div>
+              <div class="form__functional-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteFunctional(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddFunctional()"
+            >Añadir institución</button>
+          </div>
+        </div>
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-label">
+            <h3 class="cv__main-heading">Habilidades</h3>
+          </div>
+          <div class="cv__main-edit-content" formArrayName="skills">
+            <div
+              class="form__skill-group"
+              *ngFor="let skillCtrl of getSkillControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__skill-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Habilidad"
+                  id="skillName"
+                  name="skillName"
+                  formControlName="skillName"
+                >
+                <label for="skillName" class="form__label">Habilidad
+                  <span *ngIf="!skillCtrl.get('skillName').valid && skillCtrl.get('skillName').touched">
+                    : Favor introduzca la habilidad
+                  </span>
+                </label>
+              </div>
+              <div class="form__skill-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteSkill(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddSkill()"
+            >Añadir habilidad</button>
+          </div>
+        </div>
+      </div>
+      <div class="cv__submit-area">
+        <button
+          type="submit"
+          class="button button--primary"
+          [disabled]="!cvForm.valid"
+        >Guardar Datos</button>
       </div>
     </form>
   </div>

@@ -9,9 +9,6 @@ import { CvSharedComponent } from './cv/cv-shared/cv-shared.component';
 import { CvChronologicComponent } from './cv/cv-chronologic/cv-chronologic.component';
 import { CvFunctionalComponent } from './cv/cv-functional/cv-functional.component';
 import { CvEditComponent } from './cv-edit/cv-edit.component';
-import { CvEditSharedComponent } from './cv-edit/cv-edit-shared/cv-edit-shared.component';
-import { CvEditChronologicComponent } from './cv-edit/cv-edit-chronologic/cv-edit-chronologic.component';
-import { CvEditFunctionalComponent } from './cv-edit/cv-edit-functional/cv-edit-functional.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -38,9 +35,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CvChronologicComponent,
     CvFunctionalComponent,
     CvEditComponent,
-    CvEditSharedComponent,
-    CvEditChronologicComponent,
-    CvEditFunctionalComponent,
     LandingComponent,
     SignupComponent,
     SigninComponent
