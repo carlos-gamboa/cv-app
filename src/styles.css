@@ -30,6 +30,7 @@ body {
 
 .cv {
   background-color: #181818;
+  overflow:auto;
   min-height: 90vh;
 }
 
@@ -42,6 +43,49 @@ body {
 .cv__shared-info {
   background-color: #ededed;
   border-bottom: 4px solid #cf8a05;
+}
+
+.cv__name {
+  justify-self: start;
+  align-self: start;
+}
+
+.cv__info {
+  justify-self: end;
+  margin-right: 8rem;
+}
+
+.cv__heading-primary {
+  color: #222;
+  font-weight: 700;
+  font-size: 5rem;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  margin-top: 1rem;
+}
+
+.cv__heading-secondary {
+  color: #222;
+  font-weight: 400;
+  font-size: 3.5rem;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  margin-top: -3rem;
+}
+
+.cv__personal-text {
+  color: #444;
+  font-size: 1.6rem;
+}
+
+.cv__image {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem;
+}
+
+.cv__image-display {
+  width: 80%;
+  height: 80%;
+  border-radius: 300px;
 }
 
 .inputfile {
@@ -62,7 +106,8 @@ body {
   display: inline-block;
 }
 
-.form {
+.form,
+.cv__personal-info {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   grid-column-gap: 1.5rem;

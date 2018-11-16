@@ -1,29 +1,15 @@
-<div class="form">
-  <div class="form__section">
-    <div class="form__group form__group--image">
-      <img class="user__image" id="preview" [src]="selectFileSrc || '../../../assets/img/profile_default.png'" alt="Alan Smith" />
-    </div>
+<div class="cv__personal-info">
+  <div class="cv__image">
+    <img class="cv__image-display" id="preview" [src]="'../../../assets/img/profile_default.png'" alt="Alan Smith" />
   </div>
-  <div class="form__section form__section--full">
-    <div class="form__group">
-      <h1 class="cv__heading-primary">Nombre</h1>
-    </div>
-    <div class="form__group">
-      <h2 class="cv__heading-secondary">Título</h2>
-    </div>
+  <div class="cv__name">
+    <h1 class="cv__heading-primary">Nombre</h1>
+    <h2 class="cv__heading-secondary">Título</h2>
   </div>
-  <div class="form__section form__section--full">
-    <div class="form__group">
-      <p class="cv__personal-info">email@email.com</p>
-    </div>
-    <div class="form__group">
-      <p class="cv__personal-info">11-22-33-44</p>
-    </div>
-    <div class="form__group">
-      <p class="cv__personal-info">55-66-77-88</p>
-    </div>
-    <div class="form__group">
-      <p class="cv__personal-info">UCR, Montes de Oca</p>
-    </div>
+  <div class="cv__info">
+    <p class="cv__personal-text">email@email.com</p>
+    <p class="cv__personal-text">11-22-33-44</p>
+    <p class="cv__personal-text">55-66-77-88</p>
+    <p class="cv__personal-text">UCR, Montes de Oca</p>
   </div>
 </div>
