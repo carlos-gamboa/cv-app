@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-edit.component.css']
 })
 export class CvEditComponent implements OnInit {
+  chronologicActive = false;
+  functionalActive = false;
 
   constructor() { }
 

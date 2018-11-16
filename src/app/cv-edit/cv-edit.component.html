@@ -1,7 +1,41 @@
 <div class="cv">
-  <div class="cv__shared-info">
-    <app-cv-edit-shared></app-cv-edit-shared>
+  <div class="cv__wrapper">
+    <div class="cv__shared-info">
+      <app-cv-edit-shared></app-cv-edit-shared>
+    </div>
+    <div class="cv__section-banner">
+      <h2 class="cv__banner-text">Chronologic</h2>
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="chronologicActive"
+        >
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div
+      class="cv__chronologic"
+      *ngIf="chronologicActive"
+    >
+      <app-cv-edit-chronologic></app-cv-edit-chronologic>
+    </div>
+
+    <div class="cv__section-banner">
+      <h2 class="cv__banner-text">Functional</h2>
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="functionalActive"
+        >
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div
+      class="cv__functional"
+      *ngIf="functionalActive"
+    >
+      <app-cv-edit-functional></app-cv-edit-functional>
+    </div>
   </div>
-  <app-cv-edit-chronologic></app-cv-edit-chronologic>
 </div>
 
