@@ -27,12 +27,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-// Reactive Forms 
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
