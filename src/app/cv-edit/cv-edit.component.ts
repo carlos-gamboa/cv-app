@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {DataStorageService} from '../services/data-storage.service';
+import {CvService} from '../services/cv.service';
 
 @Component({
   selector: 'app-cv-edit',
@@ -12,7 +14,7 @@ export class CvEditComponent implements OnInit {
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService, private cvService: CvService) { }
 
   ngOnInit() {
     this.initForm();
@@ -20,6 +22,7 @@ export class CvEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.cvForm.value);
+    this.dataStorageService.storeCv(this.cvForm.value);
   }
 
   onAddChronologic() {

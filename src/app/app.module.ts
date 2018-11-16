@@ -17,14 +17,15 @@ import {CvService} from './services/cv.service';
 import {DataStorageService} from './services/data-storage.service';
 import {AuthService} from './services/auth.service';
 
-// Firebase import
-import { AngularFireModule } from 'angularfire2';
+
 
 // Environment
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,14 +44,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
   providers: [
     CvService,
     DataStorageService,
-    AuthService
+    AuthService,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
