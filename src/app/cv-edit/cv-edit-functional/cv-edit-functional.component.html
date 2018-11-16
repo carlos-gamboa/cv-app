@@ -1,3 +1,89 @@
-<p>
-  cv-edit-functional works!
-</p>
+<form [formGroup]="myForm">
+
+    <hr>
+
+    <h4>Estudios</h4>
+
+    <div formArrayName="estudios">
+
+        <div *ngFor="let estudio of estudiosForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Año" formControlName="año">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Titulo" formControlName="titulo">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Universidad o Institucion" formControlName="institucion">
+            </mat-form-field>
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Ciudad y País" formControlName="ciudad">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteEstudio()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addEstudio()">Agregar Estudio</button>
+
+    <h4>Experiencia Laboral</h4>
+
+    <div formArrayName="experiencias">
+
+        <div *ngFor="let experiencia of experienciasForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="dd/mm/aaaa - dd/mm/aaaa" formControlName="fechas">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Empresa" formControlName="empresa">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Cargo" formControlName="cargo">
+            </mat-form-field>
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Ciudad y País" formControlName="ciudad">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteEstudio()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addEstudio()">Agregar Estudio</button>
+
+
+    <h4>Habilidades Clave</h4>
+
+    <div formArrayName="habilidades">
+
+        <div *ngFor="let habilidad of habilidadesForms.controls; let i=index" [formGroupName]="i">
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Habilidad Clave" formControlName="clave">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteHabilidad()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addHabilidad()">Agregar Habilidad</button>
+
+    
+
+
+</form>
