@@ -26,8 +26,8 @@ import { AngularFireModule } from 'angularfire2';
 // Environment
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,9 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CvService,
