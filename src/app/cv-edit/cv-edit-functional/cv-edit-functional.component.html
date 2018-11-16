@@ -1,75 +1,89 @@
-<form #f="ngForm">
-  <div class="form">
-    <div class="form__section form__section--full">
-        <div class="form__group">
-          <textarea
-            type="text"
-            class="form__input"
-            placeholder="Experiencia Laboral"
-            id="experiencia"
-            cols="30" 
-            rows="10" 
-            name="experiencia"
-            ngModel
-            #experiencia="ngModel"
-            required
-          >
-          <label for="experiencia" class="form__label">Experiencia Laboral
-            <span *ngIf="!experiencia.valid && experiencia.touched">
-                : Favor introduzca su experiencia laboral
-              </span>
-          </label>
-        </div>
-        <div class="form-group">
-            <label for="experiencia" class="form__label">Experiencia Laboral
-                <span *ngIf="!experiencia.valid && experiencia.touched">
-                    : Favor introduzca su experiencia laboral
-                  </span>
-              </label>
-          <textarea 
-            name="experiencia"
-            id="experiencia" 
-            cols="30" 
-            rows="10" 
-            placeholder="Experiencia Laboral"
-            class="form-control">
-          </textarea>
-        </div>
-      </div>
-      <div class="form__section form__section--full">
-        <div class="form__group">
-            <input
-              type="text"
-              class="form__input"
-              placeholder="Habilidades Clave"
-              id="habilidades"
-              name="habilidades"
-              ngModel
-              #habilidades="ngModel"
-              required
-            >
-            <label for="habilidades" class="form__label">Habilidades Clave
-              <span *ngIf="!habilidades.valid && habilidades.touched">
-                  : Favor introduzca una habilidad clave
-                </span>
-            </label>
-          </div>
-      </div>
-      <!-- Falta terminar tabla dinamica -->
-      <form [formGroup] = "myForm">
-        <div formArrayName="habilidades">
-          <div *ngFor = "let habilidad of habilidadesForms.controls; let i=index" [formGroupName]="i">
-            <input formControlName="habilidad">
-            <label for="habilidad" class="form__label">Habilidades Clave
-              <span *ngIf="!habilidad.valid && habilidad.touched">
-                : Favor introduzca una habilidad clave
-              </span>
-            </label>
-            <button mat-raised-button color='warn' (click)='deleteHabilidad(i)'>Borrar</button>
-          </div>
-          <button mat-raised-button color='primary' (click)='addHabilidad()'>Agregar Habilidad</button>
-        </div>
-      </form>
+<form [formGroup]="myForm">
 
-  </div>
+    <hr>
+
+    <h4>Estudios</h4>
+
+    <div formArrayName="estudios">
+
+        <div *ngFor="let estudio of estudiosForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Año" formControlName="año">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Titulo" formControlName="titulo">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Universidad o Institucion" formControlName="institucion">
+            </mat-form-field>
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Ciudad y País" formControlName="ciudad">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteEstudio()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addEstudio()">Agregar Estudio</button>
+
+    <h4>Experiencia Laboral</h4>
+
+    <div formArrayName="experiencias">
+
+        <div *ngFor="let experiencia of experienciasForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="dd/mm/aaaa - dd/mm/aaaa" formControlName="fechas">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Empresa" formControlName="empresa">
+            </mat-form-field>
+    
+            <mat-form-field class="sm">
+                <input matInput placeholder="Cargo" formControlName="cargo">
+            </mat-form-field>
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Ciudad y País" formControlName="ciudad">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteEstudio()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addEstudio()">Agregar Estudio</button>
+
+
+    <h4>Habilidades Clave</h4>
+
+    <div formArrayName="habilidades">
+
+        <div *ngFor="let habilidad of habilidadesForms.controls; let i=index" [formGroupName]="i">
+
+            <mat-form-field class="sm">
+                <input matInput placeholder="Habilidad Clave" formControlName="clave">
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" (click)="deleteHabilidad()">Borrar</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addHabilidad()">Agregar Habilidad</button>
+
+    
+
+
 </form>
