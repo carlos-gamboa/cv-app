@@ -28,6 +28,10 @@ body {
   margin-bottom: 2rem;
 }
 
+hr {
+  border-top: 1px solid #dedede;
+}
+
 .cv {
   background-color: #181818;
   overflow:auto;
@@ -70,7 +74,7 @@ body {
 }
 
 .cv__main-content {
-  width: 100%;
+  margin: 1rem;
 }
 
 .cv__main-heading {
@@ -81,6 +85,12 @@ body {
   font-style: italic;
 }
 
+.cv__info-text {
+  color: #444;
+  line-height: 2.2rem;
+  font-size: 1.8rem;
+}
+
 .cv__submit-area {
   padding: 2rem;
   display: flex;
@@ -88,6 +98,15 @@ body {
   background-color: #ededed;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+.cv__display-section {
+  padding: 0 2rem;
+}
+
+.cv__display-chrono,
+.cv__display-functional {
+  background-color: #ededed;
 }
 
 .cv__name {
@@ -116,9 +135,33 @@ body {
   margin-top: -3rem;
 }
 
+.cv__heading-quaternary {
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: #222;
+  margin-top: -.8rem;
+}
+
+.cv__details-text {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: -1.3rem;
+  margin-bottom: .5rem;
+  color: #444;
+}
+
 .cv__personal-text {
   color: #444;
   font-size: 1.6rem;
+}
+
+.cv__company-data:not(:first-child) {
+  margin-top: 3rem;
+}
+
+.cv__company-data:last-child {
+  margin-bottom: 1rem;
 }
 
 .cv__image {
