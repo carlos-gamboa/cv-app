@@ -1,3 +1,109 @@
-<p>
-  cv-edit-chronologic works!
-</p>
+<h1>Experiencia Laboral</h1>
+<form #f="ngForm">
+  <div class="form">
+    <div class="form__section form__section--full">
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Compañia"
+          id="company"
+          cols="30"
+          rows="10"
+          name="company"
+          ngModel
+          #company="ngModel"
+          required
+        >
+        <label for="company" class="form__label">Compañía
+          <span *ngIf="!company.valid && company.touched">
+            : Favor introduzca la compañia donde trabajó
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="form__section form__section--full">
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Dirección de Compañía"
+          id="company_address"
+          name="company_address"
+          ngModel
+          #company_address="ngModel"
+          required
+        >
+        <label for="company_address" class="form__label">Dirección de Compañía
+          <span *ngIf="!company_address.valid && company_address.touched">
+            : Favor introduzca una dirección válida.
+          </span>
+        </label>
+      </div>
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Rol en la Compañía"
+          id="company_rol"
+          name="company_rol"
+          ngModel
+          #company_rol="ngModel"
+          required
+        >
+        <label for="company_rol" class="form__label">Rol en la Compañía
+          <span *ngIf="!company_rol.valid && company_rol.touched">
+            : Favor introduzca un rol válido.
+          </span>
+        </label>
+      </div>
+      <div class="form__group">
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Tiempo Ejercido (MM/AA - MM/AA)"
+          id="company_time"
+          name="company_time"
+          ngModel
+          #company_time="ngModel"
+          required
+        >
+        <label for="company_time" class="form__label">Tiempo Ejercido (MM/AA - MM/AA)
+          <span *ngIf="!company_time.valid && company_time.touched">
+            : Favor introduzca una dirección válida.
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="form__section form__section--full">
+      <!-- Falta terminar tabla dinamica -->
+      <form [formGroup] = "myForm">
+        <div formArrayName="functions">
+          <div *ngFor = "let function of functionsForms.controls; let i=index" [formGroupName]="i">
+            <div class="form__group">
+              <textarea
+                type="text"
+                class="form__input"
+                placeholder="Función en Empresa"
+                id="personal_profile"
+                name="personal_profile"
+                ngModel
+                #personal_profile="ngModel"
+                required
+              ></textarea>
+              <label for="personal_profile" class="form__label">Función en Empresa
+                <span *ngIf="!personal_profile.valid && personal_profile.touched">
+                  : Favor introduzca información referente a su perfil personal.
+                </span>
+              </label>
+            </div>
+            <button mat-raised-button color='warn' (click)='deleteFunction(i)'>Borrar</button>
+          </div>
+          <div *ngIf="functionsForms.controls.length < maxForms">
+            <button mat-raised-button color='primary' (click)='addFunction(functionsForms.controls.length)'>Agregar Función</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</form>
