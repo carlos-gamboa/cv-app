@@ -140,13 +140,12 @@ hr {
   font-size: 2.8rem;
   font-weight: 400;
   color: #222;
-  margin-top: -.8rem;
+  line-height: 2.5rem;
 }
 
 .cv__details-text {
   font-size: 1.5rem;
   font-style: italic;
-  margin-top: -1.3rem;
   margin-bottom: .5rem;
   color: #444;
 }
@@ -197,6 +196,23 @@ hr {
   font-weight: 400;
   font-size: 3rem;
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+.cv__skills-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 3rem;
+}
+
+.cv__skill-text {
+  font-size: 2rem;
+  color: #444;
+  font-weight: 400;
+}
+
+.grid__start {
+  justify-self: start;
 }
 
 .inputfile {
@@ -541,4 +557,8 @@ input:checked + .slider:before {
 .button--primary {
   background-color: #cf8a05;
   color: #eee;
+}
+
+.full {
+  min-width: 90%;
 }
