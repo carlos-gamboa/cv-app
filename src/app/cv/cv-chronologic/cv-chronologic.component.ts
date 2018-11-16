@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-chronologic.component.css']
 })
 export class CvChronologicComponent implements OnInit {
-
+  company_functions = ['Programar', 'Diseñar'];
   constructor() { }
 
   ngOnInit() {
-  }
+  };
 
 }
