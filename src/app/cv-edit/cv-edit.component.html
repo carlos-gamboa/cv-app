@@ -1,4 +1,271 @@
-<div class="cv__shared-info">
-  <app-cv-edit-shared></app-cv-edit-shared>
+<div class="cv">
+  <div class="cv__wrapper">
+    <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
+
+      <div class="cv__shared-info-top">
+        <div class="form">
+          <div class="form__section">
+            <div class="form__group form__group--image">
+              <img class="user__image" id="preview" [src]="selectFileSrc || '../../assets/img/profile_default.png'" alt="Alan Smith" />
+              <input type="file" accept="image/*" name="file" id="file" class="inputfile" (change)="onFileSelect($event)" />
+              <label for="file">Elije un archivo</label>
+            </div>
+          </div>
+          <div class="form__section form__section--full">
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Nombre"
+                id="name"
+                name="name"
+                formControlName="name"
+              >
+              <label for="name" class="form__label">Nombre
+                <span *ngIf="!cvForm.get('name').valid && cvForm.get('name').touched">
+                  : Favor introduzca un nombre
+                </span>
+              </label>
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Título"
+                id="title"
+                name="title"
+                formControlName="title"
+              >
+              <label for="title" class="form__label">Título
+                <span *ngIf="!cvForm.get('title').valid && cvForm.get('title').touched">
+                  : Favor introduzca un título
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="form__section form__section--full">
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Correo electrónico"
+                id="mail"
+                name="mail"
+                formControlName="mail"
+              >
+              <label for="mail" class="form__label">Correo electrónico
+                <span *ngIf="!cvForm.get('mail').valid && cvForm.get('mail').touched">
+                  : Favor introduzca un correo electrónico válido
+                </span>
+              </label>
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Teléfono 1"
+                id="phone1"
+                name="phone1"
+                formControlName="phone1"
+              >
+              <label for="phone1" class="form__label">Teléfono 1
+                <span *ngIf="!cvForm.get('phone1').valid && cvForm.get('phone1').touched">
+                  : Favor introduzca un número telefónico válido
+                </span>
+              </label>
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Teléfono 2"
+                id="phone2"
+                name="phone2"
+                formControlName="phone2"
+              >
+              <label for="phone2" class="form__label">Teléfono 2
+                <span *ngIf="!cvForm.get('phone2').valid && cvForm.get('phone2').touched">
+                  : Favor introduzca un número telefónico válido
+                </span>
+              </label>
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Dirección"
+                id="address"
+                name="address"
+                formControlName="address"
+              >
+              <label for="address" class="form__label">Dirección
+                <span *ngIf="!cvForm.get('address').valid && cvForm.get('address').touched">
+                  : Favor introduzca una dirección
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cv__shared-info-bottom">
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-label">
+            <h3 class="cv__main-heading">Perfil Personal</h3>
+          </div>
+          <div class="cv__main-edit-content">
+            <div class="form__group form__group--big mt-0">
+              <textarea
+                rows="5"
+                type="text"
+                class="form__input"
+                placeholder="Perfil Personal"
+                id="personalProfile"
+                name="personalProfile"
+                formControlName="personalProfile"
+              ></textarea>
+              <label for="personalProfile" class="form__label">Perfil Personal
+                <span *ngIf="!cvForm.get('personalProfile').valid && cvForm.get('personalProfile').touched">
+                  : Favor introduzca información referente a su perfil personal.
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Chronologic</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="chronologic"
+
+            formControlName="chronologicActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__chronologic"
+        *ngIf="cvForm.get('chronologicActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-label">
+            <h3 class="cv__main-heading">Experiencia Laboral</h3>
+          </div>
+          <div class="cv__main-edit-content" formArrayName="chronologicData">
+            <div
+              class="form__chronologic-group"
+              *ngFor="let chornoCtrl of getChronologicControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__chronologic-company">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Compañia"
+                  id="companyName"
+                  name="companyName"
+                  formControlName="companyName"
+                >
+                <label for="companyName" class="form__label">Compañía
+                  <span *ngIf="!chornoCtrl.get('companyName').valid && chornoCtrl.get('companyName').touched">
+                    : Favor introduzca la compañia donde trabajó
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__chronologic-role">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Rol en la Compañía"
+                  id="companyRole"
+                  name="companyRole"
+                  formControlName="companyRole"
+                >
+                <label for="companyRole" class="form__label">Rol en la Compañía
+                  <span *ngIf="!chornoCtrl.get('companyRole').valid && chornoCtrl.get('companyRole').touched">
+                    : Favor introduzca un rol válido.
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__chronologic-start">
+                <input
+                  type="date"
+                  class="form__input"
+                  id="companyStart"
+                  name="companyStart"
+                  formControlName="companyStart"
+                >
+                <label for="companyStart" class="form__label">Tiempo Ejercido (MM/AA - MM/AA)
+                  <span *ngIf="!chornoCtrl.get('companyStart').valid && chornoCtrl.get('companyStart').touched">
+                    : Favor introduzca una dirección válida.
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__chronologic-finish">
+                <input
+                  type="date"
+                  class="form__input"
+                  id="companyFinish"
+                  name="companyFinish"
+                  formControlName="companyFinish"
+                >
+                <label for="companyFinish" class="form__label">Tiempo Ejercido (MM/AA - MM/AA)
+                  <span *ngIf="!chornoCtrl.get('companyFinish').valid && chornoCtrl.get('companyFinish').touched">
+                    : Favor introduzca una dirección válida.
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__group--big form__chronologic-function">
+                <textarea
+                  rows="5"
+                  type="text"
+                  class="form__input form__input--full"
+                  placeholder="Información de la experiencia"
+                  id="companyFunction"
+                  name="companyFunction"
+                  formControlName="companyFunction"
+                ></textarea>
+                <label for="companyFunction" class="form__label">Información de la experiencia
+                  <span *ngIf="!chornoCtrl.get('companyFunction').valid && chornoCtrl.get('companyFunction').touched">
+                  : Favor introduzca información referente a su perfil personal.
+                </span>
+                </label>
+              </div>
+              <div class="form__chronologic-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteChronologic(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddChronologic()"
+            >Añadir experiencia</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Functional</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="functional"
+            formControlName="functionalActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('functionalActive').value"
+      >
+        <app-cv-edit-functional></app-cv-edit-functional>
+      </div>
+    </form>
+  </div>
 </div>
-<app-cv-edit-functional></app-cv-edit-functional>
