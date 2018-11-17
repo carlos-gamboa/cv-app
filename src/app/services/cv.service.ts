@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import {Cv} from '../models/cv.model';
 import {Observable} from 'rxjs';
 import * as firebase from 'firebase';
+import {DataStorageService} from './data-storage.service';
 
 @Injectable()
 export class CvService {
 
   private _cvs: Cv[];
+  private _cv: Cv;
 
   constructor() {
     this._cvs = [];
@@ -15,8 +17,12 @@ export class CvService {
   ngOnInit() {
   }
 
-  addCv(cv: Cv): void {
-    this._cvs.push(cv);
+  setCv(cv: Cv): void {
+    this._cv = cv;
+  }
+
+  getCv(): Cv{
+    return this._cv;
   }
 
   getCvs(): Cv[]{
