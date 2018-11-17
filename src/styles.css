@@ -32,6 +32,10 @@ hr {
   border-top: 1px solid #dedede;
 }
 
+/* --------------------------------------------- */
+/* CV */
+/* --------------------------------------------- */
+
 .cv {
   background-color: #181818;
   overflow:auto;
@@ -211,9 +215,9 @@ hr {
   font-weight: 400;
 }
 
-.grid__start {
-  justify-self: start;
-}
+/* --------------------------------------------- */
+/* INPUT FILE */
+/* --------------------------------------------- */
 
 .inputfile {
   width: 0.1px;
@@ -232,6 +236,10 @@ hr {
   background-color: #cf8a05;
   display: inline-block;
 }
+
+/* --------------------------------------------- */
+/* FORM */
+/* --------------------------------------------- */
 
 .form,
 .cv__personal-info {
@@ -445,6 +453,10 @@ hr {
   justify-self: center;
 }
 
+/* --------------------------------------------- */
+/* SWITCH */
+/* --------------------------------------------- */
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -461,7 +473,9 @@ hr {
   height: 0;
 }
 
-/* The slider */
+/* --------------------------------------------- */
+/* SLIDER */
+/* --------------------------------------------- */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -500,7 +514,10 @@ input:checked + .slider:before {
   transform: translateX(2.6rem);
 }
 
-/* Rounded sliders */
+/* --------------------------------------------- */
+/* ROUNDED SLIDERS */
+/* --------------------------------------------- */
+
 .slider.round {
   border-radius: 34px;
 }
@@ -509,8 +526,16 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.mt-0 {
-  margin-top: 0 !important;
+/* --------------------------------------------- */
+/* BUTTONS */
+/* --------------------------------------------- */
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  display: block;
+  text-decoration: none;
 }
 
 .button {
@@ -521,7 +546,13 @@ input:checked + .slider:before {
   border-radius: 3px;
   font-size: 1.6rem;
 
+  transform: translateY(0);
   transition: all .3s;
+}
+
+.button:active,
+.button:focus {
+  outline: none;
 }
 
 .button:not(:disabled):hover {
@@ -545,6 +576,10 @@ input:checked + .slider:before {
   padding: 1rem;
 }
 
+.button--round {
+  border-radius: 300px;
+}
+
 .button--error {
   background-color: #B33A3A;
   color: white;
@@ -557,8 +592,188 @@ input:checked + .slider:before {
 .button--primary {
   background-color: #cf8a05;
   color: #eee;
+  border: 1px solid #cf8a05;
 }
+
+.button--primary:hover {
+  background-color: #eee;
+  color: #cf8a05;
+  border: 1px solid #cf8a05;
+}
+
+.button--primary-outline {
+  background-color: #eee;
+  color: #cf8a05;
+  border: 1px solid #cf8a05;
+}
+
+.button--primary-outline:hover {
+  background-color: #cf8a05;
+  color: #eee;
+  border: 1px solid #cf8a05;
+}
+
+/* --------------------------------------------- */
+/* SHARED */
+/* --------------------------------------------- */
 
 .full {
   min-width: 90%;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.grid__start {
+  justify-self: start;
+}
+
+/* --------------------------------------------- */
+/* MOBILE NAVIGATION */
+/* --------------------------------------------- */
+
+.mobile-nav-icon {
+  float: right;
+  margin-top: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.icon-mobile {
+  font-size: 200%;
+  color: #fff;
+}
+
+/* --------------------------------------------- */
+/* HEADER */
+/* --------------------------------------------- */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 2px #efefef;
+  z-index: 9999;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  margin: 1.5rem 3rem;
+}
+
+.header__logo {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+}
+
+.header__nav-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-column-gap: 2rem;
+  align-content: center;
+}
+
+.header__mobile {
+  display: none;
+}
+
+/* --------------------------------------------- */
+/* SIGNIN */
+/* --------------------------------------------- */
+
+.signin {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-content: center;
+}
+
+.signin__input {
+  border-radius: 300px;
+  border: 1px solid #ededed;
+}
+
+/* NAV ICON */
+.navigation__checkbox {
+  display: none;
+}
+
+.navigation__button {
+  height: 7rem;
+  width: 7rem;
+  z-index: 2000;
+  text-align: center;
+  cursor: pointer;
+}
+
+.navigation__icon {
+  position: relative;
+  margin-top: 2.2rem;
+}
+
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after {
+  width: 3rem;
+  height: 2px;
+  background-color: #333;
+  display: inline-block;
+}
+
+.navigation__icon::before,
+.navigation__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all .2s;
+}
+
+.navigation__icon::before {
+  top: -.8rem;
+}
+
+.navigation__icon::after {
+  top: .8rem;
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
+/* --------------------------------------------- */
+/* SMALL PHONES TO SMALL TABLETS (481 TO 767px) */
+/* --------------------------------------------- */
+@media only screen and (max-width: 767px) {
+
+  .header__nav-list,
+  .signin {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-row-gap: 1.5rem;
+  }
+
+  .header__mobile {
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+
 }
