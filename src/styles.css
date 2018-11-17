@@ -16,6 +16,8 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: #777;
+  padding-top: 8rem;
+  min-height: 100vh;
 }
 
 ::selection {
@@ -43,7 +45,7 @@ hr {
 }
 
 .cv__wrapper {
-  margin: 3rem auto;
+  margin: 8rem auto;
   width: 90%;
   max-width: 90rem;
   border-radius: 3px;
@@ -617,6 +619,10 @@ a:active {
 /* SHARED */
 /* --------------------------------------------- */
 
+.input__full {
+  width: 100% !important;
+}
+
 .full {
   min-width: 90%;
 }
@@ -627,6 +633,10 @@ a:active {
 
 .grid__start {
   justify-self: start;
+}
+
+.mt-medium {
+  margin-top: 2.5rem;
 }
 
 /* --------------------------------------------- */
@@ -754,6 +764,40 @@ a:active {
 .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+
+/* SIGN UP */
+.signup {
+  overflow: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./assets/img/hero_signup.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.signup__form {
+  background-color: rgba(237, 237, 237, 0.8);
+  box-shadow: 0 1rem 4rem #333;
+  border-radius: 3px;
+  padding: 5rem 7rem;
+  width: 40%;
+  min-width: 40rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.signup__heading-secondary {
+  color: #222;
+  font-weight: 400;
+  font-size: 4rem;
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  line-height: 3rem;
+  margin-bottom: 5rem;
 }
 
 /* --------------------------------------------- */
