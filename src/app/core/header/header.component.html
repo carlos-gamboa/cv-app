@@ -5,12 +5,21 @@
       class="header__nav-list"
       [ngClass]="{hidden: !displayMenu}"
     >
-      <li><app-signin></app-signin></li>
-      <li><button
+      <li *ngIf="!loggedIn"><app-signin></app-signin></li>
+      <li *ngIf="!loggedIn"><button
         type="button"
         class="button button--round button--primary"
         routerLink="/signup"
       >Registrarme</button></li>
+      <li
+        *ngIf="loggedIn"
+      >
+        <button
+          type="button"
+          class="button button--round button--primary"
+          (click)="onLogOut()"
+        >Cerrar Sesión</button>
+      </li>
     </ul>
     <div class="header__mobile">
       <input

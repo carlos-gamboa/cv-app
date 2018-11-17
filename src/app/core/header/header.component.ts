@@ -8,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   displayMenu =  false;
+  loggedIn = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLogOut() {
+
   }
 
 }
