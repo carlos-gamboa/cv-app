@@ -1,3 +1,15 @@
-<p>
-  dashboard works!
-</p>
+
+<div *ngIf="!cvId">
+  <h1>Parece que aún no haz hecho un Curriculum!</h1>
+  <h2>¿Quieres crear uno?</h2>
+  <form>
+    <button (click)="goToCreate()"> Crear un Curriculum</button>
+  </form>
+</div>
+
+<div *ngIf="cvId">
+  <form>
+    <button (click)="goToView()">Visualizar Curriculum</button>
+    <button (click)="goToEdit()">Editar Curriculum</button>
+  </form>
+</div>
