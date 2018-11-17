@@ -33,9 +33,22 @@ export class DataStorageService {
   getCvs() {
     //const token = this.authService.getToken();
     this.http.get<Cv[]>('https://cv-app-40b38.firebaseio.com/cvs.json').subscribe(
-      (response) => this.cvService.setCvs(response)
+      (response) =>{
+        this.cvService.setCvs(response);
+        var x: Cv[] = [];
+        return x;
+      }
     );
+  }
 
+  getCv(key: string) {
+    //const token = this.authService.getToken();
+    this.http.get<Cv>('https://cv-app-40b38.firebaseio.com/cvs/' + key +'.json').subscribe(
+      (response) => {
+        this.cvService.setCv(response);
+        return new Cv(response);
+      }
+    );
   }
 
 }
