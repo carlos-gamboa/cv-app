@@ -1,15 +1,25 @@
+<div class="dashboard">
+  <div class="dashboard__main-div form__section">
+    <div *ngIf="!cvId">
+      <form class="form__dashboard">
+        <div class="dashboard-heading">
+          <h1>Parece que aún no haz hecho un Curriculum!</h1>
+          <h2>¿Quieres crear uno?</h2>
+        </div>
+        <button class="button button--primary form__dashboard-button" (click)="goToCreate()"> Crear un Curriculum</button>
+      </form>
+    </div>
 
-<div *ngIf="!cvId">
-  <h1>Parece que aún no haz hecho un Curriculum!</h1>
-  <h2>¿Quieres crear uno?</h2>
-  <form>
-    <button (click)="goToCreate()"> Crear un Curriculum</button>
-  </form>
-</div>
-
-<div *ngIf="cvId">
-  <form>
-    <button (click)="goToView()">Visualizar Curriculum</button>
-    <button (click)="goToEdit()">Editar Curriculum</button>
-  </form>
+    <div *ngIf="cvId">
+      <form class="form__dashboard">
+        <div class="dashboard-heading">
+          <h1>¡Bienvenido!</h1>
+          <h2>¿Qué quieres hacer?</h2>
+        </div>
+        <button class="button button--primary form__dashboard-button" (click)="goToView()">Visualizar Curriculum</button>
+        <button class="button button--primary form__dashboard-button" (click)="goToEdit()">Editar Curriculum</button>
+        <button class="button button--primary form__dashboard-button" (click)="openDialog()">Compartir Curriculum</button>
+      </form>
+    </div>
+  </div>
 </div>

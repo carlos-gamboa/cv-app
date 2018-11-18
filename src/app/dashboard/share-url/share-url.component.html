@@ -1,0 +1,8 @@
+<div class=" form__section">
+<h2 mat-dialog-title>¡Comparte tu Currilculum!</h2>
+<form class="form__dashboard">
+  <input class="form__input" type="text" value="{{baseURL+cvId}}" #input readonly>
+  <button class="button button--primary form__dashboard-button" (click)="copyURL(input)" >Copiar URL</button>
+  <button class="button button--primary form__dashboard-button" (click)="close()">Listo</button>
+</form>
+</div>

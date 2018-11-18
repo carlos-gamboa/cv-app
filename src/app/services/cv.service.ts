@@ -33,4 +33,7 @@ export class CvService {
     this._cvs = cv;
   }
 
+  getCVId() {
+    return 1;
+  }
 }
