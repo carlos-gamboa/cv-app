@@ -1,14 +1,14 @@
-<div class="cv">
+<div class="cv" *ngIf="readyToShow">
   <div class="cv__wrapper">
     <div class="cv__shared-info">
-      <app-cv-shared></app-cv-shared>
+      <app-cv-shared [cv]="cv"></app-cv-shared>
     </div>
     <div class="cv__display-section cv__display-chrono">
       <hr>
-      <app-cv-chronologic></app-cv-chronologic>
+      <app-cv-chronologic *ngIf="cv.chronologicalActive" [cv]="cv"></app-cv-chronologic>
     </div>
     <div class="cv__display-functional">
-      <app-cv-functional></app-cv-functional>
+      <app-cv-functional *ngIf="cv.functionalActive" [cv]="cv"></app-cv-functional>
     </div>
   </div>
 </div>

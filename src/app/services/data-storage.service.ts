@@ -22,34 +22,49 @@ export class DataStorageService {
     }
   }
 
-  storeCv(cv: Cv) {
+  storeCv(cv: Cv) : Promise<any>{
     //const token = this.authService.getToken();
-      this.http.post('https://cv-app-40b38.firebaseio.com/cvs.json', cv).subscribe(
-        (response) => console.log(response)
-      );
-    }
-
-
-  getCvs() {
-    //const token = this.authService.getToken();
-    this.http.get<Cv[]>('https://cv-app-40b38.firebaseio.com/cvs.json').subscribe(
-      (response) =>{
-        this.cvService.setCvs(response);
-        var x: Cv[] = [];
-        return x;
-      }
-    );
+    return this.http.post('https://cv-app-40b38.firebaseio.com/cvs.json', cv).toPromise()
+      .then(function(response){
+        console.log(response);
+        let cv : Cv = null;
+        if(response) {
+          cv = new Cv(response);
+        }
+        return cv;
+      });
   }
 
-  getCv(key: string) {
+
+
+  getCvs() : Promise<any>{
     //const token = this.authService.getToken();
-    this.http.get<Cv>('https://cv-app-40b38.firebaseio.com/cvs/' + key +'.json').subscribe(
-      (response) => {
-        this.cvService.setCv(response);
-        return new Cv(response);
-      }
-    );
+    return this.http.get<Cv[]>('https://cv-app-40b38.firebaseio.com/cvs.json').toPromise()
+      .then(function(response){
+        console.log(response);
+        let cv : Cv[] = null;
+        if(response) {
+          cv = response;
+        }
+        return cv;
+      });
   }
+
+
+  getCv(key: string): Promise<any>{
+    //const token = this.authService.getToken();
+    return this.http.get<Cv>('https://cv-app-40b38.firebaseio.com/cvs/' + key +'.json').toPromise()
+      .then(function(response){
+        console.log(response);
+        let cv : Cv = null;
+        if(response) {
+          cv = new Cv(response);
+        }
+        return cv;
+      });
+  }
+
+
 
 }
 

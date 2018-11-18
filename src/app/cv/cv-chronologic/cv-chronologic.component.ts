@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Cv} from '../../models/cv.model';
 
 @Component({
   selector: 'app-cv-chronologic',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvChronologicComponent implements OnInit {
   company_functions = ['Programar', 'Diseñar'];
+  @Input() cv: Cv;
   constructor() { }
 
   ngOnInit() {

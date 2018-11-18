@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CvSharedModel} from '../../models/cv-shared.model';
+import {Cv} from '../../models/cv.model';
 
 @Component({
   selector: 'app-cv-shared',
@@ -7,6 +8,9 @@ import {CvSharedModel} from '../../models/cv-shared.model';
   styleUrls: ['./cv-shared.component.css']
 })
 export class CvSharedComponent implements OnInit {
+
+  @Input() cv: Cv;
+
   constructor() {
   }
 
