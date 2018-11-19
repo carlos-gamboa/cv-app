@@ -44,5 +44,12 @@
       class="button button--primary button--round mt-medium"
       [disabled]="!f.valid"
     >Crear Cuenta</button>
+    <div class="mt-medium" *ngIf="registerError">
+      <h2 class="button--error">No fue posible registrarse.</h2>
+    </div>
+    <div class="mt-medium" *ngIf="registerError">
+      <h2 class="button--error">Revise si su correo ya está en uso.</h2>
+    </div>
   </form>
+
 </div>
