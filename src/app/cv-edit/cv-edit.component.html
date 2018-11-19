@@ -8,11 +8,11 @@
             <div class="form__group form__group--image">
               <img class="user__image" id="preview" [src]="selectFileSrc || '../../assets/img/profile_default.png'" alt="Alan Smith" />
               <input type="file" accept="image/*" name="file" id="file" class="inputfile" (change)="onFileSelect($event)" />
-              <label for="file">Elije un archivo</label>
+              <label for="file" class="button button--primary">Elije un archivo</label>
             </div>
           </div>
-          <div class="form__section form__section--full">
-            <div class="form__group">
+          <div class="form__section form__section--full ">
+            <div class="form__group form__section-name">
               <input
                 type="text"
                 class="form__input"
@@ -27,7 +27,7 @@
                 </span>
               </label>
             </div>
-            <div class="form__group">
+            <div class="form__group form__section-name">
               <input
                 type="text"
                 class="form__input"
@@ -43,7 +43,7 @@
               </label>
             </div>
           </div>
-          <div class="form__section form__section--full">
+          <div class="form__section form__section--full form__section--details">
             <div class="form__group">
               <input
                 type="text"
