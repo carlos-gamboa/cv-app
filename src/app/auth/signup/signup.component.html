@@ -10,15 +10,15 @@
         type="text"
         class="form__input input__full"
         placeholder="Correo electrónico"
-        id="username"
-        name="username"
+        id="username2"
+        name="username2"
         ngModel
         required
         email
-        #username="ngModel"
+        #username2="ngModel"
       >
-      <label for="username" class="form__label">Correo electrónico
-        <span *ngIf="!username.valid && username.touched">
+      <label for="username2" class="form__label">Correo electrónico
+        <span *ngIf="!username2.valid && username2.touched">
           : Favor introduzca un correo electrónico válido
         </span>
       </label>
@@ -28,14 +28,14 @@
         type="password"
         class="form__input input__full"
         placeholder="Contraseña"
-        id="password"
-        name="password"
+        id="password2"
+        name="password2"
         ngModel
         required
-        #password="ngModel"
+        #password2="ngModel"
       >
-      <label for="password" class="form__label">Título
-        <span *ngIf="!password.valid && password.touched">
+      <label for="password2" class="form__label">Título
+        <span *ngIf="!password2.valid && password2.touched">
           : Favor introduzca una contraseña
         </span>
       </label>
@@ -44,11 +44,14 @@
       class="button button--primary button--round mt-medium"
       [disabled]="!f.valid"
     >Crear Cuenta</button>
-    <div class="mt-medium" *ngIf="registerError">
-      <h2 class="button--error">No fue posible registrarse.</h2>
+    <div class="mt-medium alert alert--success" *ngIf="user">
+      <p class="alert__text">Se ha registrado exitosamente</p>
     </div>
-    <div class="mt-medium" *ngIf="registerError">
-      <h2 class="button--error">Revise si su correo ya está en uso.</h2>
+    <div class="mt-medium alert alert--danger" *ngIf="registerError">
+      <p class="alert__text">No fue posible registrarse</p>
+    </div>
+    <div class="mt-medium alert alert--danger" *ngIf="registerError">
+      <p class="alert__text">Revise si su correo ya está en uso</p>
     </div>
   </form>
 

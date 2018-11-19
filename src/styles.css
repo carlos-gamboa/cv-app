@@ -886,6 +886,49 @@ a:active {
 }
 
 /* --------------------------------------------- */
+/* ALERTS */
+/* --------------------------------------------- */
+
+.alert {
+  padding: 1rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.alert__text {
+  font-size: 1.6rem;
+}
+
+.alert--danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert--danger > .alert__text {
+  color: #a94442;
+}
+
+.alert--success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert--success > .alert__text {
+  color: #3c763d;
+}
+
+.alert--warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.alert--warning > .alert__text {
+  color: #8a6d3b;
+}
+
+
+/* --------------------------------------------- */
 /* BIG TABLETS TO SMALL COMPUTERS (1024 TO 1200px) */
 /* --------------------------------------------- */
 @media only screen and (max-width: 1200px) {
