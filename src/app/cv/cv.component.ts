@@ -12,16 +12,20 @@ export class CvComponent implements OnInit {
 
   cvId: string;
   cv: Cv;
-  readyToShow: boolean = false;
+  readyToShow = false;
 
-  constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private dataStorageService: DataStorageService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.cvId = this.route.snapshot.params['id'];
 
-    this.dataStorageService.getCv(this.cvId).then((cv: Cv)=>{
+    this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
       this.cv = cv;
       this.readyToShow = true;
     }).catch( reason => {
-      console.log("Failed")
+      console.log('Failed');
     });
   }
 

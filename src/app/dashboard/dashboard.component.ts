@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CvService} from '../services/cv.service';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
 import {ShareUrlComponent} from './share-url/share-url.component';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,25 +15,27 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private cvService: CvService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private authService: AuthService) {
     this.cvId = cvService.getCVId();
   }
 
-
   ngOnInit() {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
   }
 
-
   goToEdit() {
-    this.router.navigate([`cv/${this.cvId}/edit`]);
+    this.router.navigate([`/cv/${this.cvId}/edit`]);
   }
 
   goToView() {
-    this.router.navigate([`cv/${this.cvId}`]);
+    this.router.navigate([`/cv/${this.cvId}`]);
   }
 
   goToCreate() {
-    this.router.navigate([`cv/new`]);
+    this.router.navigate([`/cv/new`]);
   }
 
   openDialog() {

@@ -12,7 +12,6 @@ export class SigninComponent implements OnInit {
 
   @ViewChild('f') signinForm: NgForm;
   token: any = null;
-  loginError: boolean = false;
 
   @Output() childForm = new EventEmitter();
 
@@ -24,22 +23,22 @@ export class SigninComponent implements OnInit {
 
   onSubmit() {
     this.authService.signinUser(this.signinForm.controls['username'].value, this.signinForm.controls['password'].value)
-      .then((token: any)=>{
-        this.loginError = false;
+      .then((token: any) => {
         this.token = this.authService.getToken();
         console.log(this.authService.getToken());
         console.log(this.token);
-        if (this.token != null){
+        if (this.token != null) {
           this.isLoggedIn();
-          this.router.navigate(['/cv']);
-        }
-        else{
-          this.loginError = true;
-          console.log("Login Failed");
+          this.router.navigate(['/home']);
+        } else {
+          this.signinForm.reset();
+          this.signinForm.controls['username'].markAsTouched();
+          this.signinForm.controls['password'].markAsTouched();
         }
       }).catch( reason => {
-      this.loginError = true;
-      console.log("Login Failed");
+      this.signinForm.reset();
+      this.signinForm.controls['username'].markAsTouched();
+      this.signinForm.controls['password'].markAsTouched();
     });
   }
 
