@@ -25,6 +25,8 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {MatDialogModule} from '@angular/material';
+import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {HttpClientModule} from '@angular/common/http';
     CvEditComponent,
     LandingComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ShareUrlComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     CvService,
@@ -54,6 +58,7 @@ import {HttpClientModule} from '@angular/common/http';
     AuthService,
     HttpClientModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ShareUrlComponent]
 })
 export class AppModule { }
