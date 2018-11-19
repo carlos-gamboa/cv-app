@@ -12,6 +12,11 @@ export class AuthService {
   constructor(private router: Router) {
   }
 
+  ngOnInit() {
+    this.getToken();
+  }
+
+
   signupUser(email: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((x: UserCredential) => {
