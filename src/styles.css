@@ -38,14 +38,13 @@ hr {
 /* Dashboard */
 /* --------------------------------------------- */
 
-
 .dashboard{
   overflow: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 90vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./assets/img/hero_signup.jpg);
+  min-height: 90.5vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./assets/img/hero_dashboard.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -57,26 +56,31 @@ hr {
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  padding: 20px;
+  padding: 2rem;
 }
-  .dashboard__main-div{
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
-  }
 
-  .dashboard-heading{
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
+.dashboard__main-div{
+  border-radius: 3px;
+  background: #fff;
+  padding: 3rem;
+  width: 90%;
+  max-width: 45rem;
+  box-shadow: 0 3rem 6rem 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.dashboard__heading{
+  margin-bottom: 1.5rem;
+}
+
+.dashboard__heading-primary {
+  font-size: 4.5rem;
+  font-weight: 300;
+}
+
+.dashboard__heading-secondary {
+  font-size: 2rem;
+}
 
 
 /* --------------------------------------------- */
@@ -86,7 +90,7 @@ hr {
 .cv {
   background-color: #181818;
   overflow:auto;
-  min-height: 90vh;
+  min-height: 90.5vh;
 }
 
 .cv__wrapper {
@@ -163,6 +167,7 @@ hr {
 .cv__name {
   justify-self: start;
   align-self: start;
+  margin: 2rem 0;
 }
 
 .cv__info {
@@ -176,6 +181,7 @@ hr {
   font-size: 5rem;
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   margin-top: 1rem;
+  line-height: 4rem;
 }
 
 .cv__heading-secondary {
@@ -183,7 +189,7 @@ hr {
   font-weight: 400;
   font-size: 3.5rem;
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-  margin-top: -3rem;
+  line-height: 3rem;
 }
 
 .cv__heading-quaternary {
@@ -260,6 +266,10 @@ hr {
   font-size: 2rem;
   color: #444;
   font-weight: 400;
+}
+
+.cv__school-data:not(:last-of-type) {
+  margin-bottom: 2.5rem;
 }
 
 /* --------------------------------------------- */
@@ -825,7 +835,7 @@ a:active {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 90vh;
+  min-height: 90.5vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./assets/img/hero_signup.jpg);
   background-size: cover;
   background-position: center;

@@ -1,21 +1,14 @@
-import {Router} from '@angular/router';
 import * as firebase from 'firebase';
 import {Injectable} from '@angular/core';
 import {Cv} from '../models/cv.model';
 import UserCredential = firebase.auth.UserCredential;
 
-@Injectable()
 export class AuthService {
   token: string;
   user: any;
 
-  constructor(private router: Router) {
+  constructor() {
   }
-
-  ngOnInit() {
-    this.getToken();
-  }
-
 
   signupUser(email: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -27,9 +20,10 @@ export class AuthService {
             });
         this.user = x.user;
         return x.user;
-      }).catch(reason => {
-        error => console.log(error);
-      });
+      })
+      .catch(
+        error => console.log(error)
+      );
   }
 
 

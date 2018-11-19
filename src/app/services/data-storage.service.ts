@@ -15,20 +15,20 @@ export class DataStorageService {
 
   storeCvs(cvArray: Cv[]) {
     //const token = this.authService.getToken();
-    for (let x of cvArray){
+    for (let x of cvArray) {
       this.http.post('https://cv-app-40b38.firebaseio.com/cvs.json', x).subscribe(
         (response) => console.log(response)
       );
     }
   }
 
-  storeCv(cv: Cv) : Promise<any>{
+  storeCv(cv: Cv): Promise<any>{
     //const token = this.authService.getToken();
     return this.http.post('https://cv-app-40b38.firebaseio.com/cvs.json', cv).toPromise()
       .then(function(response){
         console.log(response);
-        let cv : Cv = null;
-        if(response) {
+        let cv: Cv = null;
+        if (response) {
           cv = new Cv(response);
         }
         return cv;
@@ -37,13 +37,13 @@ export class DataStorageService {
 
 
 
-  getCvs() : Promise<any>{
+  getCvs(): Promise<any>{
     //const token = this.authService.getToken();
     return this.http.get<Cv[]>('https://cv-app-40b38.firebaseio.com/cvs.json').toPromise()
       .then(function(response){
         console.log(response);
-        let cv : Cv[] = null;
-        if(response) {
+        let cv: Cv[] = null;
+        if (response) {
           cv = response;
         }
         return cv;

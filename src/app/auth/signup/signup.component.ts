@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
 
   @ViewChild('f') signinForm: NgForm;
   user: any = null;
-  registerError: boolean = false;
+  registerError = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -22,19 +22,18 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.authService.signupUser(this.signinForm.controls['username'].value, this.signinForm.controls['password'].value)
-      .then((user: any)=>{
+      .then((user: any) => {
       this.user = user;
         console.log(this.user);
       if (this.user != null){
         this.router.navigate(['/cv']);
-      }
-      else{
+      } else {
         this.registerError = true;
-        console.log("Register Failed");
+        console.log('Register Failed');
       }
     }).catch( reason => {
       this.registerError = true;
-      console.log("Register Failed");
+      console.log('Register Failed');
     });
   }
 
