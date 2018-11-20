@@ -19,6 +19,9 @@ export class CvComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+  }
+
+  ngOnInit() {
     this.cvId = this.route.snapshot.params['id'];
 
     this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
@@ -27,9 +30,6 @@ export class CvComponent implements OnInit {
     }).catch( reason => {
       console.log('Failed');
     });
-  }
-
-  ngOnInit() {
   }
 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataStorageService} from '../services/data-storage.service';
 import {CvService} from '../services/cv.service';
+import {AuthService} from '../services/auth.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cv-edit',
@@ -14,10 +16,28 @@ export class CvEditComponent implements OnInit {
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
 
-  constructor(private dataStorageService: DataStorageService, private cvService: CvService) { }
+  constructor(
+    private dataStorageService: DataStorageService,
+    private cvService: CvService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.initForm();
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/home']);
+    }
+    this.route.params.subscribe(
+      (params: Params) => {
+        if (params['id'] != null) {
+          if (this.authService.getCurrentUserId() !== params['id']) {
+            this.router.navigate([`/cv/${params['id']}`]);
+          }
+        }
+      }
+    );
   }
 
   onSubmit() {
