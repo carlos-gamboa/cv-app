@@ -5,7 +5,7 @@ export class ChronologicModel {
   companyFinish: string;
   companyFunction: string;
 
-  constructor(cro: any){
+  constructor(cro: any) {
     this.companyName = cro.companyName;
     this.companyRole = cro.companyRole;
     this.companyStart = cro.companyStart;

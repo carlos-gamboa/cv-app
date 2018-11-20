@@ -3,12 +3,12 @@
     <div class="cv__shared-info">
       <app-cv-shared [cv]="cv"></app-cv-shared>
     </div>
-    <div class="cv__display-section cv__display-chrono">
+    <div class="cv__display-section cv__display-chrono" *ngIf="cv.chronologicActive">
       <hr>
-      <app-cv-chronologic *ngIf="cv.chronologicalActive" [cv]="cv"></app-cv-chronologic>
+      <app-cv-chronologic [cv]="cv"></app-cv-chronologic>
     </div>
-    <div class="cv__display-functional">
-      <app-cv-functional *ngIf="cv.functionalActive" [cv]="cv"></app-cv-functional>
+    <div class="cv__display-functional" *ngIf="cv.functionalActive">
+      <app-cv-functional [cv]="cv"></app-cv-functional>
     </div>
   </div>
 </div>

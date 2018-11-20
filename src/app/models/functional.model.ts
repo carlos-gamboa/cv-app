@@ -4,7 +4,7 @@ export class FunctionalModel {
   schoolCity: string;
   schoolYear: string;
 
-  constructor(functional: any){
+  constructor(functional: any) {
     this.schoolName = functional.schoolName;
     this.schoolTitle = functional.schoolTitle;
     this.schoolCity = functional.schoolCity;

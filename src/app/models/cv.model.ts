@@ -10,13 +10,13 @@ export class Cv {
   phone2: string;
   address: string;
   personalProfile: string;
-  chronologicalActive: boolean;
+  chronologicActive: boolean;
   functionalActive: boolean;
-  chronologicData: Array<ChronologicModel>;
-  functionalData: Array<FunctionalModel>;
-  skills: Array<SkillsModel>;
+  chronologicData: ChronologicModel[];
+  functionalData: FunctionalModel[];
+  skills: SkillsModel[];
 
-  constructor(cv: any){
+  constructor(cv: any) {
     this.name = cv.name;
     this.title = cv.title;
     this.mail = cv.mail;
@@ -24,31 +24,12 @@ export class Cv {
     this.phone2 = cv.phone2;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
-    this.chronologicalActive = cv.chronologicalActive;
     this.functionalActive = cv.functionalActive;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
-    this.chronologicalActive = cv.chronologicalActive;
-
-    if (cv.chronologicData) {
-      this.chronologicData = [];
-      for (let chro of cv.chronologicData) {
-        this.chronologicData.push(chro);
-      }
-    }
-
-    if (cv.functionalData) {
-      this.functionalData = [];
-      for (let func of cv.functionalData) {
-        this.functionalData.push(func);
-      }
-    }
-
-    if (cv.skills) {
-      this.skills = [];
-      for (let skill of cv.skills) {
-        this.skills.push(skill);
-      }
-    }
+    this.chronologicActive = cv.chronologicActive;
+    this.chronologicData = cv.chronologicData;
+    this.functionalData = cv.functionalData;
+    this.skills = cv.skills;
   }
 }

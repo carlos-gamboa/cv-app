@@ -27,6 +27,7 @@ export class CvComponent implements OnInit {
     this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
       if (cv) {
         this.cv = cv;
+        console.log(this.cv);
         this.readyToShow = true;
       } else {
         this.router.navigate(['/']);

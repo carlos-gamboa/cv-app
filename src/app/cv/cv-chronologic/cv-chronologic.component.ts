@@ -7,11 +7,12 @@ import {Cv} from '../../models/cv.model';
   styleUrls: ['./cv-chronologic.component.css']
 })
 export class CvChronologicComponent implements OnInit {
-  company_functions = ['Programar', 'Diseñar'];
   @Input() cv: Cv;
   constructor() { }
 
   ngOnInit() {
-  };
+    console.log('hola');
+    console.log(this.cv);
+  }
 
 }
