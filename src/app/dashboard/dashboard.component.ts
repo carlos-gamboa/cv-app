@@ -4,6 +4,8 @@ import {CvService} from '../services/cv.service';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
 import {ShareUrlComponent} from './share-url/share-url.component';
 import {AuthService} from '../services/auth.service';
+import {Cv} from '../models/cv.model';
+import {DataStorageService} from '../services/data-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +14,13 @@ import {AuthService} from '../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   uid: string;
+  cv: Cv;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private dialog: MatDialog,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private dataStorageService: DataStorageService) {
   }
 
   ngOnInit() {
@@ -24,6 +28,9 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.uid = this.authService.getCurrentUserId();
+    this.dataStorageService.getCv(this.uid).then((cv: Cv) => {
+      this.cv = cv;
+    });
   }
 
   goToEdit() {
