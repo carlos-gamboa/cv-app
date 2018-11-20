@@ -11,8 +11,6 @@ export class CvChronologicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('hola');
-    console.log(this.cv);
   }
 
 }

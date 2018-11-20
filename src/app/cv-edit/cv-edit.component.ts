@@ -13,6 +13,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 export class CvEditComponent implements OnInit {
   chronologicActive = true;
   functionalActive = true;
+  changesSaved = false;
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
 
@@ -41,8 +42,8 @@ export class CvEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.cvForm.value);
     this.dataStorageService.storeCv(this.cvForm.value);
+    this.changesSaved = true;
   }
 
   onAddChronologic() {

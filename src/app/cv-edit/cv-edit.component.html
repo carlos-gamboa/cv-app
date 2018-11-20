@@ -394,6 +394,9 @@
           class="button button--primary"
           [disabled]="!cvForm.valid"
         >Guardar Datos</button>
+        <div class="alert alert--success" *ngIf="changesSaved">
+          <p class="alert__text">Se han guardado los cambios</p>
+        </div>
       </div>
     </form>
   </div>

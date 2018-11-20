@@ -139,6 +139,7 @@ hr {
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
   font-style: italic;
   line-height: 3rem;
+  margin-top: 1rem;
 }
 
 .cv__main-edit-label {
@@ -157,7 +158,8 @@ hr {
 
 .cv__submit-area {
   padding: 2rem;
-  display: flex;
+  display: grid;
+  grid-row-gap: 1rem;
   justify-content: center;
   background-color: #ededed;
   border-bottom-right-radius: 3px;
