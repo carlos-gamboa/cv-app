@@ -19,7 +19,6 @@ export class DataStorageService {
       params: new HttpParams().set('auth', token)
     }).toPromise()
       .then(function(response) {
-        console.log(response);
         let result: Cv = null;
         if (response) {
           result = new Cv(response);
@@ -30,11 +29,8 @@ export class DataStorageService {
 
   getCv(key: string): Promise<any> {
     const token = this.authService.getToken();
-    return this.http.get<Cv>('https://cv-app-40b38.firebaseio.com/cvs/' + key + '.json', {
-      params: new HttpParams().set('auth', token)
-    }).toPromise()
+    return this.http.get<Cv>('https://cv-app-40b38.firebaseio.com/cvs/' + key + '.json').toPromise()
       .then(function(response) {
-        console.log(response);
         let cv: Cv = null;
         if (response) {
           cv = new Cv(response);

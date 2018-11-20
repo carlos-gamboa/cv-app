@@ -7,6 +7,8 @@ export class AuthService {
   private user: any;
 
   constructor() {
+    this.token = null;
+    this.currentUserId = null;
   }
 
   signupUser(email: string, password: string): Promise<any> {
@@ -55,11 +57,15 @@ export class AuthService {
   }
 
   getToken() {
-    this.currentUserId = firebase.auth().currentUser.uid;
-    firebase.auth().currentUser.getIdToken()
-      .then(
-        (token: string) => this.token = token
-      );
+    if (firebase.auth().currentUser) {
+      firebase.auth().currentUser.getIdToken()
+        .then(
+          (token: string) => {
+            this.token = token;
+            this.currentUserId = firebase.auth().currentUser.uid;
+          }
+        );
+    }
     return this.token;
   }
 

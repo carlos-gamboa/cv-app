@@ -11,27 +11,27 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  cvId;
+  uid: string;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private cvService: CvService,
               private dialog: MatDialog,
               private authService: AuthService) {
-    this.cvId = cvService.getCVId();
   }
 
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/']);
     }
+    this.uid = this.authService.getCurrentUserId();
   }
 
   goToEdit() {
-    this.router.navigate([`/cv/${this.cvId}/edit`]);
+    this.router.navigate([`/cv/${this.uid}/edit`]);
   }
 
   goToView() {
-    this.router.navigate([`/cv/${this.cvId}`]);
+    this.router.navigate([`/cv/${this.uid}`]);
   }
 
   goToCreate() {
@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      cvId: this.cvId
+      cvId: this.uid
     };
     this.dialog.open(ShareUrlComponent, dialogConfig);
   }
