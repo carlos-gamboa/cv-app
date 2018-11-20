@@ -39,7 +39,6 @@ export class AuthService {
             .then(
               (token: string) => {
                 this.currentUserId = firebase.auth().currentUser.uid;
-                console.log(this.currentUserId);
                 this.token = token;
                 return this.token;
               }

@@ -25,8 +25,6 @@ export class SigninComponent implements OnInit {
     this.authService.signinUser(this.signinForm.controls['username'].value, this.signinForm.controls['password'].value)
       .then((token: any) => {
         this.token = this.authService.getToken();
-        console.log(this.authService.getToken());
-        console.log(this.token);
         if (this.token != null) {
           this.isLoggedIn();
           this.router.navigate(['/home']);

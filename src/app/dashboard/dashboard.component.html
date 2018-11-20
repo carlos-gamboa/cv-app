@@ -1,7 +1,7 @@
 <div class="dashboard">
   <div class="dashboard__main-div">
 
-    <div *ngIf="!uid">
+    <div *ngIf="!cv">
       <div class="form__dashboard">
         <div class="dashboard-heading">
           <h1 class="dashboard__heading-secondary">Parece que aún no haz hecho un Curriculum</h1>
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div *ngIf="uid">
+    <div *ngIf="cv">
       <div class="form__dashboard">
         <div class="dashboard__heading">
           <h1 class="dashboard__heading-primary">¡Bienvenido!</h1>
