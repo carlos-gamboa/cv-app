@@ -306,13 +306,14 @@
               </div>
               <div class="form__group form__functional-city">
                 <input
-                  type="number"
+                  type="text"
                   class="form__input"
                   id="schoolCity"
                   name="schoolCity"
                   formControlName="schoolCity"
+                  placeholder="País/Ciudad"
                 >
-                <label for="schoolCity" class="form__label">País/Ciduad
+                <label for="schoolCity" class="form__label">País/Ciudad
                   <span *ngIf="!functCtrl.get('schoolCity').valid && functCtrl.get('schoolCity').touched">
                     : Favor introduzca el país o ciudad de la institución
                   </span>
