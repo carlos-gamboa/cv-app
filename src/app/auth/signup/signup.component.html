@@ -1,3 +1,58 @@
-<p>
-  signup works!
-</p>
+<div class="signup">
+  <form
+    class="signup__form"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <h2 class="signup__heading-secondary">Registrarme</h2>
+    <div class="form__group">
+      <input
+        type="text"
+        class="form__input input__full"
+        placeholder="Correo electrónico"
+        id="username2"
+        name="username2"
+        ngModel
+        required
+        email
+        #username2="ngModel"
+      >
+      <label for="username2" class="form__label">Correo electrónico
+        <span *ngIf="!username2.valid && username2.touched">
+          : Favor introduzca un correo electrónico válido
+        </span>
+      </label>
+    </div>
+    <div class="form__group">
+      <input
+        type="password"
+        class="form__input input__full"
+        placeholder="Contraseña"
+        id="password2"
+        name="password2"
+        ngModel
+        required
+        #password2="ngModel"
+      >
+      <label for="password2" class="form__label">Título
+        <span *ngIf="!password2.valid && password2.touched">
+          : Favor introduzca una contraseña
+        </span>
+      </label>
+    </div>
+    <button
+      class="button button--primary button--round mt-medium"
+      [disabled]="!f.valid"
+    >Crear Cuenta</button>
+    <div class="mt-medium alert alert--success" *ngIf="user">
+      <p class="alert__text">Se ha registrado exitosamente</p>
+    </div>
+    <div class="mt-medium alert alert--danger" *ngIf="registerError">
+      <p class="alert__text">No fue posible registrarse</p>
+    </div>
+    <div class="mt-medium alert alert--danger" *ngIf="registerError">
+      <p class="alert__text">Revise si su correo ya está en uso</p>
+    </div>
+  </form>
+
+</div>

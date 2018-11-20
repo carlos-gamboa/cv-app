@@ -9,9 +9,6 @@ import { CvSharedComponent } from './cv/cv-shared/cv-shared.component';
 import { CvChronologicComponent } from './cv/cv-chronologic/cv-chronologic.component';
 import { CvFunctionalComponent } from './cv/cv-functional/cv-functional.component';
 import { CvEditComponent } from './cv-edit/cv-edit.component';
-import { CvEditSharedComponent } from './cv-edit/cv-edit-shared/cv-edit-shared.component';
-import { CvEditChronologicComponent } from './cv-edit/cv-edit-chronologic/cv-edit-chronologic.component';
-import { CvEditFunctionalComponent } from './cv-edit/cv-edit-functional/cv-edit-functional.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -20,13 +17,16 @@ import {CvService} from './services/cv.service';
 import {DataStorageService} from './services/data-storage.service';
 import {AuthService} from './services/auth.service';
 
-// Firebase import
-import { AngularFireModule } from 'angularfire2';
+
 
 // Environment
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {MatDialogModule} from '@angular/material';
+import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 
 @NgModule({
   declarations: [
@@ -38,24 +38,27 @@ import {FormsModule} from '@angular/forms';
     CvChronologicComponent,
     CvFunctionalComponent,
     CvEditComponent,
-    CvEditSharedComponent,
-    CvEditChronologicComponent,
-    CvEditFunctionalComponent,
     LandingComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ShareUrlComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     CvService,
     DataStorageService,
-    AuthService
+    AuthService,
+    HttpClientModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ShareUrlComponent]
 })
 export class AppModule { }

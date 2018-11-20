@@ -1,0 +1,30 @@
+<div class="cv__shared-info-top">
+  <div class="cv__personal-info">
+    <div class="cv__image">
+      <img class="cv__image-display" id="preview" [src]="'../../../assets/img/profile_default.png'" alt="Alan Smith" />
+    </div>
+    <div class="cv__name">
+      <h1 class="cv__heading-primary">{{cv.name}}</h1>
+      <h2 class="cv__heading-secondary">{{cv.title}}</h2>
+    </div>
+    <div class="cv__info">
+      <p class="cv__personal-text">{{cv.mail}}</p>
+      <p class="cv__personal-text">{{cv.phone1}}</p>
+      <p class="cv__personal-text">{{cv.phone2}}</p>
+      <p class="cv__personal-text">{{cv.address}}</p>
+    </div>
+  </div>
+</div>
+<div class="cv__display-section cv__shared-info-bottom">
+  <div class="cv__main">
+    <div class="cv__main-label grid__start">
+      <h3 class="cv__main-heading">Perfil Personal</h3>
+    </div>
+    <div class="cv__main-content grid__start">
+      <p class="cv__info-text">
+        {{cv.personalProfile}}
+      </p>
+    </div>
+  </div>
+</div>
+

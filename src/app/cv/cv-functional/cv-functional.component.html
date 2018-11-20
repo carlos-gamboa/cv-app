@@ -1,3 +1,39 @@
-<p>
-  cv-functional works!
-</p>
+<div class="cv__display-section">
+  <hr>
+  <div class="cv__main">
+    <div class="cv__main-label grid__start">
+      <h3 class="cv__main-heading">Educación</h3>
+    </div>
+    <div class="cv__main-content grid__start">
+      <div class="cv__school-data" *ngFor="let ed of cv.functionalData">
+        <h4 class="cv__heading-quaternary">{{ed.schoolTitle}}  - {{ed.schoolName}}</h4>
+        <p class="cv__details-text">{{ed.schoolYear}}</p>
+        <p class="cv__details-text">{{ed.schoolCity}}</p>
+      </div>
+      <!--<div class="cv__school-data">
+        <h4 class="cv__heading-quaternary">Título  - Institución Educativa</h4>
+        <p class="cv__details-text">2018</p>
+        <p class="cv__details-text">Ciudad, País</p>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+<div class="cv__display-section">
+  <hr>
+  <div class="cv__main">
+    <div class="cv__main-label grid__start">
+      <h3 class="cv__main-heading">Habilidades Clave</h3>
+    </div>
+    <div class="cv__main-content full ">
+      <div class="cv__skills-container">
+        <h4 class="cv__skill-text" *ngFor="let skill of cv.skills">{{skill.skillName}}</h4>
+<!--        <h4 class="cv__skill-text">Habilidad</h4>
+        <h4 class="cv__skill-text">Habilidad</h4>
+        <h4 class="cv__skill-text">Habilidad</h4>
+        <h4 class="cv__skill-text">Habilidad</h4>
+        <h4 class="cv__skill-text">Habilidad</h4>-->
+      </div>
+    </div>
+  </div>
+</div>
