@@ -1,0 +1,15 @@
+::ng-deep body {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding-top: 0 !important;
+  min-height: 100vh;
+}
+
+::ng-deep .cv {
+  background-color: #181818;
+  overflow:auto;
+  min-height: 100vh;
+}

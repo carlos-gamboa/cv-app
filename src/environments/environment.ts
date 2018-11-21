@@ -12,7 +12,8 @@ export const environment = {
     projectId: "cv-app-40b38",
     storageBucket: "cv-app-40b38.appspot.com",
     messagingSenderId: "557048975608"
-  }
+  },
+  activeUrl: "http://localhost:4200"
 };
 
 /*
