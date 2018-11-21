@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     CvService,

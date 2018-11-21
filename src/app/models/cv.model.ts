@@ -15,6 +15,7 @@ export class Cv {
   chronologicData: ChronologicModel[];
   functionalData: FunctionalModel[];
   skills: SkillsModel[];
+  theme: string;
 
   constructor(cv: any) {
     this.name = cv.name;
@@ -31,5 +32,6 @@ export class Cv {
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
+    this.theme = cv.theme;
   }
 }

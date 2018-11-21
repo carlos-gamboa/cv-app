@@ -5,6 +5,11 @@ import {CvService} from '../services/cv.service';
 import {AuthService} from '../services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
+export interface Theme {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-cv-edit',
   templateUrl: './cv-edit.component.html',
@@ -16,6 +21,14 @@ export class CvEditComponent implements OnInit {
   changesSaved = false;
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
+
+  themes: Theme[] = [
+    {value: 'original' , viewValue: 'Original'},
+    {value: 'dark' , viewValue: 'Dark'},
+    {value: 'light' , viewValue: 'Light'}
+
+  ];
+
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -138,7 +151,8 @@ export class CvEditComponent implements OnInit {
       'functionalActive': new FormControl(false),
       'chronologicData': chronologicData,
       'functionalData': functionalData,
-      'skills': skills
+      'skills': skills,
+      'theme':  new FormControl(null, Validators.required)
     });
   }
 

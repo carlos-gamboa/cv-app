@@ -1,7 +1,20 @@
 <div class="cv">
   <div class="cv__wrapper">
     <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
-
+      <div class="cv__section-top-banner">
+        <mat-form-field class="cv__top-banner-text">
+          <mat-select
+            class=""
+            placeholder="Temas"
+            id="theme"
+            formControlName="theme"
+          >
+            <mat-option *ngFor="let theme of themes" [value]="theme.value">
+              {{theme.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div class="cv__shared-info-top">
         <div class="form">
           <div class="form__section">
