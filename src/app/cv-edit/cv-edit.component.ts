@@ -152,7 +152,7 @@ export class CvEditComponent implements OnInit {
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'theme':  new FormControl(null, Validators.required)
+      'theme':  new FormControl('original', Validators.required)
     });
   }
 

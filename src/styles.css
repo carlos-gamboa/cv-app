@@ -290,10 +290,16 @@ hr {
   border-top-right-radius: 3px;
 }
 
+.cv__banner-select{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 250px;
+}
+
 .cv__top-banner-text{
   color: #ddd!important;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 }
 
