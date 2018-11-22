@@ -19,11 +19,10 @@
   <div class="row banner">
     <div class="banner-text">
       <h1 class="responsive-headline">Soy {{ cv.name }}.</h1>
-      <h3>I'm a Manila based <span>graphic designer</span>, <span>illustrator</span> and <span>webdesigner</span> creating awesome and
-        effective visual identities for companies of all sizes around the globe. Let's <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">start scrolling</a>
-        and learn more <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">about me</a>.</h3>
+      <h3>{{cv.introduction}}<br> Empieza a <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">recorrer la página</a>
+        y a aprender más <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">acerca de mí</a>.</h3>
       <hr />
-      <ul class="social">
+      <!--<ul class="social">
         <li><a ><i class="fa fa-facebook"></i></a></li>
         <li><a ><i class="fa fa-twitter"></i></a></li>
         <li><a ><i class="fa fa-google-plus"></i></a></li>
@@ -31,7 +30,7 @@
         <li><a ><i class="fa fa-instagram"></i></a></li>
         <li><a ><i class="fa fa-dribbble"></i></a></li>
         <li><a ><i class="fa fa-skype"></i></a></li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 
@@ -56,7 +55,7 @@
 
     <div class="nine columns main-col">
 
-      <h2>Sobre mi</h2>
+      <h2 class="section__label">Sobre mi</h2>
 
       <p>{{ cv.personalProfile }}</p>
 
@@ -69,7 +68,7 @@
             <span> {{ cv.name }} </span><br>
             <span> {{cv.address}} </span><br>
             <span> {{ cv.phone1 }} </span><br>
-            <span>anyone@website.com</span>
+            <span> {{cv.websiteURL}} </span>
           </p>
 
         </div>
@@ -92,7 +91,7 @@
   <div class="row education">
 
     <div class="three columns header-col">
-      <h1><span>Educación</span></h1>
+      <h1><span class="section__label">Educación</span></h1>
     </div>
 
     <div class="nine columns main-col">
@@ -103,13 +102,6 @@
 
           <h3> {{ education.schoolName }} </h3>
           <p class="info"> {{ education.schoolTitle }} <span>&bull;</span> <em class="date"> {{ education.schoolYear | date:'d MMM, y' }} </em></p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.
-          </p>
 
         </div>
 
@@ -125,7 +117,7 @@
   <div class="row work">
 
     <div class="three columns header-col">
-      <h1><span>Experiencia Laboral</span></h1>
+      <h1><span class="section__label">Experiencia Laboral</span></h1>
     </div>
 
     <div class="nine columns main-col">
@@ -152,19 +144,19 @@
   <div class="row work">
 
     <div class="three columns header-col">
-      <h1><span>Certificaciones</span></h1>
+      <h1><span class="section__label">Certificaciones</span></h1>
     </div>
 
     <div class="nine columns main-col">
 
-      <div class="row item" *ngFor="let work of cv.chronologicData">
+      <div class="row item" *ngFor="let certification of cv.certificationsData">
 
         <div class="twelve columns">
 
-          <h3> {{work.companyName}} </h3>
-          <p class="info">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
+          <h3><a target="_blank" rel="noopener noreferrer" [href]="certification.certificationURL"> {{certification.certificationName}} </a> </h3>
+          <p class="info">{{certification.certificationSchool}} <span>&bull;</span> <em class="date">{{certification.certificationDate | date:'d MMM, y'}}</em></p>
 
-          <p>{{work.companyFunction}}</p>
+          <p>{{certification.certificationDescription}}</p>
 
         </div>
 
@@ -179,7 +171,7 @@
   <div class="row skill">
 
     <div class="three columns header-col">
-      <h1><span>Habilidades</span></h1>
+      <h1><span class="section__label">Habilidades</span></h1>
     </div>
 
     <div class="nine columns main-col">
@@ -187,7 +179,7 @@
       <div class="bars">
 
         <ul class="skills" *ngFor="let skill of cv.skills">
-          <li><span class="bar-expand photoshop"></span><em>{{ skill.skillName }}</em></li>
+          <li><span class="bar-expand" [style.width.%]="skill.knowledge"></span><em>{{ skill.skillName }}</em></li>
         </ul>
 
       </div><!-- end skill-bars -->
@@ -206,19 +198,19 @@
   <div class="row">
 
     <div class="three columns header-col">
-      <h1><span>Publicaciones</span></h1>
+      <h1><span class="section__label">Publicaciones</span></h1>
     </div>
 
     <div class="nine columns main-col">
 
-      <div class="row item" *ngFor="let work of cv.chronologicData">
+      <div class="row item" *ngFor="let publication of cv.publicationsData">
 
         <div class="twelve columns">
 
-          <h3> {{work.companyName}} </h3>
-          <p class="info">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
+          <h3><a target="_blank" rel="noopener noreferrer" [href]="publication.publicationURL"> {{publication.publicationName}} </a></h3>
+          <p class="info">{{publication.publicationSite}} <span>&bull;</span> <em class="date">{{publication.publicationDate | date:'d MMM, y'}}</em></p>
 
-          <p>{{work.companyFunction}}</p>
+          <p>{{publication.publicationDescription}}</p>
 
         </div>
 
@@ -237,19 +229,17 @@
   <div class="row">
 
     <div class="three columns header-col">
-      <h1><span>Intereses</span></h1>
+      <h1><span class="section__label">Intereses</span></h1>
     </div>
 
     <div class="nine columns main-col">
 
-      <div class="row item" *ngFor="let work of cv.chronologicData">
+      <div class="row item" *ngFor="let interest of cv.interestsData">
 
         <div class="twelve columns">
 
-          <h3> {{work.companyName}} </h3>
-          <p class="info">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
-
-          <p>{{work.companyFunction}}</p>
+          <h3> {{interest.interestName}} </h3>
+          <p>{{interest.interestText}}</p>
 
         </div>
 
@@ -268,15 +258,13 @@
 
     <div class="two columns header-col">
 
-      <h1><span>Ponte en Contacto</span></h1>
+      <h1><span class="section__label">Ponte en Contacto</span></h1>
 
     </div>
 
     <div class="ten columns">
 
-      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-        voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+      <p class="lead">Si desea ponerse en contacto puede enviarme un correo a través del siguiente formulario.
       </p>
 
     </div>
@@ -343,7 +331,7 @@
 
     <div class="twelve columns">
 
-      <ul class="social-links">
+      <!--<ul class="social-links">
         <li><a ><i class="fa fa-facebook"></i></a></li>
         <li><a ><i class="fa fa-twitter"></i></a></li>
         <li><a ><i class="fa fa-google-plus"></i></a></li>
@@ -351,7 +339,7 @@
         <li><a ><i class="fa fa-instagram"></i></a></li>
         <li><a ><i class="fa fa-dribbble"></i></a></li>
         <li><a ><i class="fa fa-skype"></i></a></li>
-      </ul>
+      </ul>-->
 
       <ul class="copyright">
         <li>&copy; Copyright 2014 CeeVee</li>

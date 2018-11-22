@@ -13,6 +13,8 @@ export class Cv {
   phone2: string;
   address: string;
   personalProfile: string;
+  introduction: string;
+  websiteURL: string;
   chronologicActive: boolean;
   functionalActive: boolean;
   skillsActive: boolean;
@@ -35,6 +37,8 @@ export class Cv {
     this.phone2 = cv.phone2;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
+    this.introduction = cv.introduction;
+    this.websiteURL = cv.websiteURL;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
     this.chronologicActive = cv.chronologicActive;

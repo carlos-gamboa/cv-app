@@ -803,3 +803,12 @@ properly.
   margin-right: auto !important;
   text-align: center !important;
 }
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.section__label {
+  line-height: 4rem;
+}

@@ -1,8 +1,9 @@
 export class InterestsModel {
-    interestText: string;
-  
-    constructor(ints: any) {
-      this.interestText = ints.interestText;
-    }
+  interestName: string;
+  interestText: string;
+
+  constructor(ints: any) {
+    this.interestName = ints.interestName;
+    this.interestText = ints.interestText;
   }
-  
+}
