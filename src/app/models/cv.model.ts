@@ -47,6 +47,7 @@ export class Cv {
     this.certificationsActive = cv.certificationsActive;
     this.interestsActive = cv.interestsActive;
     this.contactActive = cv.contactActive;
+    this.publicationsActive = cv.publicationsActive;
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
