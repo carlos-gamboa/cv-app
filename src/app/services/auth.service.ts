@@ -1,10 +1,12 @@
 import * as firebase from 'firebase';
 import UserCredential = firebase.auth.UserCredential;
+import {Subject} from 'rxjs';
 
 export class AuthService {
   private token: string;
   private currentUserId: string;
   private user: any;
+  loggedIn = new Subject<boolean>();
 
   constructor() {
     this.token = null;
@@ -20,6 +22,7 @@ export class AuthService {
             (token: string) => {
               this.currentUserId = firebase.auth().currentUser.uid;
               this.token = token;
+              this.loggedIn.next(true);
             });
         this.user = x.user;
         return x.user;
@@ -40,6 +43,7 @@ export class AuthService {
               (token: string) => {
                 this.currentUserId = firebase.auth().currentUser.uid;
                 this.token = token;
+                this.loggedIn.next(true);
                 return this.token;
               }
             );
@@ -54,6 +58,7 @@ export class AuthService {
     firebase.auth().signOut();
     this.token = null;
     this.currentUserId = '';
+    this.loggedIn.next(false);
   }
 
   getToken() {

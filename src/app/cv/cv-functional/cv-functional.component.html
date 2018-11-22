@@ -6,8 +6,8 @@
     </div>
     <div class="cv__main-content grid__start">
       <div class="cv__school-data" *ngFor="let ed of cv.functionalData">
-        <h4 class="cv__heading-quaternary">{{ed.schoolTitle}}  - {{ed.schoolName}}</h4>
-        <p class="cv__details-text">{{ed.schoolYear}}</p>
+        <h4 class="cv__heading-quaternary">{{ed.schoolTitle}} - {{ed.schoolName}}</h4>
+        <p class="cv__details-text">{{ed.schoolYear | date:'d MMM, y'}}</p>
         <p class="cv__details-text">{{ed.schoolCity}}</p>
       </div>
       <!--<div class="cv__school-data">

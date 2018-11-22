@@ -18,6 +18,11 @@ export interface Theme {
 export class CvEditComponent implements OnInit {
   chronologicActive = true;
   functionalActive = true;
+  skillsActive = true;
+  certificationsActive = true;
+  publicationsActive = true;
+  interestsActive = true;
+  contactActive = true;
   changesSaved = false;
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
@@ -59,6 +64,7 @@ export class CvEditComponent implements OnInit {
     this.changesSaved = true;
   }
 
+  //Seccion Experiencia
   onAddChronologic() {
     (<FormArray>this.cvForm.get('chronologicData')).push(
       new FormGroup({
@@ -79,6 +85,7 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('chronologicData')).controls;
   }
 
+  //Seccion Educacion
   onAddFunctional() {
     (<FormArray>this.cvForm.get('functionalData')).push(
       new FormGroup({
@@ -98,6 +105,7 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('functionalData')).controls;
   }
 
+  //Seccion Habilidades
   onAddSkill() {
     (<FormArray>this.cvForm.get('skills')).push(
       new FormGroup({
@@ -113,6 +121,68 @@ export class CvEditComponent implements OnInit {
   getSkillControls() {
     return (<FormArray>this.cvForm.get('skills')).controls;
   }
+
+  //Seccion Certificaciones
+  onAddCertification() {
+    (<FormArray>this.cvForm.get('certificationsData')).push(
+      new FormGroup({
+        'certificationName': new FormControl(null, Validators.required),
+        'certificationDate': new FormControl(null, [Validators.required]),
+        'certificationDescription': new FormControl(null, [Validators.required]),
+        'certificationURL': new FormControl(null, [Validators.required])
+      })
+    );
+  }
+
+  onDeleteCertification(index: number) {
+    (<FormArray>this.cvForm.get('certificationsData')).removeAt(index);
+  }
+
+  getCertificationsControls() {
+    return (<FormArray>this.cvForm.get('certificationsData')).controls;
+  }
+
+
+  //Seccion Publicaciones
+  onAddPublication() {
+    (<FormArray>this.cvForm.get('publicationsData')).push(
+      new FormGroup({
+        'publicationName': new FormControl(null, Validators.required),
+        'publicationDate': new FormControl(null, [Validators.required]),
+        'publicationDescription': new FormControl(null, [Validators.required]),
+        'publicationURL': new FormControl(null, [Validators.required])
+      })
+    );
+  }
+
+  onDeletePublication(index: number) {
+    (<FormArray>this.cvForm.get('publicationsData')).removeAt(index);
+  }
+
+  getPublicationsControls() {
+    return (<FormArray>this.cvForm.get('publicationsData')).controls;
+  }
+
+
+  //Seccion Intereses
+  onAddInterest() {
+    (<FormArray>this.cvForm.get('interestsData')).push(
+      new FormGroup({
+        'interestText': new FormControl(null, Validators.required)
+      })
+    );
+  }
+
+  onDeleteInterest(index: number) {
+    (<FormArray>this.cvForm.get('interestsData')).removeAt(index);
+  }
+
+  getInterestControls() {
+    return (<FormArray>this.cvForm.get('interestsData')).controls;
+  }
+
+
+  //Seccion Contacto
 
   onFileSelect(event) {
     if (event.target.files && event.target.files[0] && event.target.files.length > 0) {
@@ -130,6 +200,9 @@ export class CvEditComponent implements OnInit {
     const chronologicData = new FormArray([]);
     const functionalData = new FormArray([]);
     const skills = new FormArray([]);
+    const certificationsData = new FormArray([]);
+    const publicationsData = new FormArray([]);
+    const interestsData = new FormArray([]);
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'title': new FormControl(null, Validators.required),
@@ -147,12 +220,22 @@ export class CvEditComponent implements OnInit {
       ]),
       'address': new FormControl(null, Validators.required),
       'personalProfile': new FormControl(null, Validators.required),
+      //switchs
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
+      'skillsActive': new FormControl(false),
+      'certificationsActive': new FormControl(false),
+      'publicationsActive': new FormControl(false),
+      'interestsActive': new FormControl(false),
+      'contactActive': new FormControl(false),
+      //datos
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'theme':  new FormControl('original', Validators.required)
+      'theme':  new FormControl('original', Validators.required),
+      'certificationsData': certificationsData,
+      'publicationsData': publicationsData,
+      'interestsData': interestsData
     });
   }
 
