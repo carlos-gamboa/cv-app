@@ -132,8 +132,10 @@
           </div>
         </div>
       </div>
+
+      <!-- Experiencia -->
       <div class="cv__section-banner">
-        <h2 class="cv__banner-text">Chronologic</h2>
+        <h2 class="cv__banner-text">Experiencia Laboral</h2>
         <label class="switch">
           <input
             type="checkbox"
@@ -149,9 +151,6 @@
         *ngIf="cvForm.get('chronologicActive').value"
       >
         <div class="cv__main-edit">
-          <div class="cv__main-edit-label">
-            <h3 class="cv__main-heading">Experiencia Laboral</h3>
-          </div>
           <div class="cv__main-edit-content" formArrayName="chronologicData">
             <div
               class="form__chronologic-group"
@@ -192,6 +191,7 @@
                 <input
                   type="date"
                   class="form__input"
+                  placeholder="Fecha de Inicio"
                   id="companyStart"
                   name="companyStart"
                   formControlName="companyStart"
@@ -206,6 +206,7 @@
                 <input
                   type="date"
                   class="form__input"
+                  placeholder="Fecha de Finalización"
                   id="companyFinish"
                   name="companyFinish"
                   formControlName="companyFinish"
@@ -249,8 +250,9 @@
         </div>
       </div>
 
+      <!-- Educacion -->
       <div class="cv__section-banner">
-        <h2 class="cv__banner-text">Functional</h2>
+        <h2 class="cv__banner-text">Estudios Académicos</h2>
         <label class="switch">
           <input
             type="checkbox"
@@ -265,9 +267,6 @@
         *ngIf="cvForm.get('functionalActive').value"
       >
         <div class="cv__main-edit">
-          <div class="cv__main-edit-label">
-            <h3 class="cv__main-heading">Educación</h3>
-          </div>
           <div class="cv__main-edit-content" formArrayName="functionalData">
             <div
               class="form__functional-group"
@@ -306,13 +305,14 @@
               </div>
               <div class="form__group form__functional-city">
                 <input
-                  type="number"
+                  type="text"
                   class="form__input"
+                  placeholder="País/Ciudad"
                   id="schoolCity"
                   name="schoolCity"
                   formControlName="schoolCity"
                 >
-                <label for="schoolCity" class="form__label">País/Ciduad
+                <label for="schoolCity" class="form__label">País/Ciudad
                   <span *ngIf="!functCtrl.get('schoolCity').valid && functCtrl.get('schoolCity').touched">
                     : Favor introduzca el país o ciudad de la institución
                   </span>
@@ -322,6 +322,7 @@
                 <input
                   type="date"
                   class="form__input"
+                  placeholder="Fecha Finalización"
                   id="schoolYear"
                   name="schoolYear"
                   formControlName="schoolYear"
@@ -347,10 +348,25 @@
             >Añadir institución</button>
           </div>
         </div>
+      </div>
+
+      <!-- Habilidades -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Habilidades</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="functional"
+            formControlName="skillsActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('skillsActive').value"
+      >
         <div class="cv__main-edit">
-          <div class="cv__main-edit-label">
-            <h3 class="cv__main-heading">Habilidades</h3>
-          </div>
           <div class="cv__main-edit-content" formArrayName="skills">
             <div
               class="form__skill-group"
@@ -388,6 +404,275 @@
           </div>
         </div>
       </div>
+
+    
+      <!-- Intereses -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Intereses</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="interests"
+            formControlName="interestsActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('interestsActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content" formArrayName="interestsData">
+            <div
+              class="form__skill-group"
+              *ngFor="let interestCtrl of getInterestControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__skill-name">
+                <textarea
+                  rows="5"
+                  type="text"
+                  class="form__input"
+                  placeholder="Intereses"
+                  id="interestText"
+                  name="interestText"
+                  formControlName="interestText"
+                ></textarea>
+                <label for="interestText" class="form__label">Intereses
+                  <span *ngIf="!interestCtrl.get('interestText').valid && interestCtrl.get('interestText').touched">
+                    : Favor introduzca sus intereses
+                  </span>
+                </label>
+              </div>
+              <div class="form__skill-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteInterest(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddInterest()"
+            >Añadir intereses</button>
+          </div>
+        </div>
+      </div>      
+
+
+      <!-- Certificaciones -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Certificaciones</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="certifications"
+            formControlName="certificationsActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('certificationsActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content" formArrayName="certificationsData">
+            <div
+              class="form__functional-group"
+              *ngFor="let certsCtrl of getCertificationsControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__functional-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Nombre"
+                  id="certificationName"
+                  name="certificationName"
+                  formControlName="certificationName"
+                >
+                <label for="certificationName" class="form__label">Nombre
+                  <span *ngIf="!certsCtrl.get('certificationName').valid && certsCtrl.get('certificationName').touched">
+                    : Favor introduzca el nombre de la certificación
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-title">
+                <input
+                  type="date"
+                  class="form__input"
+                  placeholder="Fecha"
+                  id="certificationDate"
+                  name="certificationDate"
+                  formControlName="certificationDate"
+                >
+                <label for="certificationDate" class="form__label">Fecha
+                  <span *ngIf="!certsCtrl.get('certificationDate').valid && certsCtrl.get('certificationDate').touched">
+                    : Favor introduzca la fecha de realización
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-city">
+                <textarea
+                  rows="5"
+                  type="text"
+                  class="form__input form__input--full"
+                  placeholder="Descripción"
+                  id="certificationDescription"
+                  name="certificationDescription"
+                  formControlName="certificationDescription"
+                ></textarea>
+                <label for="certificationDescription" class="form__label">Descripción
+                  <span *ngIf="!certsCtrl.get('certificationDescription').valid && certsCtrl.get('certificationDescription').touched">
+                    : Favor introduzca la descripción de la certificación
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__group--big form__functional-year">
+                <input
+                  type="url"
+                  class="form__input"
+                  placeholder="URL"
+                  id="certificationURL"
+                  name="certificationURL"
+                  formControlName="certificationURL"
+                >
+                <label for="certificationURL" class="form__label">URL
+                  <span *ngIf="!certsCtrl.get('certificationURL').valid && certsCtrl.get('certificationURL').touched">
+                    : Favor introduzca el URL donde se encuentra la certificación
+                  </span>
+                </label>
+              </div>
+              <div class="form__functional-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteCertification(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddCertification()"
+            >Añadir certificación</button>
+          </div>
+        </div>
+      </div>      
+
+
+      <!-- Publicaciones -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Publicaciones</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="publications"
+            formControlName="publicationsActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('publicationsActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content" formArrayName="publicationsData">
+            <div
+              class="form__functional-group"
+              *ngFor="let pubsCtrl of getPublicationsControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__functional-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Nombre"
+                  id="publicationName"
+                  name="publicationName"
+                  formControlName="publicationName"
+                >
+                <label for="publicationName" class="form__label">Nombre
+                  <span *ngIf="!pubsCtrl.get('publicationName').valid && pubsCtrl.get('publicationName').touched">
+                    : Favor introduzca el nombre de la publicación
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-title">
+                <input
+                  type="date"
+                  class="form__input"
+                  placeholder="Fecha"
+                  id="publicationDate"
+                  name="publicationDate"
+                  formControlName="publicationDate"
+                >
+                <label for="publicationDate" class="form__label">Fecha
+                  <span *ngIf="!pubsCtrl.get('publicationDate').valid && pubsCtrl.get('publicationDate').touched">
+                    : Favor introduzca la fecha de publicación
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__functional-city">
+                <textarea
+                  rows="5"
+                  type="text"
+                  class="form__input form__input--full"
+                  placeholder="Descripción"
+                  id="publicationDescription"
+                  name="publicationDescription"
+                  formControlName="publicationDescription"
+                ></textarea>
+                <label for="publicationDescription" class="form__label">Descripción
+                  <span *ngIf="!pubsCtrl.get('publicationDescription').valid && pubsCtrl.get('publicationDescription').touched">
+                    : Favor introduzca la descripción de la publicación
+                  </span>
+                </label>
+              </div>
+              <div class="form__group form__group--big form__functional-year">
+                <input
+                  type="url"
+                  class="form__input"
+                  placeholder="URL"
+                  id="publicationURL"
+                  name="publicationURL"
+                  formControlName="publicationURL"
+                >
+                <label for="publicationURL" class="form__label">URL
+                  <span *ngIf="!pubsCtrl.get('publicationURL').valid && pubsCtrl.get('publicationURL').touched">
+                    : Favor introduzca el URL donde se encuentra la publicación
+                  </span>
+                </label>
+              </div>
+              <div class="form__functional-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeletePublication(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddPublication()"
+            >Añadir publicación</button>
+          </div>
+        </div>
+      </div>      
+
+
+
+      <!-- Contacto -->
+
+
+
+
       <div class="cv__submit-area">
         <button
           type="submit"
