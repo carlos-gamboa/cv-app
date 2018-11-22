@@ -3,14 +3,43 @@
     <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
       <div class="cv__section-top-banner">
         <div class="cv__banner-select">
-          <label for="theme" class="cv__top-banner-text">Temas: </label>
+          <label for="template" class="cv__top-banner-text">Plantilla: </label>
+          <select
+            (input)="selectedTheme = null"
+            [(ngModel)]="selectedTemplate"
+            class="form__input"
+            placeholder="Plantilla"
+            id="template"
+            formControlName="template"
+          >
+            <option *ngFor="let template of templates" [value]="template.value">
+              {{template.viewValue}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="selectedTemplate.match('horizontal')" class="cv__banner-select">
+          <label for="theme1" class="cv__top-banner-text">Temas: </label>
+          <select
+            [(ngModel)]="selectedTheme"
+            class="form__input"
+            placeholder="Temas"
+            id="theme1"
+            formControlName="theme"
+          >
+            <option *ngFor="let theme of themesHorizontal" [value]="theme.value">
+              {{theme.viewValue}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="selectedTemplate.match('vertical')" class="cv__banner-select">
+          <label for="theme2" class="cv__top-banner-text">Temas: </label>
           <select
             class="form__input"
             placeholder="Temas"
-            id="theme"
+            id="theme2"
             formControlName="theme"
           >
-            <option *ngFor="let theme of themes" [value]="theme.value">
+            <option *ngFor="let theme of themesVertical" [value]="theme.value">
               {{theme.viewValue}}
             </option>
           </select>
