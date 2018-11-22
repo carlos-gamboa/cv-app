@@ -102,8 +102,6 @@ hr {
 .cv__shared-info-top {
   background-color: #ddd;
   border-bottom: 4px solid #cf8a05;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
 }
 
 .cv__shared-info-bottom {
@@ -281,6 +279,30 @@ hr {
 .cv__school-data:not(:last-of-type) {
   margin-bottom: 2.5rem;
 }
+
+.cv__section-top-banner {
+  background-color: #cf8a05;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.cv__banner-select{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 250px;
+}
+
+.cv__top-banner-text{
+  color: #ddd!important;
+  font-weight: 400;
+  font-size: 2rem;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+
+
 
 /* --------------------------------------------- */
 /* INPUT FILE */

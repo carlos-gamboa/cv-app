@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 import { TemplateHorizontalComponent } from './cv/template-horizontal/template-horizontal.component';
 import { TemplateVerticalComponent } from './cv/template-vertical/template-vertical.component';
@@ -50,7 +51,8 @@ import { TemplateVerticalComponent } from './cv/template-vertical/template-verti
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     CvService,

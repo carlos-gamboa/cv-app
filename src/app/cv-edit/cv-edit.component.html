@@ -1,7 +1,21 @@
 <div class="cv">
   <div class="cv__wrapper">
     <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
-
+      <div class="cv__section-top-banner">
+        <div class="cv__banner-select">
+          <label for="theme" class="cv__top-banner-text">Temas: </label>
+          <select
+            class="form__input"
+            placeholder="Temas"
+            id="theme"
+            formControlName="theme"
+          >
+            <option *ngFor="let theme of themes" [value]="theme.value">
+              {{theme.viewValue}}
+            </option>
+          </select>
+        </div>
+      </div>
       <div class="cv__shared-info-top">
         <div class="form">
           <div class="form__section">
