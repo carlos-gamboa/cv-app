@@ -1,3 +1,36 @@
-<p>
-  signin works!
-</p>
+<form
+  class="signin"
+  #f="ngForm"
+  (ngSubmit)="onSubmit(f)"
+>
+  <input
+    type="text"
+    class="form__input signin__input"
+    placeholder="Correo electrónico"
+    id="username"
+    name="username"
+    ngModel
+    required
+    email
+    #email="ngModel"
+  >
+  <input
+    type="password"
+    class="form__input signin__input"
+    placeholder="Contraseña"
+    id="password"
+    name="password"
+    ngModel
+    required
+    #password="ngModel"
+  >
+
+  <button
+    class="button button--round button--primary-outline"
+    type="submit"
+    [disabled]="!f.valid"
+  >
+    Iniciar Sesión
+  </button>
+</form>
+
