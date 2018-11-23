@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {DataStorageService} from '../services/data-storage.service';
 import {Cv} from '../models/cv.model';
+import {CvService} from '../services/cv.service';
 
 @Component({
   selector: 'app-cv',
@@ -14,14 +15,17 @@ export class CvComponent implements OnInit {
   cv: Cv;
   readyToShow = false;
 
+
   constructor(
     private dataStorageService: DataStorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cvService: CvService
   ) {
   }
 
   ngOnInit() {
+    this.cvService.emitChangeHideHeader(true);
     this.route.params.subscribe(
       (params) => {
         this.cvId = params['id'];
@@ -37,6 +41,10 @@ export class CvComponent implements OnInit {
         });
       }
     );
+  }
+
+  ngOnDestroy(){
+    this.cvService.emitChangeHideHeader(false);
   }
 
 }
