@@ -28,6 +28,7 @@ export class Cv {
   publicationsData: PublicationsModel[];
   interestsData: InterestsModel[];
   skills: SkillsModel[];
+  template: string;
   theme: string;
 
   constructor(cv: any) {
@@ -52,9 +53,10 @@ export class Cv {
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
+    this.template = cv.template;
     this.theme = cv.theme;
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
-    this.interestsData = cv.interestsData;
+    this.interestsData = cv.interestsData
   }
 }
