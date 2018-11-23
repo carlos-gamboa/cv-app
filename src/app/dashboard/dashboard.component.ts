@@ -6,6 +6,7 @@ import {ShareUrlComponent} from './share-url/share-url.component';
 import {AuthService} from '../services/auth.service';
 import {Cv} from '../models/cv.model';
 import {DataStorageService} from '../services/data-storage.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,7 +39,8 @@ export class DashboardComponent implements OnInit {
   }
 
   goToView() {
-    this.router.navigate([`/cv/${this.uid}`]);
+    window.open(environment.activeUrl + `/cv/${this.uid}`, '_blank'); //use this to open in a new tab
+    //this.router.navigate([`/cv/${this.uid}`]); //use this to navigate
   }
 
   goToCreate() {
