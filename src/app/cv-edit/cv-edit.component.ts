@@ -10,6 +10,11 @@ export interface Theme {
   viewValue: string;
 }
 
+export interface Template {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-cv-edit',
   templateUrl: './cv-edit.component.html',
@@ -26,12 +31,24 @@ export class CvEditComponent implements OnInit {
   changesSaved = false;
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
+  selectedTemplate = 'vertical';
+  selectedTheme = null;
 
-  themes: Theme[] = [
-    {value: 'original' , viewValue: 'Original'},
-    {value: 'dark' , viewValue: 'Dark'},
-    {value: 'light' , viewValue: 'Light'}
+  templates: Template[] = [
+    {value: 'horizontal', viewValue: 'Horizontal'},
+    {value: 'vertical', viewValue: 'Vertical'}
+  ];
 
+  themesHorizontal: Theme[] = [
+    {value: 'original1' , viewValue: 'Original1'},
+    {value: 'dark1' , viewValue: 'Dark1'},
+    {value: 'light1' , viewValue: 'Light1'}
+  ];
+
+  themesVertical: Theme[] = [
+    {value: 'original2' , viewValue: 'Original2'},
+    {value: 'dark2' , viewValue: 'Dark2'},
+    {value: 'light2' , viewValue: 'Light2'}
   ];
 
 
@@ -232,13 +249,13 @@ export class CvEditComponent implements OnInit {
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'theme':  new FormControl('original', Validators.required),
+      'template': new FormControl('horizontal', Validators.required),
+      'theme':  new FormControl(this.selectedTheme, Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData
     });
   }
-
   print() {
     console.log(this.cvForm.value);
   }
