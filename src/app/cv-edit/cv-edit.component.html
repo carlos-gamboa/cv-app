@@ -85,6 +85,22 @@
                 </span>
               </label>
             </div>
+            <div class="form__group form__functional-intro">
+              <textarea
+                rows="5"
+                type="text"
+                class="form__input form__input--full"
+                placeholder="Introducción"
+                id="introduction"
+                name="introduction"
+                formControlName="introduction"
+              ></textarea>
+              <label for="introduction" class="form__label">Introducción
+                <span *ngIf="!cvForm.get('introduction').valid && cvForm.get('introduction').touched">
+                  : Favor introduzca la introducción a su perfil
+                </span>
+              </label>
+            </div>            
           </div>
           <div class="form__section form__section--full form__section--details">
             <div class="form__group">
@@ -169,6 +185,23 @@
               <label for="personalProfile" class="form__label">Perfil Personal
                 <span *ngIf="!cvForm.get('personalProfile').valid && cvForm.get('personalProfile').touched">
                   : Favor introduzca información referente a su perfil personal
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="cv__main-edit-content">
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL"
+                id="websiteURL"
+                name="websiteURL"
+                formControlName="websiteURL"
+              >
+              <label for="websiteURL" class="form__label">URL
+                <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
+                  : Favor introduzca su URL personal
                 </span>
               </label>
             </div>
@@ -432,6 +465,22 @@
                   </span>
                 </label>
               </div>
+              <div class="form__group mt-0 form__skill-knowledge">
+                <input
+                  type="number"
+                  class="form__input"
+                  placeholder="Porcentaje de Conocimiento"
+                  id="knowledge"
+                  name="knowledge"
+                  formControlName="knowledge"
+                >
+                <label for="knowledge" class="form__label">Porcentaje de Conocimiento
+                  <span *ngIf="!skillCtrl.get('knowledge').valid && skillCtrl.get('knowledge').touched">
+                    : Favor introduzca su porcentaje de conocimiento en la habilidad
+                  </span>
+                </label>
+              </div>
+
               <div class="form__skill-button">
                 <button
                   type="button"
@@ -473,19 +522,34 @@
               *ngFor="let interestCtrl of getInterestControls(); let i = index"
               [formGroupName]="i"
             >
+            <div class="form__group mt-0 form__interest-name">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Interés"
+                id="interestName"
+                name="interestName"
+                formControlName="interestName"
+              >
+              <label for="interestName" class="form__label">Interés
+                <span *ngIf="!interestCtrl.get('interestName').valid && interestCtrl.get('interestName').touched">
+                  : Favor introduzca su interés
+                </span>
+              </label>
+            </div>            
               <div class="form__group mt-0 form__skill-name">
                 <textarea
                   rows="5"
                   type="text"
                   class="form__input"
-                  placeholder="Intereses"
+                  placeholder="Descripción"
                   id="interestText"
                   name="interestText"
                   formControlName="interestText"
                 ></textarea>
                 <label for="interestText" class="form__label">Intereses
                   <span *ngIf="!interestCtrl.get('interestText').valid && interestCtrl.get('interestText').touched">
-                    : Favor introduzca sus intereses
+                    : Favor introduzca la descripción de su interés
                   </span>
                 </label>
               </div>
@@ -560,6 +624,21 @@
                   </span>
                 </label>
               </div>
+              <div class="form__group mt-0 form__functional-school">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Institución"
+                  id="certificationSchool"
+                  name="certificationSchool"
+                  formControlName="certificationSchool"
+                >
+                <label for="certificationSchool" class="form__label">Institución
+                  <span *ngIf="!certsCtrl.get('certificationSchool').valid && certsCtrl.get('certificationSchool').touched">
+                    : Favor introduzca la institución donde recibió la certificación
+                  </span>
+                </label>
+              </div>              
               <div class="form__group form__functional-city">
                 <textarea
                   rows="5"
@@ -662,6 +741,21 @@
                   </span>
                 </label>
               </div>
+              <div class="form__group mt-0 form__functional-sitio">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Sitio o editorial"
+                  id="publicationSite"
+                  name="publicationSite"
+                  formControlName="publicationSite"
+                >
+                <label for="publicationSite" class="form__label">Sitio o editorial
+                  <span *ngIf="!pubsCtrl.get('publicationSite').valid && pubsCtrl.get('publicationSite').touched">
+                    : Favor introduzca el sitio o la editorial donde hizo su publicación
+                  </span>
+                </label>
+              </div>              
               <div class="form__group form__functional-city">
                 <textarea
                   rows="5"

@@ -126,7 +126,8 @@ export class CvEditComponent implements OnInit {
   onAddSkill() {
     (<FormArray>this.cvForm.get('skills')).push(
       new FormGroup({
-        'skillName': new FormControl(null, Validators.required)
+        'skillName': new FormControl(null, Validators.required),
+        'knowledge': new FormControl(null, Validators.required)
       })
     );
   }
@@ -146,7 +147,8 @@ export class CvEditComponent implements OnInit {
         'certificationName': new FormControl(null, Validators.required),
         'certificationDate': new FormControl(null, [Validators.required]),
         'certificationDescription': new FormControl(null, [Validators.required]),
-        'certificationURL': new FormControl(null, [Validators.required])
+        'certificationURL': new FormControl(null, [Validators.required]),
+        'certificationSchool': new FormControl(null, Validators.required)
       })
     );
   }
@@ -167,7 +169,8 @@ export class CvEditComponent implements OnInit {
         'publicationName': new FormControl(null, Validators.required),
         'publicationDate': new FormControl(null, [Validators.required]),
         'publicationDescription': new FormControl(null, [Validators.required]),
-        'publicationURL': new FormControl(null, [Validators.required])
+        'publicationURL': new FormControl(null, [Validators.required]),
+        'publicationSite': new FormControl(null, Validators.required)
       })
     );
   }
@@ -185,7 +188,8 @@ export class CvEditComponent implements OnInit {
   onAddInterest() {
     (<FormArray>this.cvForm.get('interestsData')).push(
       new FormGroup({
-        'interestText': new FormControl(null, Validators.required)
+        'interestText': new FormControl(null, Validators.required),
+        'interestName': new FormControl(null, Validators.required)
       })
     );
   }
@@ -223,6 +227,7 @@ export class CvEditComponent implements OnInit {
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'title': new FormControl(null, Validators.required),
+      'introduction': new FormControl(null, Validators.required),
       'mail': new FormControl(null, [
         Validators.required,
         Validators.email
@@ -237,6 +242,7 @@ export class CvEditComponent implements OnInit {
       ]),
       'address': new FormControl(null, Validators.required),
       'personalProfile': new FormControl(null, Validators.required),
+      'websiteURL': new FormControl(null, Validators.required),
       //switchs
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
