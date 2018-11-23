@@ -8,10 +8,12 @@
     <ul id="nav" class="nav">
       <li [ngClass]="{current: (currentSection === 'home')}"><a [routerLink]="['/', 'cv', id]" fragment="home">Inicio</a></li>
       <li [ngClass]="{current: (currentSection === 'about')}"><a [routerLink]="['/', 'cv', id]" fragment="about">Acerca</a></li>
-      <li [ngClass]="{current: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Currículum</a></li>
-      <li [ngClass]="{current: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
-      <li [ngClass]="{current: (currentSection === 'interests')}"><a [routerLink]="['/', 'cv', id]" fragment="interests">Intereses</a></li>
-      <li [ngClass]="{current: (currentSection === 'contact')}"><a [routerLink]="['/', 'cv', id]" fragment="contact">Contacto</a></li>
+      <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{current: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Currículum</a></li>
+      <li *ngIf="cv.certificationsActive" [ngClass]="{current: (currentSection === 'certifications')}"><a [routerLink]="['/', 'cv', id]" fragment="certifications">Certificaciones</a></li>
+      <li *ngIf="cv.skillsActive" [ngClass]="{current: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
+      <li *ngIf="cv.publicationsActive" [ngClass]="{current: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
+      <li *ngIf="cv.interestsActive" [ngClass]="{current: (currentSection === 'interests')}"><a [routerLink]="['/', 'cv', id]" fragment="interests">Intereses</a></li>
+      <li *ngIf="cv.contactActive" [ngClass]="{current: (currentSection === 'contact')}"><a [routerLink]="['/', 'cv', id]" fragment="contact">Contacto</a></li>
     </ul> <!-- end #nav -->
 
   </nav> <!-- end #nav-wrap -->
@@ -139,9 +141,13 @@
 
   </div> <!-- End Work -->
 
+</section> <!-- Resume Section End-->
+
+<section class="publications" *ngIf="cv.certificationsActive" #certifications>
+
   <!-- Certifications
   ----------------------------------------------- -->
-  <div class="row work" *ngIf="cv.certificationsActive">
+  <div class="row" >
 
     <div class="three columns header-col">
       <h1><span class="section__label">Certificaciones</span></h1>
@@ -166,9 +172,12 @@
 
   </div> <!-- End Certifications -->
 
+</section>
+
+<section class="resume" *ngIf="cv.skillsActive" #skills>
   <!-- Skills
   ----------------------------------------------- -->
-  <div class="row skill" *ngIf="cv.skillsActive">
+  <div class="row skill" >
 
     <div class="three columns header-col">
       <h1><span class="section__label">Habilidades</span></h1>
@@ -188,7 +197,7 @@
 
   </div> <!-- End skills -->
 
-</section> <!-- Resume Section End-->
+</section> <!-- Skills Section End-->
 
 <!-- Publications Section
 ================================================== -->
