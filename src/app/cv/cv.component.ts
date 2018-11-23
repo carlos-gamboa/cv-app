@@ -22,19 +22,21 @@ export class CvComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cvId = this.route.snapshot.params['id'];
-
-    this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
-      if (cv) {
-        this.cv = cv;
-        console.log(this.cv);
-        this.readyToShow = true;
-      } else {
-        this.router.navigate(['/']);
+    this.route.params.subscribe(
+      (params) => {
+        this.cvId = params['id'];
+        this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
+          if (cv) {
+            this.cv = cv;
+            this.readyToShow = true;
+          } else {
+            this.router.navigate(['/']);
+          }
+        }).catch( reason => {
+          console.log('Failed');
+        });
       }
-    }).catch( reason => {
-      console.log('Failed');
-    });
+    );
   }
 
 }

@@ -1,0 +1,364 @@
+<header class="home" #home>
+
+  <nav id="nav-wrap" class="opaque">
+
+    <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Mostrar navegación</a>
+    <a class="mobile-btn" href="#" title="Hide navigation">Esconder navegación</a>
+
+    <ul id="nav" class="nav">
+      <li [ngClass]="{current: (currentSection === 'home')}"><a [routerLink]="['/', 'cv', id]" fragment="home">Inicio</a></li>
+      <li [ngClass]="{current: (currentSection === 'about')}"><a [routerLink]="['/', 'cv', id]" fragment="about">Acerca</a></li>
+      <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{current: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Currículum</a></li>
+      <li *ngIf="cv.certificationsActive" [ngClass]="{current: (currentSection === 'certifications')}"><a [routerLink]="['/', 'cv', id]" fragment="certifications">Certificaciones</a></li>
+      <li *ngIf="cv.skillsActive" [ngClass]="{current: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
+      <li *ngIf="cv.publicationsActive" [ngClass]="{current: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
+      <li *ngIf="cv.interestsActive" [ngClass]="{current: (currentSection === 'interests')}"><a [routerLink]="['/', 'cv', id]" fragment="interests">Intereses</a></li>
+      <li *ngIf="cv.contactActive" [ngClass]="{current: (currentSection === 'contact')}"><a [routerLink]="['/', 'cv', id]" fragment="contact">Contacto</a></li>
+    </ul> <!-- end #nav -->
+
+  </nav> <!-- end #nav-wrap -->
+
+  <div class="row banner">
+    <div class="banner-text">
+      <h1 class="responsive-headline">Soy {{ cv.name }}.</h1>
+      <h3>{{cv.introduction}}<br> Empieza a <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">recorrer la página</a>
+        y a aprender más <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about">acerca de mí</a>.</h3>
+      <hr />
+      <!--<ul class="social">
+        <li><a ><i class="fa fa-facebook"></i></a></li>
+        <li><a ><i class="fa fa-twitter"></i></a></li>
+        <li><a ><i class="fa fa-google-plus"></i></a></li>
+        <li><a ><i class="fa fa-linkedin"></i></a></li>
+        <li><a ><i class="fa fa-instagram"></i></a></li>
+        <li><a ><i class="fa fa-dribbble"></i></a></li>
+        <li><a ><i class="fa fa-skype"></i></a></li>
+      </ul>-->
+    </div>
+  </div>
+
+  <p class="scrolldown">
+    <a class="smoothscroll" [routerLink]="['/', 'cv', id]" fragment="about"><i class="icon-down-circle"></i></a>
+  </p>
+
+</header> <!-- Header End -->
+
+
+<!-- About Section
+================================================== -->
+<section class="about" #about>
+
+  <div class="row">
+
+    <div class="three columns">
+
+      <img class="profile-pic"  src="./../../../assets/img/template-horizontal/profilepic.jpg" alt="" />
+
+    </div>
+
+    <div class="nine columns main-col">
+
+      <h2 class="section__label">Sobre mi</h2>
+
+      <p>{{ cv.personalProfile }}</p>
+
+      <div class="row">
+
+        <div class="columns contact-details">
+
+          <h2>Información de contacto</h2>
+          <p class="address">
+            <span> {{ cv.name }} </span><br>
+            <span> {{cv.address}} </span><br>
+            <span> {{ cv.phone1 }} </span><br>
+            <span> {{cv.websiteURL}} </span>
+          </p>
+
+        </div>
+
+      </div> <!-- end row -->
+
+    </div> <!-- end .main-col -->
+
+  </div>
+
+</section> <!-- About Section End-->
+
+
+<!-- Resume Section
+================================================== -->
+<section class="resume" #resume *ngIf="cv.functionalActive || cv.chronologicActive">
+
+  <!-- Education
+  ----------------------------------------------- -->
+  <div class="row education" *ngIf="cv.functionalActive">
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Educación</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="row item" *ngFor="let education of cv.functionalData">
+
+        <div class="twelve columns">
+
+          <h3> {{ education.schoolName }} </h3>
+          <p class="info"> {{ education.schoolTitle }} <span>&bull;</span> <em class="date"> {{ education.schoolYear | date:'d MMM, y' }} </em></p>
+
+        </div>
+
+      </div> <!-- item end -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End Education -->
+
+
+  <!-- Work
+  ----------------------------------------------- -->
+  <div class="row work" *ngIf="cv.chronologicActive">
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Experiencia Laboral</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="row item" *ngFor="let work of cv.chronologicData">
+
+        <div class="twelve columns">
+
+          <h3> {{work.companyName}} </h3>
+          <p class="info">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
+
+          <p>{{work.companyFunction}}</p>
+
+        </div>
+
+      </div> <!-- item end -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End Work -->
+
+</section> <!-- Resume Section End-->
+
+<section class="publications" *ngIf="cv.certificationsActive" #certifications>
+
+  <!-- Certifications
+  ----------------------------------------------- -->
+  <div class="row" >
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Certificaciones</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="row item" *ngFor="let certification of cv.certificationsData">
+
+        <div class="twelve columns">
+
+          <h3><a target="_blank" rel="noopener noreferrer" [href]="certification.certificationURL"> {{certification.certificationName}} </a> </h3>
+          <p class="info">{{certification.certificationSchool}} <span>&bull;</span> <em class="date">{{certification.certificationDate | date:'d MMM, y'}}</em></p>
+
+          <p>{{certification.certificationDescription}}</p>
+
+        </div>
+
+      </div> <!-- item end -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End Certifications -->
+
+</section>
+
+<section class="resume" *ngIf="cv.skillsActive" #skills>
+  <!-- Skills
+  ----------------------------------------------- -->
+  <div class="row skill" >
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Habilidades</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="bars">
+
+        <ul class="skills" *ngFor="let skill of cv.skills">
+          <li><span class="bar-expand" [style.width.%]="skill.knowledge"></span><em>{{ skill.skillName }}</em></li>
+        </ul>
+
+      </div><!-- end skill-bars -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End skills -->
+
+</section> <!-- Skills Section End-->
+
+<!-- Publications Section
+================================================== -->
+<section class="publications" #publications *ngIf="cv.publicationsActive">
+  <!-- Publications
+  ----------------------------------------------- -->
+  <div class="row">
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Publicaciones</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="row item" *ngFor="let publication of cv.publicationsData">
+
+        <div class="twelve columns">
+
+          <h3><a target="_blank" rel="noopener noreferrer" [href]="publication.publicationURL"> {{publication.publicationName}} </a></h3>
+          <p class="info">{{publication.publicationSite}} <span>&bull;</span> <em class="date">{{publication.publicationDate | date:'d MMM, y'}}</em></p>
+
+          <p>{{publication.publicationDescription}}</p>
+
+        </div>
+
+      </div> <!-- item end -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End Publications -->
+</section>
+
+<!-- Interests Section
+================================================== -->
+<section class="interests" #interests *ngIf="cv.interestsActive">
+  <!-- Interests
+  ----------------------------------------------- -->
+  <div class="row">
+
+    <div class="three columns header-col">
+      <h1><span class="section__label">Intereses</span></h1>
+    </div>
+
+    <div class="nine columns main-col">
+
+      <div class="row item" *ngFor="let interest of cv.interestsData">
+
+        <div class="twelve columns">
+
+          <h3> {{interest.interestName}} </h3>
+          <p>{{interest.interestText}}</p>
+
+        </div>
+
+      </div> <!-- item end -->
+
+    </div> <!-- main-col end -->
+
+  </div> <!-- End Interests -->
+</section>
+
+<!-- Contact Section
+================================================== -->
+<section class="contact" #contact *ngIf="cv.contactActive">
+
+  <div class="row section-head">
+
+    <div class="two columns header-col">
+
+      <h1><span class="section__label">Ponte en Contacto</span></h1>
+
+    </div>
+
+    <div class="ten columns">
+
+      <p class="lead">Si desea ponerse en contacto puede enviarme un correo a través del siguiente formulario.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="twelve columns">
+
+      <!-- form -->
+      <form action="" method="post" id="contactForm" name="contactForm">
+        <fieldset>
+
+          <div>
+            <label for="contactName">Nombre <span class="required">*</span></label>
+            <input type="text" value="" size="35" id="contactName" name="contactName">
+          </div>
+
+          <div>
+            <label for="contactEmail">Correo Electrónico <span class="required">*</span></label>
+            <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
+          </div>
+
+          <div>
+            <label for="contactSubject">Asunto</label>
+            <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
+          </div>
+
+          <div>
+            <label for="contactMessage">Mensaje <span class="required">*</span></label>
+            <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+          </div>
+
+          <div>
+            <button class="submit">Enviar</button>
+            <span id="image-loader">
+              <img alt="" src="./../../../assets/img/template-horizontal/loader.gif">
+            </span>
+          </div>
+
+        </fieldset>
+      </form> <!-- Form End -->
+
+      <!-- contact-warning -->
+      <div id="message-warning"> Error</div>
+      <!-- contact-success -->
+      <div id="message-success">
+        <i class="fa fa-check"></i>Su mensaje ha sido enviado, muchas gracias<br>
+      </div>
+
+    </div>
+
+  </div>
+
+</section> <!-- Contact Section End-->
+
+
+<!-- footer
+================================================== -->
+<footer>
+
+  <div class="row">
+
+    <div class="twelve columns">
+
+      <!--<ul class="social-links">
+        <li><a ><i class="fa fa-facebook"></i></a></li>
+        <li><a ><i class="fa fa-twitter"></i></a></li>
+        <li><a ><i class="fa fa-google-plus"></i></a></li>
+        <li><a ><i class="fa fa-linkedin"></i></a></li>
+        <li><a ><i class="fa fa-instagram"></i></a></li>
+        <li><a ><i class="fa fa-dribbble"></i></a></li>
+        <li><a ><i class="fa fa-skype"></i></a></li>
+      </ul>-->
+
+      <ul class="copyright">
+        <li>&copy; Copyright 2014 CeeVee</li>
+        <li>Design by <a href="http://www.styleshout.com/" title="Styleshout" target="_blank">Styleshout</a></li>
+      </ul>
+
+    </div>
+
+    <div id="go-top"><a class="smoothscroll" title="Back to Top" [routerLink]="['/', 'cv', id]" fragment="home"><i class="icon-up-open"></i></a></div>
+
+  </div>
+
+</footer> <!-- Footer End-->

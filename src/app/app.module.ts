@@ -16,17 +16,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {CvService} from './services/cv.service';
 import {DataStorageService} from './services/data-storage.service';
 import {AuthService} from './services/auth.service';
-
-
-
-// Environment
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
+import { TemplateHorizontalComponent } from './cv/template-horizontal/template-horizontal.component';
+import { TemplateVerticalComponent } from './cv/template-vertical/template-vertical.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +41,8 @@ import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
     SignupComponent,
     SigninComponent,
     ShareUrlComponent,
+    TemplateHorizontalComponent,
+    TemplateVerticalComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     CvService,
