@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import {environment} from '../environments/environment';
 import { ChangeDetectorRef } from '@angular/core';
@@ -10,7 +10,7 @@ import {CvService} from './services/cv.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
 
   hideElement = false;
 
