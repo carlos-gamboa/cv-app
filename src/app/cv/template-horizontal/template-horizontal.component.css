@@ -814,12 +814,6 @@ properly.
 }
 
 p,
-a,
-h2,
-h3,
-h4,
-h5,
-h6,
-span {
+a {
   word-break: break-all;
 }
