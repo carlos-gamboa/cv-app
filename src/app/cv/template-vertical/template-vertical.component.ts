@@ -30,6 +30,9 @@ export class TemplateVerticalComponent implements OnInit {
   @ViewChild('skills') set contentSkills(content: ElementRef) {
     this.elements['skills'] = content;
   }
+  @ViewChild('languages') set contentLanguages(content: ElementRef) {
+    this.elements['languages'] = content;
+  }
   @ViewChild('certifications') set contentCertifications(content: ElementRef) {
     this.elements['certifications'] = content;
   }
@@ -93,6 +96,11 @@ export class TemplateVerticalComponent implements OnInit {
     } else if (
       (this.elements['skills']) &&
       (window.scrollY >= (this.elements['skills'].nativeElement.getBoundingClientRect().top + window.scrollY))
+    ) {
+      this.currentSection = 'skills';
+    } else if (
+      (this.elements['languages']) &&
+      (window.scrollY >= (this.elements['languages'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'skills';
     } else if (

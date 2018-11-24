@@ -140,6 +140,24 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('skills')).controls;
   }
 
+  //Seccion Idiomas
+  onAddLanguage() {
+    (<FormArray>this.cvForm.get('languages')).push(
+      new FormGroup({
+        'language': new FormControl(null, Validators.required),
+        'knowledge': new FormControl(null, Validators.required)
+      })
+    );
+  }
+
+  onDeleteLanguage(index: number) {
+    (<FormArray>this.cvForm.get('languages')).removeAt(index);
+  }
+
+  getLanguageControls() {
+    return (<FormArray>this.cvForm.get('languages')).controls;
+  }
+
   //Seccion Certificaciones
   onAddCertification() {
     (<FormArray>this.cvForm.get('certificationsData')).push(
@@ -224,6 +242,7 @@ export class CvEditComponent implements OnInit {
     const certificationsData = new FormArray([]);
     const publicationsData = new FormArray([]);
     const interestsData = new FormArray([]);
+    const languages = new FormArray([]);
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'title': new FormControl(null, Validators.required),
@@ -240,7 +259,10 @@ export class CvEditComponent implements OnInit {
       ),
       'address': new FormControl(null),
       'personalProfile': new FormControl(null, Validators.required),
-      'websiteURL': new FormControl(null, Validators.required),
+      'websiteURL': new FormControl(null, [
+        Validators.required, 
+        Validators.pattern(/^(\w)+[.](\w)+$/)
+      ]),
       //switchs
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
@@ -257,7 +279,8 @@ export class CvEditComponent implements OnInit {
       'theme':  new FormControl(this.selectedTheme, Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
-      'interestsData': interestsData
+      'interestsData': interestsData,
+      'languages': languages
     });
   }
   print() {

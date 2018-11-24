@@ -201,7 +201,7 @@
               >
               <label for="websiteURL" class="form__label">URL
                 <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
-                  : Favor introduzca su URL personal
+                  : Favor introduzca su URL personal válido
                 </span>
               </label>
             </div>
@@ -467,6 +467,8 @@
               </div>
               <div class="form__group mt-0 form__skill-knowledge">
                 <input
+                  [formControl]="publicationURL" 
+                  pattern="^[1-9]?[0-9]{1}$|^100$"
                   type="number"
                   class="form__input"
                   placeholder="Porcentaje de Conocimiento"
@@ -494,6 +496,62 @@
               class="button button--primary"
               (click)="onAddSkill()"
             >Añadir habilidad</button>
+          </div>
+        </div>
+        <!-- Idiomas -->
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content" formArrayName="languages">
+            <div
+              class="form__language-group"
+              *ngFor="let languageCtrl of getLanguageControls(); let i = index"
+              [formGroupName]="i"
+            >
+              <div class="form__group mt-0 form__language-name">
+                <input
+                  type="text"
+                  class="form__input"
+                  placeholder="Idioma"
+                  id="language"
+                  name="language"
+                  formControlName="language"
+                >
+                <label for="language" class="form__label">Idioma
+                  <span *ngIf="!languageCtrl.get('language').valid && languageCtrl.get('language').touched">
+                    : Favor introduzca un idioma
+                  </span>
+                </label>
+              </div>
+              <div class="form__group mt-0 form__language-knowledge">
+                <input
+                  [formControl]="publicationURL" 
+                  pattern="^[1-9]?[0-9]{1}$|^100$"
+                  type="number"
+                  class="form__input"
+                  placeholder="Porcentaje de Conocimiento"
+                  id="knowledge"
+                  name="knowledge"
+                  formControlName="knowledge"
+                >
+                <label for="knowledge" class="form__label">Porcentaje de Conocimiento
+                  <span *ngIf="!languageCtrl.get('knowledge').valid && languageCtrl.get('knowledge').touched">
+                    : Favor introduzca su porcentaje de conocimiento en el idioma
+                  </span>
+                </label>
+              </div>
+
+              <div class="form__language-button">
+                <button
+                  type="button"
+                  class="button button--error button--square"
+                  (click)="onDeleteLanguage(i)"
+                >X</button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="button button--primary"
+              (click)="onAddLanguage()"
+            >Añadir idioma</button>
           </div>
         </div>
       </div>
@@ -657,6 +715,8 @@
               </div>
               <div class="form__group form__group--big form__certification-url">
                 <input
+                  [formControl]="certificationURL" 
+                  pattern="(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)"
                   type="url"
                   class="form__input"
                   placeholder="URL"
@@ -666,7 +726,7 @@
                 >
                 <label for="certificationURL" class="form__label">URL
                   <span *ngIf="!certsCtrl.get('certificationURL').valid && certsCtrl.get('certificationURL').touched">
-                    : Favor introduzca el URL donde se encuentra la certificación
+                    : Favor introduzca un URL válido donde se encuentra la certificación
                   </span>
                 </label>
               </div>
@@ -774,6 +834,8 @@
               </div>
               <div class="form__group form__group--big form__certification-url">
                 <input
+                  [formControl]="publicationURL" 
+                  pattern="(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)"
                   type="url"
                   class="form__input"
                   placeholder="URL"
@@ -783,7 +845,7 @@
                 >
                 <label for="publicationURL" class="form__label">URL
                   <span *ngIf="!pubsCtrl.get('publicationURL').valid && pubsCtrl.get('publicationURL').touched">
-                    : Favor introduzca el URL donde se encuentra la publicación
+                    : Favor introduzca un URL válido donde se encuentra la publicación
                   </span>
                 </label>
               </div>

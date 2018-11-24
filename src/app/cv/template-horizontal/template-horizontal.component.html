@@ -199,6 +199,27 @@
 
   </div> <!-- End skills -->
 
+
+<div class="row skill" >
+
+  <div class="three columns header-col">
+    <h1><span class="section__label">Idiomas</span></h1>
+  </div>
+
+  <div class="nine columns main-col">
+
+    <div class="bars">
+
+      <ul class="languages" *ngFor="let language of cv.languages">
+        <li><span class="bar-expand" [style.width.%]="language.knowledge"></span><em>{{ languages.language }}</em></li>
+      </ul>
+
+    </div><!-- end skill-bars -->
+
+  </div> <!-- main-col end -->
+
+</div> <!-- End skills -->
+
 </section> <!-- Skills Section End-->
 
 <!-- Publications Section
