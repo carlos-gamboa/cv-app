@@ -100,7 +100,7 @@
                   : Favor introduzca la introducción a su perfil
                 </span>
               </label>
-            </div>            
+            </div>
           </div>
           <div class="form__section form__section--full form__section--details">
             <div class="form__group">
@@ -188,8 +188,6 @@
                 </span>
               </label>
             </div>
-          </div>
-          <div class="cv__main-edit-content">
             <div class="form__group form__group--big form__functional-year">
               <input
                 type="url"
@@ -201,8 +199,8 @@
               >
               <label for="websiteURL" class="form__label">URL
                 <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
-                  : Favor introduzca su URL personal
-                </span>
+                : Favor introduzca su URL personal
+              </span>
               </label>
             </div>
           </div>
@@ -498,7 +496,7 @@
         </div>
       </div>
 
-    
+
       <!-- Intereses -->
       <div class="cv__section-banner">
         <h2 class="cv__banner-text">Intereses</h2>
@@ -518,11 +516,11 @@
         <div class="cv__main-edit">
           <div class="cv__main-edit-content" formArrayName="interestsData">
             <div
-              class="form__skill-group"
+              class="form__interest-group"
               *ngFor="let interestCtrl of getInterestControls(); let i = index"
               [formGroupName]="i"
             >
-            <div class="form__group mt-0 form__interest-name">
+            <div class="form__group mt-0 form__interest-name form__group--max">
               <input
                 type="text"
                 class="form__input"
@@ -536,8 +534,8 @@
                   : Favor introduzca su interés
                 </span>
               </label>
-            </div>            
-              <div class="form__group mt-0 form__skill-name">
+            </div>
+              <div class="form__group mt-0 form__interest-desc form__group--max">
                 <textarea
                   rows="5"
                   type="text"
@@ -553,7 +551,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__skill-button">
+              <div class="form__interest-button">
                 <button
                   type="button"
                   class="button button--error button--square"
@@ -568,7 +566,7 @@
             >Añadir intereses</button>
           </div>
         </div>
-      </div>      
+      </div>
 
 
       <!-- Certificaciones -->
@@ -590,11 +588,11 @@
         <div class="cv__main-edit">
           <div class="cv__main-edit-content" formArrayName="certificationsData">
             <div
-              class="form__functional-group"
+              class="form__certifications-group"
               *ngFor="let certsCtrl of getCertificationsControls(); let i = index"
               [formGroupName]="i"
             >
-              <div class="form__group mt-0 form__functional-name">
+              <div class="form__group mt-0 form__certification-name">
                 <input
                   type="text"
                   class="form__input"
@@ -609,7 +607,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__functional-title">
+              <div class="form__group form__certification-date">
                 <input
                   type="date"
                   class="form__input"
@@ -624,7 +622,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group mt-0 form__functional-school">
+              <div class="form__group mt-0 form__certification-school">
                 <input
                   type="text"
                   class="form__input"
@@ -638,8 +636,8 @@
                     : Favor introduzca la institución donde recibió la certificación
                   </span>
                 </label>
-              </div>              
-              <div class="form__group form__functional-city">
+              </div>
+              <div class="form__group form__group--big form__certification-desc">
                 <textarea
                   rows="5"
                   type="text"
@@ -655,7 +653,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__functional-year">
+              <div class="form__group form__group--big form__certification-url">
                 <input
                   type="url"
                   class="form__input"
@@ -685,7 +683,7 @@
             >Añadir certificación</button>
           </div>
         </div>
-      </div>      
+      </div>
 
 
       <!-- Publicaciones -->
@@ -711,7 +709,7 @@
               *ngFor="let pubsCtrl of getPublicationsControls(); let i = index"
               [formGroupName]="i"
             >
-              <div class="form__group mt-0 form__functional-name">
+              <div class="form__group mt-0 form__certification-name">
                 <input
                   type="text"
                   class="form__input"
@@ -726,7 +724,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__functional-title">
+              <div class="form__group form__certification-date">
                 <input
                   type="date"
                   class="form__input"
@@ -741,7 +739,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group mt-0 form__functional-sitio">
+              <div class="form__group mt-0 form__certification-school">
                 <input
                   type="text"
                   class="form__input"
@@ -755,8 +753,8 @@
                     : Favor introduzca el sitio o la editorial donde hizo su publicación
                   </span>
                 </label>
-              </div>              
-              <div class="form__group form__functional-city">
+              </div>
+              <div class="form__group form__group--big form__certification-desc">
                 <textarea
                   rows="5"
                   type="text"
@@ -772,7 +770,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__functional-year">
+              <div class="form__group form__group--big form__certification-url">
                 <input
                   type="url"
                   class="form__input"
@@ -802,7 +800,7 @@
             >Añadir publicación</button>
           </div>
         </div>
-      </div>      
+      </div>
 
 
 
