@@ -67,37 +67,37 @@ export class TemplateHorizontalComponent implements OnInit {
   doSomething(event) {
     if (
       (this.elements['contact']) &&
-      (window.scrollY > (this.elements['contact'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['contact'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'contact';
     } else if (
       (this.elements['interests']) &&
-      (window.scrollY > (this.elements['interests'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['interests'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'interests';
     } else if (
       (this.elements['publications']) &&
-      (window.scrollY > (this.elements['publications'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['publications'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'publications';
     } else if (
       (this.elements['skills']) &&
-      (window.scrollY > (this.elements['skills'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['skills'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'skills';
     } else if (
       (this.elements['certifications']) &&
-      (window.scrollY > (this.elements['certifications'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['certifications'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'certifications';
     } else if (
       (this.elements['resume']) &&
-      (window.scrollY > (this.elements['resume'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['resume'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'resume';
     } else if (
       (this.elements['about']) &&
-      (window.scrollY > (this.elements['about'].nativeElement.getBoundingClientRect().top + window.scrollY))
+      (window.scrollY >= (this.elements['about'].nativeElement.getBoundingClientRect().top + window.scrollY))
     ) {
       this.currentSection = 'about';
     } else if (this.elements['home']) {
