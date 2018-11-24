@@ -14,11 +14,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   hideElement = false;
 
-  constructor(private cvService: CvService, private cdRef:ChangeDetectorRef) {
+  constructor(private cvService: CvService, private cdRef: ChangeDetectorRef) {
   }
 
-  ngAfterViewChecked()
-  {
+  ngAfterViewChecked() {
     this.cvService.changeEmittedHideHeader.subscribe(
       state => {
         this.hideElement = state;

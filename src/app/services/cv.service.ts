@@ -10,8 +10,6 @@ export class CvService {
   private emitChangeSource = new Subject<any>();
   public changeEmittedHideHeader = this.emitChangeSource.asObservable();
 
-
-
   constructor() {
     this._cvs = [];
   }
