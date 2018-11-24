@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import {environment} from '../environments/environment';
-import {NavigationEnd, Router} from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 import {CvService} from './services/cv.service';
 
 
@@ -14,11 +14,16 @@ export class AppComponent implements OnInit {
 
   hideElement = false;
 
-  constructor(private cvService: CvService) {
-    cvService.changeEmittedHideHeader.subscribe(
+  constructor(private cvService: CvService, private cdRef:ChangeDetectorRef) {
+  }
+
+  ngAfterViewChecked()
+  {
+    this.cvService.changeEmittedHideHeader.subscribe(
       state => {
         this.hideElement = state;
       });
+    this.cdRef.detectChanges();
   }
 
   ngOnInit() {

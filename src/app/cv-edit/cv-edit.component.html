@@ -188,6 +188,8 @@
                 </span>
               </label>
             </div>
+          </div>
+          <div class="cv__main-edit-content">
             <div class="form__group form__group--big form__functional-year">
               <input
                 type="url"
@@ -199,8 +201,8 @@
               >
               <label for="websiteURL" class="form__label">URL
                 <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
-                : Favor introduzca su URL personal
-              </span>
+                  : Favor introduzca su URL personal
+                </span>
               </label>
             </div>
           </div>
@@ -285,7 +287,7 @@
                   name="companyFinish"
                   formControlName="companyFinish"
                 >
-                <label for="companyFinish" class="form__label">Fecha de Finalización
+                <label for="companyFinish" class="form__label">Fecha de Finalización (vacío si sigue trabajando)
                   <span *ngIf="!chornoCtrl.get('companyFinish').valid && chornoCtrl.get('companyFinish').touched">
                     : Favor introduzca la fecha de finalización.
                   </span>
@@ -516,11 +518,11 @@
         <div class="cv__main-edit">
           <div class="cv__main-edit-content" formArrayName="interestsData">
             <div
-              class="form__interest-group"
+              class="form__skill-group"
               *ngFor="let interestCtrl of getInterestControls(); let i = index"
               [formGroupName]="i"
             >
-            <div class="form__group mt-0 form__interest-name form__group--max">
+            <div class="form__group mt-0 form__interest-name">
               <input
                 type="text"
                 class="form__input"
@@ -535,7 +537,7 @@
                 </span>
               </label>
             </div>
-              <div class="form__group mt-0 form__interest-desc form__group--max">
+              <div class="form__group mt-0 form__skill-name">
                 <textarea
                   rows="5"
                   type="text"
@@ -551,7 +553,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__interest-button">
+              <div class="form__skill-button">
                 <button
                   type="button"
                   class="button button--error button--square"
@@ -588,11 +590,11 @@
         <div class="cv__main-edit">
           <div class="cv__main-edit-content" formArrayName="certificationsData">
             <div
-              class="form__certifications-group"
+              class="form__functional-group"
               *ngFor="let certsCtrl of getCertificationsControls(); let i = index"
               [formGroupName]="i"
             >
-              <div class="form__group mt-0 form__certification-name">
+              <div class="form__group mt-0 form__functional-name">
                 <input
                   type="text"
                   class="form__input"
@@ -607,7 +609,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__certification-date">
+              <div class="form__group form__functional-title">
                 <input
                   type="date"
                   class="form__input"
@@ -622,7 +624,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group mt-0 form__certification-school">
+              <div class="form__group mt-0 form__functional-school">
                 <input
                   type="text"
                   class="form__input"
@@ -637,7 +639,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__certification-desc">
+              <div class="form__group form__functional-city">
                 <textarea
                   rows="5"
                   type="text"
@@ -653,7 +655,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__certification-url">
+              <div class="form__group form__group--big form__functional-year">
                 <input
                   type="url"
                   class="form__input"
@@ -709,7 +711,7 @@
               *ngFor="let pubsCtrl of getPublicationsControls(); let i = index"
               [formGroupName]="i"
             >
-              <div class="form__group mt-0 form__certification-name">
+              <div class="form__group mt-0 form__functional-name">
                 <input
                   type="text"
                   class="form__input"
@@ -724,7 +726,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__certification-date">
+              <div class="form__group form__functional-title">
                 <input
                   type="date"
                   class="form__input"
@@ -739,7 +741,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group mt-0 form__certification-school">
+              <div class="form__group mt-0 form__functional-sitio">
                 <input
                   type="text"
                   class="form__input"
@@ -754,7 +756,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__certification-desc">
+              <div class="form__group form__functional-city">
                 <textarea
                   rows="5"
                   type="text"
@@ -770,7 +772,7 @@
                   </span>
                 </label>
               </div>
-              <div class="form__group form__group--big form__certification-url">
+              <div class="form__group form__group--big form__functional-year">
                 <input
                   type="url"
                   class="form__input"

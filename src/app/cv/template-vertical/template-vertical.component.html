@@ -141,7 +141,11 @@
                       </div>
 
                       <div class="timeline-label">
-                        <h2><span class="work__name">{{ work.companyRole}} en {{ work.companyName }}</span> <span>{{ work.companyStart | date:'d MMM, y' }} - {{ work.companyFinish | date:'d MMM, y' }}</span></h2>
+                        <h2>
+                          <span class="work__name">{{ work.companyRole}} en {{ work.companyName }}</span>
+                          <span *ngIf="work.companyFinish">{{ work.companyStart | date:'d MMM, y' }} - {{ work.companyFinish | date:'d MMM, y' }}</span>
+                          <span *ngIf="!work.companyFinish"> {{ work.companyStart | date:'d MMM, y' }} - Actualidad </span>
+                        </h2>
                         <p>{{ work.companyFunction }}</p>
                       </div>
                     </div>
@@ -270,7 +274,7 @@
                 </div>
               </div>
 
-              <div class="colorlib-feature colorlib-feature-sm">
+              <div *ngIf="cv.address" class="colorlib-feature colorlib-feature-sm">
                 <div class="colorlib-icon">
                   <i class="icon-map"></i>
                 </div>

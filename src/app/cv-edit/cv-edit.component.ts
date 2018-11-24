@@ -88,7 +88,7 @@ export class CvEditComponent implements OnInit {
         'companyName': new FormControl(null, Validators.required),
         'companyRole': new FormControl(null, [Validators.required]),
         'companyStart': new FormControl(null, [Validators.required]),
-        'companyFinish': new FormControl(null, [Validators.required]),
+        'companyFinish': new FormControl(null),
         'companyFunction': new FormControl(null, [Validators.required])
       })
     );
@@ -236,11 +236,9 @@ export class CvEditComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
       ]),
-      'phone2': new FormControl(null, [
-        Validators.required,
-        Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
-      ]),
-      'address': new FormControl(null, Validators.required),
+      'phone2': new FormControl(null, Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+      ),
+      'address': new FormControl(null),
       'personalProfile': new FormControl(null, Validators.required),
       'websiteURL': new FormControl(null, Validators.required),
       //switchs

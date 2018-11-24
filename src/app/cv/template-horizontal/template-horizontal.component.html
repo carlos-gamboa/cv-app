@@ -68,7 +68,7 @@
           <h2>Información de contacto</h2>
           <p class="address">
             <span> {{ cv.name }} </span><br>
-            <span> {{cv.address}} </span><br>
+            <span *ngIf="cv.address"> {{cv.address}} </span><br>
             <span> {{ cv.phone1 }} </span><br>
             <span *ngIf="cv.phone2"> {{ cv.phone2 }} </span><br>
             <span> {{cv.websiteURL}} </span>
@@ -130,8 +130,8 @@
         <div class="twelve columns">
 
           <h3> {{work.companyName}} </h3>
-          <p class="info">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
-
+          <p class="info" *ngIf="work.companyFinish">{{work.companyRole}} <span>&bull;</span> <em class="date">{{work.companyStart | date:'d MMM, y'}} - {{work.companyFinish | date:'d MMM, y'}}</em></p>
+          <p class="info" *ngIf="!work.companyFinish">{{work.companyRole}} <span>&bull;</span> <em class="date" >{{work.companyStart | date:'d MMM, y'}} - Actualidad</em></p>
           <p>{{work.companyFunction}}</p>
 
         </div>
