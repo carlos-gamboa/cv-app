@@ -40,9 +40,9 @@ export class CvEditComponent implements OnInit {
   ];
 
   themesHorizontal: Theme[] = [
-    {value: 'original1' , viewValue: 'Original1'},
-    {value: 'dark1' , viewValue: 'Dark1'},
-    {value: 'light1' , viewValue: 'Light1'}
+    {value: 'desert' , viewValue: 'Desierto'},
+    {value: 'forest' , viewValue: 'Bosque'},
+    {value: 'ocean' , viewValue: 'Océano'}
   ];
 
   themesVertical: Theme[] = [
