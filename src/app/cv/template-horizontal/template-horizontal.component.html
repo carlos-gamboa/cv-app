@@ -70,6 +70,7 @@
             <span> {{ cv.name }} </span><br>
             <span> {{cv.address}} </span><br>
             <span> {{ cv.phone1 }} </span><br>
+            <span *ngIf="cv.phone2"> {{ cv.phone2 }} </span><br>
             <span> {{cv.websiteURL}} </span>
           </p>
 
