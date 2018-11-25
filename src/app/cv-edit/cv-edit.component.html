@@ -5,8 +5,8 @@
         <div class="cv__banner-select">
           <label for="template" class="cv__top-banner-text">Plantilla: </label>
           <select
-            (input)="selectedTheme = null"
             [(ngModel)]="selectedTemplate"
+            (input)="changeSelect($event)"
             class="form__input"
             placeholder="Plantilla"
             id="template"

@@ -33,7 +33,7 @@ export class CvEditComponent implements OnInit {
   selectFileSrc = '../../../assets/img/profile_default.png';
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
-  selectedTheme = null;
+  selectedTheme = 'blue';
 
   templates: Template[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
@@ -41,15 +41,15 @@ export class CvEditComponent implements OnInit {
   ];
 
   themesHorizontal: Theme[] = [
-    {value: 'original1' , viewValue: 'Original1'},
-    {value: 'dark1' , viewValue: 'Dark1'},
-    {value: 'light1' , viewValue: 'Light1'}
+    {value: 'desert' , viewValue: 'Desierto'},
+    {value: 'forest' , viewValue: 'Bosque'},
+    {value: 'ocean' , viewValue: 'Océano'}
   ];
 
   themesVertical: Theme[] = [
-    {value: 'original2' , viewValue: 'Original2'},
-    {value: 'dark2' , viewValue: 'Dark2'},
-    {value: 'light2' , viewValue: 'Light2'}
+    {value: 'blue' , viewValue: 'Azul'},
+    {value: 'green' , viewValue: 'Verde'},
+    {value: 'orange' , viewValue: 'Naranja'}
   ];
 
 
@@ -277,13 +277,22 @@ export class CvEditComponent implements OnInit {
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'template': new FormControl('horizontal', Validators.required),
+      'template': new FormControl(this.selectedTemplate, Validators.required),
       'theme':  new FormControl(this.selectedTheme, Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
       'languages': languages
     });
+  }
+
+  changeSelect(e) {
+    console.log(e);
+    if (this.selectedTemplate === 'vertical') {
+      this.selectedTheme = 'desert';
+    } else {
+      this.selectedTheme = 'blue';
+    }
   }
   print() {
     console.log(this.cvForm.value);
