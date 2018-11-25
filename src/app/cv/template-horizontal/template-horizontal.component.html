@@ -11,7 +11,7 @@
       <li [ngClass]="{current: (currentSection === 'about')}"><a [routerLink]="['/', 'cv', id]" fragment="about">Acerca</a></li>
       <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{current: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Currículum</a></li>
       <li *ngIf="cv.certificationsActive" [ngClass]="{current: (currentSection === 'certifications')}"><a [routerLink]="['/', 'cv', id]" fragment="certifications">Certificaciones</a></li>
-      <li *ngIf="cv.skillsActive" [ngClass]="{current: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
+      <li *ngIf="cv.skillsActive || cv.languagesActive" [ngClass]="{current: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
       <li *ngIf="cv.publicationsActive" [ngClass]="{current: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
       <li *ngIf="cv.interestsActive" [ngClass]="{current: (currentSection === 'interests')}"><a [routerLink]="['/', 'cv', id]" fragment="interests">Intereses</a></li>
       <li *ngIf="cv.contactActive" [ngClass]="{current: (currentSection === 'contact')}"><a [routerLink]="['/', 'cv', id]" fragment="contact">Contacto</a></li>
@@ -177,10 +177,10 @@
 
 </section>
 
-<section class="resume" *ngIf="cv.skillsActive" #skills>
+<section class="resume" *ngIf="cv.skillsActive || cv.languagesActive" #skills>
   <!-- Skills
   ----------------------------------------------- -->
-  <div class="row skill" >
+  <div class="row skill" *ngIf="cv.skillsActive">
 
     <div class="three columns header-col">
       <h1><span class="section__label">Habilidades</span></h1>
@@ -201,25 +201,25 @@
   </div> <!-- End skills -->
 
 
-<div class="row skill" >
+  <div class="row skill" *ngIf="cv.languagesActive">
 
-  <div class="three columns header-col">
-    <h1><span class="section__label">Idiomas</span></h1>
-  </div>
+    <div class="three columns header-col">
+      <h1><span class="section__label">Idiomas</span></h1>
+    </div>
 
-  <div class="nine columns main-col">
+    <div class="nine columns main-col">
 
-    <div class="bars">
+      <div class="bars">
 
-      <ul class="languages" *ngFor="let language of cv.languages">
-        <li><span class="bar-expand" [style.width.%]="language.knowledge"></span><em>{{ languages.language }}</em></li>
-      </ul>
+        <ul class="languages" *ngFor="let language of cv.languages">
+          <li><span class="bar-expand" [style.width.%]="language.languageKnowledge"></span><em>{{ language.language }}</em></li>
+        </ul>
 
-    </div><!-- end skill-bars -->
+      </div><!-- end skill-bars -->
 
-  </div> <!-- main-col end -->
+    </div> <!-- main-col end -->
 
-</div> <!-- End skills -->
+  </div> <!-- End skills -->
 
 </section> <!-- Skills Section End-->
 

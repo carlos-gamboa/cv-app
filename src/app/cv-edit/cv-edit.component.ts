@@ -82,7 +82,7 @@ export class CvEditComponent implements OnInit {
     this.changesSaved = true;
   }
 
-  //Seccion Experiencia
+  // Seccion Experiencia
   onAddChronologic() {
     (<FormArray>this.cvForm.get('chronologicData')).push(
       new FormGroup({
@@ -103,7 +103,7 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('chronologicData')).controls;
   }
 
-  //Seccion Educacion
+  // Seccion Educacion
   onAddFunctional() {
     (<FormArray>this.cvForm.get('functionalData')).push(
       new FormGroup({
@@ -123,12 +123,15 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('functionalData')).controls;
   }
 
-  //Seccion Habilidades
+  // Seccion Habilidades
   onAddSkill() {
     (<FormArray>this.cvForm.get('skills')).push(
       new FormGroup({
         'skillName': new FormControl(null, Validators.required),
-        'knowledge': new FormControl(null, Validators.required)
+        'knowledge': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
+        ])
       })
     );
   }
@@ -141,12 +144,15 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('skills')).controls;
   }
 
-  //Seccion Idiomas
+  // Seccion Idiomas
   onAddLanguage() {
     (<FormArray>this.cvForm.get('languages')).push(
       new FormGroup({
-        'language': new FormControl(null, Validators.required),
-        'knowledge': new FormControl(null, Validators.required)
+        'language': new FormControl(null, [Validators.required]),
+        'languageKnowledge': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
+        ])
       })
     );
   }
@@ -159,14 +165,17 @@ export class CvEditComponent implements OnInit {
     return (<FormArray>this.cvForm.get('languages')).controls;
   }
 
-  //Seccion Certificaciones
+  // Seccion Certificaciones
   onAddCertification() {
     (<FormArray>this.cvForm.get('certificationsData')).push(
       new FormGroup({
         'certificationName': new FormControl(null, Validators.required),
         'certificationDate': new FormControl(null, [Validators.required]),
         'certificationDescription': new FormControl(null, [Validators.required]),
-        'certificationURL': new FormControl(null, [Validators.required]),
+        'certificationURL': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+        ]),
         'certificationSchool': new FormControl(null, Validators.required)
       })
     );
@@ -181,14 +190,17 @@ export class CvEditComponent implements OnInit {
   }
 
 
-  //Seccion Publicaciones
+  // Seccion Publicaciones
   onAddPublication() {
     (<FormArray>this.cvForm.get('publicationsData')).push(
       new FormGroup({
         'publicationName': new FormControl(null, Validators.required),
         'publicationDate': new FormControl(null, [Validators.required]),
         'publicationDescription': new FormControl(null, [Validators.required]),
-        'publicationURL': new FormControl(null, [Validators.required]),
+        'publicationURL': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+        ]),
         'publicationSite': new FormControl(null, Validators.required)
       })
     );
@@ -203,7 +215,7 @@ export class CvEditComponent implements OnInit {
   }
 
 
-  //Seccion Intereses
+  // Seccion Intereses
   onAddInterest() {
     (<FormArray>this.cvForm.get('interestsData')).push(
       new FormGroup({
@@ -222,7 +234,7 @@ export class CvEditComponent implements OnInit {
   }
 
 
-  //Seccion Contacto
+  // Seccion Contacto
 
   onFileSelect(event) {
     if (event.target.files && event.target.files[0] && event.target.files.length > 0) {
@@ -261,10 +273,10 @@ export class CvEditComponent implements OnInit {
       'address': new FormControl(null),
       'personalProfile': new FormControl(null, Validators.required),
       'websiteURL': new FormControl(null, [
-        Validators.required, 
-        Validators.pattern(/^(\w)+[.](\w)+$/)
+        Validators.required,
+        Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
       ]),
-      //switchs
+      // switchs
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
       'skillsActive': new FormControl(false),
@@ -273,7 +285,7 @@ export class CvEditComponent implements OnInit {
       'publicationsActive': new FormControl(false),
       'interestsActive': new FormControl(false),
       'contactActive': new FormControl(false),
-      //datos
+      // datos
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,

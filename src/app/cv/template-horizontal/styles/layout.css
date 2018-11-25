@@ -401,6 +401,10 @@ ul#nav li a:active { background-color: transparent !important; }
 /*	Skill Bars
 /*----------------------------------------------*/
 
+.skill:not(:first-child) {
+  margin-top: 7rem;
+}
+
 .bars {
 	width: 95%;
 	float: left;
