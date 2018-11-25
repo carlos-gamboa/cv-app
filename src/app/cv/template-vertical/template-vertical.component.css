@@ -21,16 +21,35 @@ body {
   body {
     font-size: 16px; } }
 
-a {
+.blue a {
   color: #2c98f0;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
-a:hover, a:active, a:focus {
+.blue a:hover, a:active, a:focus {
   color: #2c98f0;
   outline: none;
   text-decoration: none !important; }
 
+.orange a {
+  color: #ec5453;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s; }
+.orange a:hover, a:active, a:focus {
+  color: #ec5453haré push y merge;
+  outline: none;
+  text-decoration: none !important; }
+
+.green a {
+  color: #2fa499;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s; }
+.green a:hover, a:active, a:focus {
+  color: #2fa499;
+  outline: none;
+  text-decoration: none !important; }
 p {
   margin-bottom: 1.5em; }
 
