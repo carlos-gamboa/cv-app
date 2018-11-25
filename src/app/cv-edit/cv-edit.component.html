@@ -497,63 +497,81 @@
               (click)="onAddSkill()"
             >Añadir habilidad</button>
           </div>
-        </div>
-        <!-- Idiomas -->
-        <div class="cv__main-edit">
-          <div class="cv__main-edit-content" formArrayName="languages">
-            <div
-              class="form__language-group"
-              *ngFor="let languageCtrl of getLanguageControls(); let i = index"
-              [formGroupName]="i"
-            >
-              <div class="form__group mt-0 form__language-name">
-                <input
-                  type="text"
-                  class="form__input"
-                  placeholder="Idioma"
-                  id="language"
-                  name="language"
-                  formControlName="language"
-                >
-                <label for="language" class="form__label">Idioma
-                  <span *ngIf="!languageCtrl.get('language').valid && languageCtrl.get('language').touched">
-                    : Favor introduzca un idioma
-                  </span>
-                </label>
-              </div>
-              <div class="form__group mt-0 form__language-knowledge">
-                <input
-                  [formControl]="publicationURL" 
-                  pattern="^[1-9]?[0-9]{1}$|^100$"
-                  type="number"
-                  class="form__input"
-                  placeholder="Porcentaje de Conocimiento"
-                  id="knowledge"
-                  name="knowledge"
-                  formControlName="knowledge"
-                >
-                <label for="knowledge" class="form__label">Porcentaje de Conocimiento
-                  <span *ngIf="!languageCtrl.get('knowledge').valid && languageCtrl.get('knowledge').touched">
-                    : Favor introduzca su porcentaje de conocimiento en el idioma
-                  </span>
-                </label>
-              </div>
+        </div>      
+      </div>
 
-              <div class="form__language-button">
-                <button
-                  type="button"
-                  class="button button--error button--square"
-                  (click)="onDeleteLanguage(i)"
-                >X</button>
-              </div>
+      <!-- Idiomas -->  
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Idiomas</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="languages"
+            formControlName="languagesActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('languagesActive').value"
+      >
+      <div class="cv__main-edit">
+        <div class="cv__main-edit-content" formArrayName="languages">
+          <div
+            class="form__language-group"
+            *ngFor="let languageCtrl of getLanguageControls(); let i = index"
+            [formGroupName]="i"
+          >
+            <div class="form__group mt-0 form__language-name">
+              <input
+                type="text"
+                class="form__input"
+                placeholder="Idioma"
+                id="language"
+                name="language"
+                formControlName="language"
+              >
+              <label for="language" class="form__label">Idioma
+                <span *ngIf="!languageCtrl.get('language').valid && languageCtrl.get('language').touched">
+                  : Favor introduzca un idioma
+                </span>
+              </label>
             </div>
-            <button
-              type="button"
-              class="button button--primary"
-              (click)="onAddLanguage()"
-            >Añadir idioma</button>
+            <div class="form__group mt-0 form__language-knowledge">
+              <input
+                [formControl]="publicationURL" 
+                pattern="^[1-9]?[0-9]{1}$|^100$"
+                type="number"
+                class="form__input"
+                placeholder="Porcentaje de Conocimiento"
+                id="knowledge"
+                name="knowledge"
+                formControlName="knowledge"
+              >
+              <label for="knowledge" class="form__label">Porcentaje de Conocimiento
+                <span *ngIf="!languageCtrl.get('knowledge').valid && languageCtrl.get('knowledge').touched">
+                  : Favor introduzca su porcentaje de conocimiento en el idioma
+                </span>
+              </label>
+            </div>
+
+            <div class="form__language-button">
+              <button
+                type="button"
+                class="button button--error button--square"
+                (click)="onDeleteLanguage(i)"
+              >X</button>
+            </div>
           </div>
+          <button
+            type="button"
+            class="button button--primary"
+            (click)="onAddLanguage()"
+          >Añadir idioma</button>
         </div>
+      </div>
+
       </div>
 
 

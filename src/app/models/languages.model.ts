@@ -6,9 +6,9 @@ export class LanguagesModel {
     knowledge: number;
     Form: FormGroup;
   
-    constructor(skill: any) {
-      this.language = skill.skillName;
-      this.knowledge = skill.knowledge;
+    constructor(languages: any) {
+      this.language = languages.language;
+      this.knowledge = languages.knowledge;
     }
 
     private initForm(){

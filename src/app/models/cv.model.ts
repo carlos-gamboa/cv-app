@@ -4,6 +4,7 @@ import {SkillsModel} from './skills.model';
 import { CertificationsModel } from "./certifications.model";
 import { PublicationsModel } from "./publications.model";
 import { InterestsModel } from "./interests.model";
+import { LanguagesModel } from "./languages.model";
 
 export class Cv {
   name: string;
@@ -18,6 +19,7 @@ export class Cv {
   chronologicActive: boolean;
   functionalActive: boolean;
   skillsActive: boolean;
+  languagesActive: boolean;
   certificationsActive: boolean;
   publicationsActive: boolean;
   interestsActive: boolean;
@@ -28,6 +30,7 @@ export class Cv {
   publicationsData: PublicationsModel[];
   interestsData: InterestsModel[];
   skills: SkillsModel[];
+  languages: LanguagesModel[];
   template: string;
   theme: string;
 
@@ -46,6 +49,7 @@ export class Cv {
     this.chronologicActive = cv.chronologicActive;
     this.functionalActive = cv.functionalActive;
     this.skillsActive = cv.skillsActive;
+    this.languagesActive = cv.languagesActive;
     this.certificationsActive = cv.certificationsActive;
     this.interestsActive = cv.interestsActive;
     this.contactActive = cv.contactActive;
@@ -53,6 +57,7 @@ export class Cv {
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
+    this.languages = cv.languages;
     this.template = cv.template;
     this.theme = cv.theme;
     this.certificationsData = cv.certificationsData;

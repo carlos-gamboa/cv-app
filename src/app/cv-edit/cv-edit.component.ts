@@ -24,6 +24,7 @@ export class CvEditComponent implements OnInit {
   chronologicActive = true;
   functionalActive = true;
   skillsActive = true;
+  languagesActive = true;
   certificationsActive = true;
   publicationsActive = true;
   interestsActive = true;
@@ -267,6 +268,7 @@ export class CvEditComponent implements OnInit {
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
       'skillsActive': new FormControl(false),
+      'languagesActive': new FormControl(false),
       'certificationsActive': new FormControl(false),
       'publicationsActive': new FormControl(false),
       'interestsActive': new FormControl(false),
