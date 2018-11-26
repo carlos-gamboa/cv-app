@@ -1073,3 +1073,18 @@ section
   display: inline-block;
   margin-top: 47px;
 }
+
+.landing-carousel-item{
+  width: 100px;
+  height: 100px;
+}
+
+.carousel-size {
+  min-width: 100vw;
+  padding: 10rem 15rem;
+}
+
+.carousel-center-items{
+  display: flex;
+  justify-content: space-around;
+}

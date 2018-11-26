@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { CvComponent } from './cv/cv.component';
@@ -52,7 +52,8 @@ import { TemplateVerticalComponent } from './cv/template-vertical/template-verti
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbCarouselModule
   ],
   providers: [
     CvService,
