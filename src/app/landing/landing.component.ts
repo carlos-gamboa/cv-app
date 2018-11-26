@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -6,14 +6,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
   images = [
-    '../../assets/img/horizontal_desert.png',
-    '../../assets/img/horizontal_forest.png',
-    '../../assets/img/horizontal_ocean.png',
-    '../../assets/img/Vertical_blue.png'
+    '../../assets/img/horizontal1.PNG',
+    '../../assets/img/horizontal2.PNG',
+    '../../assets/img/vertical1.PNG',
+    '../../assets/img/vertical2.PNG'
   ];
+  @ViewChild('carousel') carouselRef: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onReadMore () {
+    this.carouselRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+  }
 }

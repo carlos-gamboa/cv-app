@@ -676,7 +676,6 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  display: block;
   text-decoration: none;
 }
 
@@ -989,6 +988,29 @@ a:active {
   color: #8a6d3b;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  cursor: pointer;
+}
+
+.carousel-control-prev-icon{
+  background-image: url('./assets/img/arrow-prev.png');
+}
+.carousel-control-next-icon{
+  background-image: url('./assets/img/arrow-next.png');
+}
+
+.carousel-indicators .active {
+  background-color: #ccc;
+}
+
+.carousel-indicators li {
+  background-color: #888;
+}
+
+.carousel:focus {
+  outline: none;
+}
 
 /* --------------------------------------------- */
 /* BIG TABLETS TO SMALL COMPUTERS (1024 TO 1200px) */
