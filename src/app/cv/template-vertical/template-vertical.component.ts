@@ -15,6 +15,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class TemplateVerticalComponent implements OnInit {
   elements: any[] = [];
   currentSection: string;
+  currentFragment: string;
   id: string;
 
   @Input() cv: Cv;
@@ -52,10 +53,12 @@ export class TemplateVerticalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentFragment = '';
     this.currentSection = 'home';
     this.route.fragment.subscribe(
       (fragment: string) => {
         if (fragment) {
+          this.currentFragment = fragment;
           this.scrollTo(fragment);
         }
       });
@@ -64,6 +67,26 @@ export class TemplateVerticalComponent implements OnInit {
         this.id = params['id'];
       }
     );
+  }
+
+  convertURL (url: string) {
+    if (url) {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+      } else {
+        return '//' + url;
+      }
+    } else {
+      return url;
+    }
+  }
+
+  onNavigateTo (fragment: string) {
+    if (this.currentFragment === fragment) {
+      this.scrollTo(fragment);
+    } else {
+      this.router.navigate(['/', 'cv', this.id], {fragment: fragment});
+    }
   }
 
   @HostListener('window:scroll', ['$event'])

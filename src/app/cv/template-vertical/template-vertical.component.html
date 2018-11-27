@@ -6,19 +6,19 @@
       <div class="text-center">
         <div class="author-img" style="background-image: url(../../../assets/img/profile_default.png);"></div>
         <h1 id="colorlib-logo"><a >{{ cv.name }}</a></h1>
-        <span class="position"><a [href]="cv.websiteURL">Visita mi Sitio Web</a></span>
+        <span class="position" *ngIf="cv.websiteURL"><a [href]="convertURL(cv.websiteURL)">Visita mi Sitio Web</a></span>
       </div>
       <nav id="colorlib-main-menu" role="navigation" class="navbar">
         <div id="navbar" class="collapse">
           <ul>
-            <li [ngClass]="{active: (currentSection === 'home')}"><a [routerLink]="['/', 'cv', id]" fragment="home">Inicio</a></li>
-            <li [ngClass]="{active: (currentSection === 'about')}"><a [routerLink]="['/', 'cv', id]" fragment="about">Acerca</a></li>
-            <li *ngIf="cv.skillsActive || cv.languagesActive" [ngClass]="{active: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
-            <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{active: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Curriculum</a></li>
-            <li *ngIf="cv.certificationsActive" [ngClass]="{active: (currentSection === 'certifications')}"><a [routerLink]="['/', 'cv', id]" fragment="certifications">Certificaciones</a></li>
-            <li *ngIf="cv.publicationsActive" [ngClass]="{active: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
-            <li *ngIf="cv.interestsActive" [ngClass]="{active: (currentSection === 'interests')}"><a [routerLink]="['/', 'cv', id]" fragment="interests">Intereses</a></li>
-            <li *ngIf="cv.contactActive" [ngClass]="{active: (currentSection === 'contact')}"><a [routerLink]="['/', 'cv', id]" fragment="contact">Contacto</a></li>
+            <li [ngClass]="{active: (currentSection === 'home')}"><a (click)="onNavigateTo('home')">Inicio</a></li>
+            <li [ngClass]="{active: (currentSection === 'about')}"><a (click)="onNavigateTo('about')">Acerca</a></li>
+            <li *ngIf="cv.skillsActive || cv.languagesActive" [ngClass]="{active: (currentSection === 'skills')}"><a (click)="onNavigateTo('skills')">Habilidades</a></li>
+            <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{active: (currentSection === 'resume')}"><a (click)="onNavigateTo('resume')">Curriculum</a></li>
+            <li *ngIf="cv.certificationsActive" [ngClass]="{active: (currentSection === 'certifications')}"><a (click)="onNavigateTo('certifications')">Certificaciones</a></li>
+            <li *ngIf="cv.publicationsActive" [ngClass]="{active: (currentSection === 'publications')}"><a (click)="onNavigateTo('publications')">Publicaciones</a></li>
+            <li *ngIf="cv.interestsActive" [ngClass]="{active: (currentSection === 'interests')}"><a (click)="onNavigateTo('interests')">Intereses</a></li>
+            <li *ngIf="cv.contactActive" [ngClass]="{active: (currentSection === 'contact')}"><a (click)="onNavigateTo('contact')">Contacto</a></li>
           </ul>
         </div>
       </nav>
@@ -200,7 +200,7 @@
                   <div class="panel panel-default" style="margin-bottom: 30px" *ngFor="let cert of cv.certificationsData">
                     <div class="panel-heading section__header" role="tab">
                       <h4 class="panel-title">
-                        <a class="no-anchor" target="_blank" rel="noopener noreferrer" [href]="cert.certificationURL">{{ cert.certificationName }}</a>
+                        <a class="no-anchor" target="_blank" rel="noopener noreferrer" [href]="convertURL(cert.certificationURL)">{{ cert.certificationName }}</a>
                       </h4>
                       <p class="section__sub">{{ cert.certificationSchool }} <span>&bull;</span> <em class="date"> {{ cert.certificationDate | date:'d MMM, y' }} </em></p>
                     </div>
@@ -234,7 +234,7 @@
               <div class="blog-entry">
                 <div class="desc">
                   <span><small>{{ publication.publicationDate | date:'d MMM, y' }} </small> | <small> {{ publication.publicationSite }} </small> </span>
-                  <h3><a target="_blank" rel="noopener noreferrer" [href]="publication.publicationURL">{{publication.publicationName}}</a></h3>
+                  <h3><a target="_blank" rel="noopener noreferrer" [href]="convertURL(publication.publicationURL)">{{publication.publicationName}}</a></h3>
                   <p>{{ publication.publicationDescription }}</p>
                 </div>
               </div>
