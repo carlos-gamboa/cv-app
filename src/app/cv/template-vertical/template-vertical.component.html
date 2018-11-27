@@ -13,7 +13,7 @@
           <ul>
             <li [ngClass]="{active: (currentSection === 'home')}"><a [routerLink]="['/', 'cv', id]" fragment="home">Inicio</a></li>
             <li [ngClass]="{active: (currentSection === 'about')}"><a [routerLink]="['/', 'cv', id]" fragment="about">Acerca</a></li>
-            <li *ngIf="cv.skillsActive" [ngClass]="{active: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
+            <li *ngIf="cv.skillsActive || cv.languagesActive" [ngClass]="{active: (currentSection === 'skills')}"><a [routerLink]="['/', 'cv', id]" fragment="skills">Habilidades</a></li>
             <li *ngIf="cv.functionalActive || cv.chronologicActive" [ngClass]="{active: (currentSection === 'resume')}"><a [routerLink]="['/', 'cv', id]" fragment="resume">Curriculum</a></li>
             <li *ngIf="cv.certificationsActive" [ngClass]="{active: (currentSection === 'certifications')}"><a [routerLink]="['/', 'cv', id]" fragment="certifications">Certificaciones</a></li>
             <li *ngIf="cv.publicationsActive" [ngClass]="{active: (currentSection === 'publications')}"><a [routerLink]="['/', 'cv', id]" fragment="publications">Publicaciones</a></li>
@@ -71,8 +71,8 @@
         </div>
       </section>
 
-      <section class="colorlib-skills" *ngIf="cv.skillsActive" #skills>
-        <div class="colorlib-narrow-content">
+      <section class="colorlib-skills" *ngIf="cv.skillsActive || cv.languagesActive" #skills>
+        <div class="colorlib-narrow-content"  *ngIf="cv.skillsActive">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-md-pull-3 " >
               <span class="heading-meta">Mi Especialidad</span>
@@ -91,18 +91,21 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="colorlib-narrow-content" *ngIf="cv.languagesActive">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-md-pull-3 " >
+              <span class="heading-meta">Mi Especialidad</span>
               <h2 class="colorlib-heading ">Mis Idiomas</h2>
             </div>
           </div>
-          <div class="row">
+          <div class="row" >
             <div class="col-md-6 " *ngFor="let language of cv.languages">
               <div class="progress-wrap">
-                <h3>{{ languages.language }}</h3>
+                <h3>{{ language.language }}</h3>
                 <div class="progress">
-                  <div class="progress-bar color-1"  [style.width.%]="language.knowledge">
-                    <span>{{language.knowledge}}%</span>
+                  <div class="progress-bar color-1"  [style.width.%]="language.languageKnowledge">
+                    <span>{{language.languageKnowledge}}%</span>
                   </div>
                 </div>
               </div>
