@@ -14,12 +14,13 @@
         name="username2"
         ngModel
         required
+        pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
         email
         #username2="ngModel"
       >
       <label for="username2" class="form__label">Correo electrónico
         <span *ngIf="!username2.valid && username2.touched">
-          : Favor introduzca un correo electrónico válido
+          : Favor introduzca un correo electrónico válido.
         </span>
       </label>
     </div>
@@ -32,16 +33,18 @@
         name="password2"
         ngModel
         required
+        minlength="5"
         #password2="ngModel"
       >
       <label for="password2" class="form__label">Contraseña
         <span *ngIf="!password2.valid && password2.touched">
-          : Favor introduzca una contraseña
+          : Favor introduzca una contraseña con al menos 5 caracteres.
         </span>
       </label>
     </div>
     <button
       class="button button--primary button--round mt-medium"
+      type="submit"
       [disabled]="!f.valid"
     >Crear Cuenta</button>
     <div
