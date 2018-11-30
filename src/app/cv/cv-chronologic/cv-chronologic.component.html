@@ -5,7 +5,7 @@
   <div class="cv__main-content grid__start">
     <div class="cv__company-data" *ngFor="let exp of cv.chronologicData">
       <h4 class="cv__heading-quaternary">{{exp.companyRole}} en {{exp.companyName}}</h4>
-      <p class="cv__details-text">{{exp.companyStart}} - {{exp.companyFinish}}</p>
+      <p class="cv__details-text">{{exp.companyStart | date:'d MMM, y'}}  -  {{exp.companyFinish | date:'d MMM, y'}}</p>
       <p class="cv__info-text">
         {{exp.companyFunction}}
       </p>
