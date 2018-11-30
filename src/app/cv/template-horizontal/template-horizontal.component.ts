@@ -1,6 +1,7 @@
 import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {Cv} from '../../models/cv.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-template-horizontal',
@@ -49,12 +50,14 @@ export class TemplateHorizontalComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     this.currentFragment = '';
     this.currentSection = 'home';
+    this.titleService.setTitle('EZCV - ' + this.cv.name);
     this.route.fragment.subscribe(
       (fragment: string) => {
         if (fragment) {
