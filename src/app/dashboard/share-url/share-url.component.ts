@@ -22,7 +22,7 @@ export class ShareUrlComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  copyURL(inputElement){
+  copyURL(inputElement) {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);

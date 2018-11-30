@@ -270,7 +270,7 @@ ul#nav li a:active { background-color: transparent !important; }
 }
 
 .forest .about {
-  background: #14281d;
+  background: #151D16;
   padding-top: 96px;
   padding-bottom: 66px;
   overflow: hidden;
@@ -645,7 +645,7 @@ ul#nav li a:active { background-color: transparent !important; }
 }
 
 .forest .publications {
-  background: #14281d;
+  background: #151D16;
   padding-top: 90px;
   padding-bottom: 72px;
   overflow: hidden;
@@ -661,11 +661,11 @@ ul#nav li a:active { background-color: transparent !important; }
 
 
 .desert .publications a, .publications a:visited  { color: #f5995c; }
-.forest .publications a, .publications a:visited  { color: #8caa7b; }
+.forest .publications a, .publications a:visited  { color: #DDF9EC; }
 .ocean .publications a, .publications a:visited  { color: #ffe787; }
 
 .desert .publications a:hover, .publications a:focus { color: #af6649; }
-.forest .publications a:hover, .publications a:focus { color: #667c5a; }
+.forest .publications a:hover, .publications a:focus { color: #94CCC0; }
 .ocean .publications a:hover, .publications a:focus { color: #a39356; }
 
 .publications h1 {
