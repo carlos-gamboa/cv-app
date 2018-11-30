@@ -13,9 +13,6 @@ export class SigninComponent implements OnInit {
   @ViewChild('f') signinForm: NgForm;
   token: any = null;
 
-  @Output() childForm = new EventEmitter();
-
-
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -26,7 +23,6 @@ export class SigninComponent implements OnInit {
       .then((token: any) => {
         this.token = this.authService.getToken();
         if (this.token != null) {
-          this.isLoggedIn();
           this.router.navigate(['/home']);
         } else {
           this.signinForm.reset();
@@ -38,10 +34,6 @@ export class SigninComponent implements OnInit {
       this.signinForm.controls['username'].markAsTouched();
       this.signinForm.controls['password'].markAsTouched();
     });
-  }
-
-  isLoggedIn() {
-    this.childForm.emit(true);
   }
 
 }
