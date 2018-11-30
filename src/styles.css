@@ -959,6 +959,7 @@ a:active {
 
 .alert__text {
   font-size: 1.6rem;
+  margin-bottom: 0;
 }
 
 .alert--danger {

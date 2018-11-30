@@ -44,14 +44,14 @@
       class="button button--primary button--round mt-medium"
       [disabled]="!f.valid"
     >Crear Cuenta</button>
-    <div class="mt-medium alert alert--success" *ngIf="user">
-      <p class="alert__text">Se ha registrado exitosamente</p>
-    </div>
-    <div class="mt-medium alert alert--danger" *ngIf="registerError">
-      <p class="alert__text">No fue posible registrarse</p>
-    </div>
-    <div class="mt-medium alert alert--danger" *ngIf="registerError">
-      <p class="alert__text">Revise si su correo ya está en uso</p>
+    <div
+      class="mt-medium alert"
+      [ngClass]="{
+        'alert--success': alertType,
+        'alert--danger': !alertType
+      }"
+      *ngIf="showAlert">
+      <p class="alert__text">{{ alertMessage }}</p>
     </div>
   </form>
 
