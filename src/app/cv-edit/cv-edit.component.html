@@ -537,7 +537,48 @@
                 </span>
               </label>
             </div>
-            <div class="form__group mt-0 form__skill-knowledge">
+
+            <div class="form__group mt-0 form__skill-display">
+              <select
+                class="form__input"
+                id="languageDisplay"
+                formControlName="languageDisplay"
+              >
+                <option *ngFor="let display of languageDisplays" [value]="display.value">
+                  {{display.viewValue}}
+                </option>
+              </select>
+              <label for="languageDisplay" class="form__label">Forma de despliegue
+                <span *ngIf="!languageCtrl.get('languageDisplay').valid && languageCtrl.get('languageDisplay').touched">
+                  : Favor seleccione una forma de despliegue.
+                </span>
+              </label>
+            </div>
+
+            <div
+              class="form__group mt-0"
+              *ngIf="languageCtrl.get('languageDisplay').value === 'text'"
+            >
+              <select
+                class="form__input"
+                id="languageLevel"
+                formControlName="languageLevel"
+              >
+                <option *ngFor="let display of languageLevels" [value]="display.value">
+                  {{display.viewValue}}
+                </option>
+              </select>
+              <label for="languageLevel" class="form__label">Nivel
+                <span *ngIf="!languageCtrl.get('languageLevel').valid && languageCtrl.get('languageLevel').touched">
+                  : Favor seleccione el nivel del idioma.
+                </span>
+              </label>
+            </div>
+
+            <div
+              class="form__group mt-0 "
+              *ngIf="languageCtrl.get('languageDisplay').value === 'percentage'"
+            >
               <input
                 type="number"
                 class="form__input"
@@ -548,8 +589,8 @@
               >
               <label for="knowledge" class="form__label">Porcentaje de Conocimiento
                 <span *ngIf="!languageCtrl.get('languageKnowledge').valid && languageCtrl.get('languageKnowledge').touched">
-                  : Favor introduzca su porcentaje de conocimiento en el idioma
-                </span>
+                    : Favor introduzca su porcentaje de conocimiento en el idioma
+                  </span>
               </label>
             </div>
 

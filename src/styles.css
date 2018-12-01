@@ -587,7 +587,7 @@ hr {
   grid-row: 1 / 2;
 }
 
-.form__skill-knowledge {
+.form__skill-display {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
@@ -1188,7 +1188,7 @@ a:active {
 
   .form__chronologic-role,
   .form__functional-title,
-  .form__skill-knowledge,
+  .form__skill-display,
   .form__certification-date {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
