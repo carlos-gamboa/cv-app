@@ -53,9 +53,9 @@ export class CvEditComponent implements OnInit {
   ];
 
   skillsDisplay: Theme[] = [
-    {value: 'circle' , viewValue: 'Circle'},
-    {value: 'bar' , viewValue: 'Bar'},
-    {value: 'stars' , viewValue: 'Stars'}
+    {value: 'circle' , viewValue: 'Círculo'},
+    {value: 'bar' , viewValue: 'Barra'},
+    {value: 'stars' , viewValue: 'Estrellas'}
   ];
 
 
