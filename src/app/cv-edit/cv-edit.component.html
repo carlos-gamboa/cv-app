@@ -516,6 +516,22 @@
         *ngIf="cvForm.get('languagesActive').value"
       >
       <div class="cv__main-edit">
+        <div class="form__group">
+          <select
+            class="form__input"
+            id="languageDisplay"
+            formControlName="languageDisplay"
+          >
+            <option *ngFor="let display of languageDisplays" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="languageDisplay" class="form__label">Forma de despliegue
+            <span *ngIf="!cvForm.get('languageDisplay').valid && cvForm.get('languageDisplay').touched">
+                  : Favor seleccione una forma de despliegue.
+                </span>
+          </label>
+        </div>
         <div class="cv__main-edit-content" formArrayName="languages">
           <div
             class="form__skill-group"
@@ -538,26 +554,9 @@
               </label>
             </div>
 
-            <div class="form__group mt-0 form__skill-display">
-              <select
-                class="form__input"
-                id="languageDisplay"
-                formControlName="languageDisplay"
-              >
-                <option *ngFor="let display of languageDisplays" [value]="display.value">
-                  {{display.viewValue}}
-                </option>
-              </select>
-              <label for="languageDisplay" class="form__label">Forma de despliegue
-                <span *ngIf="!languageCtrl.get('languageDisplay').valid && languageCtrl.get('languageDisplay').touched">
-                  : Favor seleccione una forma de despliegue.
-                </span>
-              </label>
-            </div>
-
             <div
               class="form__group mt-0"
-              *ngIf="languageCtrl.get('languageDisplay').value === 'text'"
+              *ngIf="cvForm.get('languageDisplay').value === 'text'"
             >
               <select
                 class="form__input"
@@ -577,7 +576,7 @@
 
             <div
               class="form__group mt-0 "
-              *ngIf="languageCtrl.get('languageDisplay').value === 'percentage'"
+              *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
             >
               <input
                 type="number"

@@ -157,7 +157,6 @@ export class CvEditComponent implements OnInit {
     (<FormArray>this.cvForm.get('languages')).push(
       new FormGroup({
         'language': new FormControl(null, [Validators.required]),
-        'languageDisplay': new FormControl('percentage', Validators.required),
         'languageLevel': new FormControl('inter', Validators.required),
         'languageKnowledge': new FormControl(0, [
           Validators.required,
@@ -301,7 +300,9 @@ export class CvEditComponent implements OnInit {
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
-      'languages': languages
+      'languages': languages,
+      // personalización
+      'languageDisplay': new FormControl('percentage', Validators.required),
     });
   }
 
