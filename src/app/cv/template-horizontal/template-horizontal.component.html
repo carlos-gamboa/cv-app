@@ -69,11 +69,11 @@
           <h2>Información de contacto</h2>
           <p class="address">
             <span> {{ cv.name }} </span><br>
-            <span> {{ cv.mail }} </span><br>
+            <span> <a href="mailto: {{cv.mail}}">{{ cv.mail }} </a></span><br>
             <span *ngIf="cv.address"> {{cv.address}} </span><br>
-            <span> {{ cv.phone1 }} </span><br>
-            <span *ngIf="cv.phone2"> {{ cv.phone2 }} </span><br>
-            <span> {{cv.websiteURL}} </span>
+            <span><a href="tel: {{cv.phone1}}">{{ cv.phone1 }} </a></span><br>
+            <span *ngIf="cv.phone2"><a href="tel: {{cv.phone1}}">{{ cv.phone2 }} </a></span><br>
+            <span> <a [href]="convertURL(cv.websiteURL)">{{cv.websiteURL}}</a> </span>
           </p>
 
         </div>

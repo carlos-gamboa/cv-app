@@ -7,6 +7,10 @@
         <div class="author-img" style="background-image: url(../../../assets/img/profile_default.png);"></div>
         <h1 id="colorlib-logo"><a >{{ cv.name }}</a></h1>
         <span class="position" *ngIf="cv.websiteURL"><a [href]="convertURL(cv.websiteURL)">Visita mi Sitio Web</a></span>
+        <span> <a href="mailto: {{cv.mail}}">{{ cv.mail }} </a></span><br>
+        <span *ngIf="cv.address"> {{cv.address}} </span><br>
+        <span><a href="tel: {{cv.phone1}}">{{ cv.phone1 }} </a></span><br>
+        <span *ngIf="cv.phone2"><a href="tel: {{cv.phone1}}">{{ cv.phone2 }} </a></span><br>
       </div>
       <nav id="colorlib-main-menu" role="navigation" class="navbar">
         <div id="navbar" class="collapse">
