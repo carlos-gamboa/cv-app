@@ -135,6 +135,23 @@ export class TemplateHorizontalComponent implements OnInit {
     }
   }
 
+  getLanguageLevel(level: string) {
+    switch (level) {
+      case 'basico':
+        return 'Básico';
+      case 'competente':
+        return 'Competente';
+      case 'inter':
+        return 'Intermedio';
+      case 'tecnico':
+        return 'Técnico';
+      case 'experto':
+        return 'Experto';
+      case 'nativo':
+        return 'Nativo';
+    }
+  }
+
   private scrollTo(element: string) {
     setTimeout(() => {
       this.elements[element].nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });

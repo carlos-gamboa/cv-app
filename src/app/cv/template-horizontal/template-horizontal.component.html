@@ -209,13 +209,19 @@
 
     <div class="nine columns main-col">
 
-      <div class="bars">
-
+      <div class="bars" *ngIf="cv.languageDisplay === 'percentage'">
         <ul class="languages" *ngFor="let language of cv.languages">
           <li><span class="bar-expand" [style.width.%]="language.languageKnowledge"></span><em>{{ language.language }}</em></li>
         </ul>
-
       </div><!-- end skill-bars -->
+
+      <div class="languages__level" *ngIf="cv.languageDisplay === 'text'">
+        <ul class="languages--text">
+          <li *ngFor="let language of cv.languages">
+            <p class="language__text"><span class="language__name">{{language.language}}</span> &mdash; {{ getLanguageLevel(language.languageLevel) }}</p>
+          </li>
+        </ul>
+      </div>
 
     </div> <!-- main-col end -->
 
