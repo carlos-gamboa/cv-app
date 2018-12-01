@@ -900,14 +900,14 @@
                   id="title-font"
                   formControlName="titleFont"
                 >
-                  <option *ngFor="let font of fonts" [value]="font.value">
+                  <option *ngFor="let font of fontsTitle" [value]="font.value">
                     {{font.viewValue}}
                   </option>
                 </select>
               <label for="title-font" class="form__label">Fuente Título </label>
             </div>
             <div class="form__group form__example-title-font">
-              <p class="example__text">Esta es la fuente seleccionada para el título.</p>
+              <p [ngClass]="selectedTitleFont" class="example__text">Esta es la fuente seleccionada para el título.</p>
             </div>
 
             <div class="form__group form__select-text-font">
@@ -918,14 +918,14 @@
                   id="text-font"
                   formControlName="textFont"
                 >
-                  <option *ngFor="let font of fonts" [value]="font.value">
+                  <option *ngFor="let font of fontsText" [value]="font.value">
                     {{font.viewValue}}
                   </option>
                 </select>
               <label for="text-font" class="form__label">Fuente Párrafo </label>
             </div>
             <div class="form__group form__example-text-font">
-              <p class="example__text">Esta es la fuente seleccionada para el texto.</p>
+              <p [ngClass]="selectedTextFont" class="example__text">Esta es la fuente seleccionada para el texto.</p>
             </div>
           </div>
         </div>

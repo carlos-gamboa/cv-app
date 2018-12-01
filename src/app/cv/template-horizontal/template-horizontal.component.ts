@@ -9,7 +9,8 @@ import {ActivatedRoute, Router} from '@angular/router';
     './template-horizontal.component.css',
     './styles/layout.css',
     './styles/media-queries.css',
-    './styles/magnific-popup.css'
+    './styles/magnific-popup.css',
+    '../cv.component.css'
   ]
 })
 export class TemplateHorizontalComponent implements OnInit {

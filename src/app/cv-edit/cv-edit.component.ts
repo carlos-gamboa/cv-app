@@ -40,8 +40,8 @@ export class CvEditComponent implements OnInit {
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
   selectedTheme = 'blue';
-  selectedTitleFont = 'fuente1';
-  selectedTextFont = 'fuente1';
+  selectedTitleFont = 'latoTitle';
+  selectedTextFont = 'latoText';
 
   templates: Template[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
@@ -60,10 +60,18 @@ export class CvEditComponent implements OnInit {
     {value: 'orange' , viewValue: 'Naranja'}
   ];
 
-  fonts: Font[] = [
-    {value: 'fuente1', viewValue: 'Fuente1'},
-    {value: 'fuente2', viewValue: 'Fuente2'},
-    {value: 'fuente3', viewValue: 'Fuente3'}
+  fontsTitle: Font[] = [
+    {value: 'latoTitle', viewValue: 'Lato'},
+    {value: 'georgiaTitle', viewValue: 'Georgia'},
+    {value: 'openTitle', viewValue: 'OpenSans'},
+    {value: 'libreTitle', viewValue: 'Libre Baskerville'}
+  ];
+
+  fontsText: Font[] = [
+    {value: 'latoText', viewValue: 'Lato'},
+    {value: 'georgiaText', viewValue: 'Georgia'},
+    {value: 'openText', viewValue: 'OpenSans'},
+    {value: 'libreText', viewValue: 'Libre Baskerville'}
   ];
 
 
