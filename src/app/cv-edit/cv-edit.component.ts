@@ -4,6 +4,7 @@ import {DataStorageService} from '../services/data-storage.service';
 import {CvService} from '../services/cv.service';
 import {AuthService} from '../services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 export interface Theme {
   value: string;
@@ -51,6 +52,19 @@ export class CvEditComponent implements OnInit {
     {value: 'green' , viewValue: 'Verde'},
     {value: 'orange' , viewValue: 'Naranja'}
   ];
+
+  previewIds = {
+    vertical : {
+      blue: '2NFQLCRQBJXykpy3jqxylRQSkYY1',
+      green: '2NFQLCRQBJXykpy3jqxylRQSkYX2',
+      orange: '2NFQLCRQBJXykpy3jqxylRQSkYY3'
+    },
+    horizontal : {
+      desert: '2NFQLCRQBJXykpy3jqxylRQSkYY4',
+      forest: '2NFQLCRQBJXykpy3jqxylRQSkYY5',
+      ocean: '2NFQLCRQBJXykpy3jqxylRQSkYY6'
+    }
+  };
 
 
   constructor(
@@ -303,7 +317,34 @@ export class CvEditComponent implements OnInit {
       this.selectedTheme = 'blue';
     }
   }
+
+  changeTheme(newValue) {
+    console.log(newValue);
+    this.selectedTheme = newValue;
+  }
+
+
   print() {
     console.log(this.cvForm.value);
   }
+
+  openPreview() {
+      if (this.selectedTemplate === 'vertical') {
+        if (this.selectedTheme === 'blue') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.blue, '_blank');
+        } else if (this.selectedTheme === 'green') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.green, '_blank');
+        } else { // orange
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.orange, '_blank');
+        }
+      } else { // horizontal
+        if (this.selectedTheme === 'desert') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.desert, '_blank');
+        } else if (this.selectedTheme === 'forest') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.forest, '_blank');
+        } else { // ocean
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.ocean, '_blank');
+        }
+      }
+    }
 }
