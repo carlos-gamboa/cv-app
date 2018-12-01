@@ -58,6 +58,12 @@ export class CvEditComponent implements OnInit {
     {value: 'stars' , viewValue: 'Estrellas'}
   ];
 
+  languagesDisplay: Theme[] = [
+    {value: 'circle' , viewValue: 'Círculo'},
+    {value: 'bar' , viewValue: 'Barra'},
+    {value: 'stars' , viewValue: 'Estrellas'}
+  ];
+
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -159,7 +165,8 @@ export class CvEditComponent implements OnInit {
         'languageKnowledge': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
-        ])
+        ]),
+        'languagesDisplay': new FormControl('circle', Validators.required)
       })
     );
   }

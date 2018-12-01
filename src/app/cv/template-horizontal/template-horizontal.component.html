@@ -189,7 +189,6 @@
     <div class="nine columns main-col">
 
       <div class="bars">
-
         <ul class="skills" *ngFor="let skill of cv.skills">
           <li *ngIf = "skill.skillsDisplay == 'bar'">
             <span class="bar-expand" [style.width.%]="skill.knowledge"></span>
@@ -238,12 +237,40 @@
     <div class="nine columns main-col">
 
       <div class="bars">
+          <ul class="skills" *ngFor="let language of cv.languages">
+            <li *ngIf = "language.languagesDisplay == 'bar'">
+              <span class="bar-expand" [style.width.%]="language.languageKnowledge"></span>
+              <em>{{ language.language }}</em>
+            </li>
+          </ul>
 
-        <ul class="languages" *ngFor="let language of cv.languages">
-          <li><span class="bar-expand" [style.width.%]="language.languageKnowledge"></span><em>{{ language.language }}</em></li>
-        </ul>
+        </div><!-- end skill-bars -->
 
-      </div><!-- end skill-bars -->
+        <div class="circle">
+            <div class="skills" *ngFor="let language of cv.languages">
+              <div *ngIf = "language.languagesDisplay == 'circle'">
+                <h1>{{ language.language }}</h1>
+                <circle-progress
+                  class="circle"
+                  [percent]="language.languageKnowledge"
+                ></circle-progress>
+              </div>
+            </div>
+        </div>
+
+        <div class="stars">
+            <div class="skills" *ngFor="let language of cv.languages">
+              <div *ngIf = "language.languagesDisplay == 'stars'">
+                <h1>{{ language.language }}</h1>
+                <bar-rating
+                  [theme]="'default'"
+                  [readOnly]="true"
+                  [rate]="language.languageKnowledge / 20"
+                ></bar-rating>
+              </div>
+            </div>
+        </div>
+
 
     </div> <!-- main-col end -->
 

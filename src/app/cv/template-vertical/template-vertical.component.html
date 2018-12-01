@@ -132,9 +132,34 @@
             <div class="col-md-6 " *ngFor="let language of cv.languages">
               <div class="progress-wrap">
                 <h3>{{ language.language }}</h3>
-                <div class="progress">
-                  <div class="progress-bar color-1"  [style.width.%]="language.languageKnowledge">
-                    <span>{{language.languageKnowledge}}%</span>
+                <!-- Barras -->
+                <div *ngIf = "language.languagesDisplay == 'bar'">
+                  <div class="progress">
+                    <div class="progress-bar color-1"  [style.width.%]="language.languageKnowledge">
+                      <span>{{language.languageKnowledge}}%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Circulo -->
+                <div *ngIf = "language.languagesDisplay == 'circle'">
+                  <div class="circle">
+                    <div *ngIf = "language.languagesDisplay == 'circle'">
+                      <circle-progress
+                        [percent]="language.languageKnowledge"
+                      ></circle-progress>
+                    </div>
+                  </div>
+                </div>
+                <!-- Estrellas -->
+                <div *ngIf = "language.languagesDisplay == 'stars'">
+                  <div class="stars">
+                    <div *ngIf = "language.languagesDisplay == 'stars'">
+                      <bar-rating
+                        [theme]="'default'"
+                        [readOnly]="true"
+                        [rate]="language.languageKnowledge / 20"
+                      ></bar-rating>
+                    </div>
                   </div>
                 </div>
               </div>
