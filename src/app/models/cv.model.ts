@@ -33,6 +33,8 @@ export class Cv {
   languages: LanguagesModel[];
   template: string;
   theme: string;
+  titleFont: string;
+  textFont: string;
 
   constructor(cv: any) {
     this.name = cv.name;
@@ -62,6 +64,8 @@ export class Cv {
     this.theme = cv.theme;
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
-    this.interestsData = cv.interestsData
+    this.interestsData = cv.interestsData;
+    this.titleFont = cv.titleFont;
+    this.textFont = cv. textFont;
   }
 }

@@ -15,6 +15,12 @@ export interface Template {
   viewValue: string;
 }
 
+export interface Font {
+  value: string;
+  viewValue: string;
+}
+
+
 @Component({
   selector: 'app-cv-edit',
   templateUrl: './cv-edit.component.html',
@@ -34,6 +40,8 @@ export class CvEditComponent implements OnInit {
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
   selectedTheme = 'blue';
+  selectedTitleFont = 'fuente1';
+  selectedTextFont = 'fuente1';
 
   templates: Template[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
@@ -50,6 +58,12 @@ export class CvEditComponent implements OnInit {
     {value: 'blue' , viewValue: 'Azul'},
     {value: 'green' , viewValue: 'Verde'},
     {value: 'orange' , viewValue: 'Naranja'}
+  ];
+
+  fonts: Font[] = [
+    {value: 'fuente1', viewValue: 'Fuente1'},
+    {value: 'fuente2', viewValue: 'Fuente2'},
+    {value: 'fuente3', viewValue: 'Fuente3'}
   ];
 
 
@@ -288,6 +302,8 @@ export class CvEditComponent implements OnInit {
       'skills': skills,
       'template': new FormControl(this.selectedTemplate, Validators.required),
       'theme':  new FormControl(this.selectedTheme, Validators.required),
+      'titleFont':  new FormControl(this.selectedTitleFont, Validators.required),
+      'textFont' : new FormControl(this.selectedTextFont, Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
