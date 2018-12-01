@@ -79,23 +79,48 @@
               <h2 class="colorlib-heading ">Mis Habilidades</h2>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 " *ngFor="let skill of cv.skills">
-              <div class="progress-wrap">
-                <h3>{{ skill.skillName }}</h3>
-                <div class="progress">
-                  <div class="progress-bar color-1"  [style.width.%]="skill.knowledge">
-                    <span>{{skill.knowledge}}%</span>
+          <div class="row" >
+              <div class="col-md-6 " *ngFor="let skill of cv.skills">
+                <div class="progress-wrap">
+                  <h3>{{ skill.skillName }}</h3>
+                  <!-- Barras -->
+                  <div *ngIf = "skill.skillsDisplay == 'bar'">
+                    <div class="progress">
+                      <div class="progress-bar color-1"  [style.width.%]="skill.knowledge">
+                        <span>{{skill.knowledge}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Circulo -->
+                  <div *ngIf = "skill.skillsDisplay == 'circle'">
+                    <div class="circle">
+                      <div *ngIf = "skill.skillsDisplay == 'circle'">
+                        <circle-progress
+                          [percent]="skill.knowledge"
+                        ></circle-progress>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Estrellas -->
+                  <div *ngIf = "skill.skillsDisplay == 'stars'">
+                    <div class="stars">
+                      <div *ngIf = "skill.skillsDisplay == 'stars'">
+                        <bar-rating
+                          [theme]="'default'"
+                          [readOnly]="true"
+                          [rate]="skill.knowledge / 20"
+                        ></bar-rating>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
         <div class="colorlib-narrow-content" *ngIf="cv.languagesActive">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-md-pull-3 " >
-              <span class="heading-meta">Mi Especialidad</span>
+              <span class="heading-meta">Mi Conocimiento</span>
               <h2 class="colorlib-heading ">Mis Idiomas</h2>
             </div>
           </div>

@@ -191,10 +191,38 @@
       <div class="bars">
 
         <ul class="skills" *ngFor="let skill of cv.skills">
-          <li><span class="bar-expand" [style.width.%]="skill.knowledge"></span><em>{{ skill.skillName }}</em></li>
+          <li *ngIf = "skill.skillsDisplay == 'bar'">
+            <span class="bar-expand" [style.width.%]="skill.knowledge"></span>
+            <em>{{ skill.skillName }}</em>
+          </li>
         </ul>
 
       </div><!-- end skill-bars -->
+
+      <div class="circle">
+          <div class="skills" *ngFor="let skill of cv.skills">
+            <div *ngIf = "skill.skillsDisplay == 'circle'">
+              <h1>{{ skill.skillName }}</h1>
+              <circle-progress
+                class="circle"
+                [percent]="skill.knowledge"
+              ></circle-progress>
+            </div>
+          </div>
+      </div>
+
+      <div class="stars">
+          <div class="skills" *ngFor="let skill of cv.skills">
+            <div *ngIf = "skill.skillsDisplay == 'stars'">
+              <h1>{{ skill.skillName }}</h1>
+              <bar-rating
+                [theme]="'default'"
+                [readOnly]="true"
+                [rate]="skill.knowledge / 20"
+                ></bar-rating>
+            </div>
+          </div>
+      </div>
 
     </div> <!-- main-col end -->
 

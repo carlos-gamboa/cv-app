@@ -62,6 +62,6 @@ export class Cv {
     this.theme = cv.theme;
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
-    this.interestsData = cv.interestsData
+    this.interestsData = cv.interestsData;
   }
 }

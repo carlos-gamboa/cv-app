@@ -52,6 +52,12 @@ export class CvEditComponent implements OnInit {
     {value: 'orange' , viewValue: 'Naranja'}
   ];
 
+  skillsDisplay: Theme[] = [
+    {value: 'circle' , viewValue: 'Circle'},
+    {value: 'bar' , viewValue: 'Bar'},
+    {value: 'stars' , viewValue: 'Stars'}
+  ];
+
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -131,7 +137,8 @@ export class CvEditComponent implements OnInit {
         'knowledge': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
-        ])
+        ]),
+        'skillsDisplay': new FormControl('circle', Validators.required)
       })
     );
   }
