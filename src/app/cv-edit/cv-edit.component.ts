@@ -47,6 +47,18 @@ export class CvEditComponent implements OnInit {
     {value: 'orange' , viewValue: 'Naranja'}
   ];
 
+  skillsDisplay: SelectOption[] = [
+    {value: 'circle' , viewValue: 'Círculo'},
+    {value: 'bar' , viewValue: 'Barra'},
+    {value: 'stars' , viewValue: 'Estrellas'}
+  ];
+
+  languagesDisplay: SelectOption[] = [
+    {value: 'circle' , viewValue: 'Círculo'},
+    {value: 'bar' , viewValue: 'Barra'},
+    {value: 'stars' , viewValue: 'Estrellas'}
+  ];
+
   languageDisplays: SelectOption[] = [
     {value: 'percentage', viewValue: 'Porcentaje'},
     {value: 'text', viewValue: 'Nivel'}
@@ -139,7 +151,8 @@ export class CvEditComponent implements OnInit {
         'knowledge': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
-        ])
+        ]),
+        'skillsDisplay': new FormControl('circle', Validators.required)
       })
     );
   }
@@ -161,7 +174,8 @@ export class CvEditComponent implements OnInit {
         'languageKnowledge': new FormControl(0, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
-        ])
+        ]),
+        'languagesDisplay': new FormControl('circle', Validators.required)
       })
     );
   }

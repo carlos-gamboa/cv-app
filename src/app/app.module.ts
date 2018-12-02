@@ -26,6 +26,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 import { TemplateHorizontalComponent } from './cv/template-horizontal/template-horizontal.component';
 import { TemplateVerticalComponent } from './cv/template-vertical/template-vertical.component';
+// Import ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
+//star bars
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -53,7 +57,19 @@ import { TemplateVerticalComponent } from './cv/template-vertical/template-verti
     ReactiveFormsModule,
     MatDialogModule,
     MatSelectModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    // Specify ng-circle-progress as an import
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#FF6347",
+      innerStrokeColor: "#FFA500",
+      animationDuration: 300,
+      showSubtitle: false
+    }),
+    BarRatingModule
   ],
   providers: [
     CvService,

@@ -241,7 +241,7 @@ ul#nav li a {
    display: inline-block;
    padding: 8px 13px;
    line-height: 32px;
-	text-decoration: none;
+	 text-decoration: none;
    text-align: left;
    color: #fff;
 
@@ -398,7 +398,7 @@ ul#nav li a:active { background-color: transparent !important; }
 }
 
 /*----------------------------------------------*/
-/*	Skill Bars
+/*	Skill Bars (bar, circle)
 /*----------------------------------------------*/
 
 .skill:not(:first-child) {
@@ -474,6 +474,20 @@ ul#nav li a:active { background-color: transparent !important; }
   border-radius: 3px;
 }
 
+.ocean .circle {
+  outerStrokeColor: "#0099cc";
+  innerStrokeColor: "#66ffff";
+}
+
+.desert .circle {
+  outerStrokeColor: "#FF6347";
+  innerStrokeColor: "#FFA500";
+}
+
+.forest .circle {
+  outerStrokeColor: "#669900";
+  innerStrokeColor: "#99ff66";
+}
 
 /* ------------------------------------------------------------------ */
 /* h. Contact Section

@@ -481,6 +481,22 @@
                 </label>
               </div>
 
+              <div class="form__group mt-0 ">
+                  <select
+                  class="form__input"
+                  id="skillsDisplay"
+                  formControlName="skillsDisplay"
+                >
+                  <option *ngFor="let display of skillsDisplay" [value]="display.value">
+                    {{display.viewValue}}
+                  </option>
+                </select>
+                  <label for="skillsDisplay" class="form__label">Forma de despliegue
+                    <span *ngIf="!skillCtrl.get('skillsDisplay').valid && skillCtrl.get('skillsDisplay').touched">
+                      : Favor seleccione una forma de despliegue.
+                    </span>
+                  </label>
+                </div>
               <div class="form__skill-button">
                 <button
                   type="button"
@@ -592,6 +608,22 @@
                   </span>
               </label>
             </div>
+            <div class="form__group mt-0 ">
+                <select
+                class="form__input"
+                id="languagesDisplay"
+                formControlName="languagesDisplay"
+              >
+                <option *ngFor="let display of languagesDisplay" [value]="display.value">
+                  {{display.viewValue}}
+                </option>
+              </select>
+                <label for="languagesDisplay" class="form__label">Forma de despliegue
+                  <span *ngIf="!languageCtrl.get('languagesDisplay').valid && languageCtrl.get('languagesDisplay').touched">
+                    : Favor seleccione una forma de despliegue.
+                  </span>
+                </label>
+              </div>
 
             <div class="form__skill-button">
               <button

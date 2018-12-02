@@ -66,7 +66,7 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
-
+    
     // Custom
     this.languageDisplay = cv.languageDisplay;
   }
