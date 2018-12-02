@@ -882,3 +882,27 @@ footer .social-links li:first-child { margin-left: 0; }
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 5rem;
 }
+
+.facebook:hover {
+  color: #3b5998 !important;
+}
+
+.twitter:hover {
+  color: #1da1f2 !important;
+}
+
+.instagram:hover {
+  color: #c32aa3 !important;
+}
+
+.skype:hover {
+  color: #00aff0 !important;
+}
+
+.linkedin:hover {
+  color: #007bb5 !important;
+}
+
+.google:hover {
+  color: #db4437 !important;
+}

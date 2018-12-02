@@ -346,7 +346,9 @@ hr {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
 
-
+.social-media__group .form__group {
+  margin-top: 2.5rem;
+}
 
 /* --------------------------------------------- */
 /* INPUT FILE */

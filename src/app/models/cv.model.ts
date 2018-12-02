@@ -16,7 +16,6 @@ export class Cv {
   address: string;
   personalProfile: string;
   introduction: string;
-  websiteURL: string;
   chronologicActive: boolean;
   functionalActive: boolean;
   skillsActive: boolean;
@@ -52,7 +51,6 @@ export class Cv {
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
     this.introduction = cv.introduction;
-    this.websiteURL = cv.websiteURL;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
     this.chronologicActive = cv.chronologicActive;
@@ -73,7 +71,7 @@ export class Cv {
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
     this.socialMediaData = cv.socialMediaData;
-    
+
     // Custom
     this.languageDisplay = cv.languageDisplay;
     this.skillsDisplay = cv.skillsDisplay;
