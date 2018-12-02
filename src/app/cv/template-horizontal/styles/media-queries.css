@@ -338,6 +338,16 @@
     grid-template-columns: 1fr;
   }
 
+  .circle,
+  .stars {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 4rem;
+  }
+
+  .skills:first-child {
+    margin-top: 3rem;
+  }
 }
 
 /* mobile narrow

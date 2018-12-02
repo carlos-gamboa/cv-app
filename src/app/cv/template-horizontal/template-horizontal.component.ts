@@ -18,6 +18,20 @@ export class TemplateHorizontalComponent implements OnInit {
   currentSection: string;
   currentFragment: string;
   id: string;
+  barColors = {
+    desert: {
+      inner: '#F5995C',
+      outer: '#F06000'
+    },
+    forest: {
+      inner: '#85916D',
+      outer: '#40531b'
+    },
+    ocean: {
+      inner: '#88D1E5',
+      outer: '#45B7D7'
+    },
+  };
 
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
@@ -73,10 +87,14 @@ export class TemplateHorizontalComponent implements OnInit {
   }
 
   convertURL (url: string) {
-    if (url.startsWith('http://') || url.startsWith('https://')){
-      return url;
+    if (url) {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+      } else {
+        return '//' + url;
+      }
     } else {
-      return '//' + url;
+      return url;
     }
   }
 

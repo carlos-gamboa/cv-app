@@ -73,7 +73,7 @@
             <span *ngIf="cv.address"> {{cv.address}} </span><br>
             <span><a href="tel: {{cv.phone1}}">{{ cv.phone1 }} </a></span><br>
             <span *ngIf="cv.phone2"><a href="tel: {{cv.phone1}}">{{ cv.phone2 }} </a></span><br>
-            <span> <a [href]="convertURL(cv.websiteURL)">{{cv.websiteURL}}</a> </span>
+            <span *ngIf="cv.websiteURL"> <a [href]="convertURL(cv.websiteURL)">Mi Sitio Web</a> </span>
           </p>
 
         </div>
@@ -188,9 +188,12 @@
 
     <div class="nine columns main-col">
 
-      <div class="bars">
-        <ul class="skills" *ngFor="let skill of cv.skills">
-          <li *ngIf = "skill.skillsDisplay == 'bar'">
+      <div
+        class="bars"
+        *ngIf="cv.skillsDisplay == 'bar'"
+      >
+        <ul class="skills">
+          <li *ngFor="let skill of cv.skills">
             <span class="bar-expand" [style.width.%]="skill.knowledge"></span>
             <em>{{ skill.skillName }}</em>
           </li>
@@ -198,33 +201,35 @@
 
       </div><!-- end skill-bars -->
 
-      <div class="circle">
-          <div class="skills" *ngFor="let skill of cv.skills">
-            <div *ngIf = "skill.skillsDisplay == 'circle'">
-              <h1>{{ skill.skillName }}</h1>
-              <circle-progress
-                class="circle"
-                [percent]="skill.knowledge"
-              ></circle-progress>
-            </div>
-          </div>
+      <div
+        class="circle"
+        *ngIf = "cv.skillsDisplay == 'circle'"
+      >
+        <div class="skills" *ngFor="let skill of cv.skills">
+          <h3>{{ skill.skillName }}</h3>
+          <circle-progress
+            class="circle"
+            [percent]="skill.knowledge"
+            [outerStrokeColor]="barColors[cv.theme]['outer']"
+            [innerStrokeColor]="barColors[cv.theme]['inner']"
+          ></circle-progress>
+        </div>
       </div>
 
-      <div class="stars">
-          <div class="skills" *ngFor="let skill of cv.skills">
-            <div *ngIf = "skill.skillsDisplay == 'stars'">
-              <h1>{{ skill.skillName }}</h1>
-              <bar-rating
-                [theme]="'default'"
-                [readOnly]="true"
-                [rate]="skill.knowledge / 20"
-                ></bar-rating>
-            </div>
-          </div>
+      <div
+        class="stars"
+        *ngIf = "cv.skillsDisplay == 'stars'"
+      >
+        <div class="skills" *ngFor="let skill of cv.skills">
+          <h3>{{ skill.skillName }}</h3>
+          <bar-rating
+            [theme]="'default'"
+            [readOnly]="true"
+            [rate]="skill.knowledge / 20"
+          ></bar-rating>
+        </div>
       </div>
-
     </div> <!-- main-col end -->
-
   </div> <!-- End skills -->
 
 
@@ -236,47 +241,39 @@
 
     <div class="nine columns main-col">
 
-      <div class="bars">
-          <ul class="skills" *ngFor="let language of cv.languages">
-            <li *ngIf = "language.languagesDisplay == 'bar'">
+      <div *ngIf="cv.languageDisplay === 'percentage'">
+        <div class="bars" *ngIf = "cv.percentageDisplay == 'bar'">
+          <ul class="skills">
+            <li *ngFor="let language of cv.languages">
               <span class="bar-expand" [style.width.%]="language.languageKnowledge"></span>
               <em>{{ language.language }}</em>
             </li>
           </ul>
-
         </div><!-- end skill-bars -->
 
-        <div class="circle">
-            <div class="skills" *ngFor="let language of cv.languages">
-              <div *ngIf = "language.languagesDisplay == 'circle'">
-                <h1>{{ language.language }}</h1>
-                <circle-progress
-                  class="circle"
-                  [percent]="language.languageKnowledge"
-                ></circle-progress>
-              </div>
-            </div>
+        <div class="circle" *ngIf = "cv.percentageDisplay == 'circle'">
+          <div class="skills" *ngFor="let language of cv.languages">
+            <h3>{{ language.language }}</h3>
+            <circle-progress
+              class="circle"
+              [percent]="language.languageKnowledge"
+              [outerStrokeColor]="barColors[cv.theme]['outer']"
+              [innerStrokeColor]="barColors[cv.theme]['inner']"
+            ></circle-progress>
+          </div>
         </div>
 
-        <div class="stars">
-            <div class="skills" *ngFor="let language of cv.languages">
-              <div *ngIf = "language.languagesDisplay == 'stars'">
-                <h1>{{ language.language }}</h1>
-                <bar-rating
-                  [theme]="'default'"
-                  [readOnly]="true"
-                  [rate]="language.languageKnowledge / 20"
-                ></bar-rating>
-              </div>
-            </div>
+        <div class="stars" *ngIf = "cv.percentageDisplay == 'stars'">
+          <div class="skills" *ngFor="let language of cv.languages">
+            <h3>{{ language.language }}</h3>
+            <bar-rating
+              [theme]="'default'"
+              [readOnly]="true"
+              [rate]="language.languageKnowledge / 20"
+            ></bar-rating>
+          </div>
         </div>
-
-      <div class="bars" *ngIf="cv.languageDisplay === 'percentage'">
-        <ul class="languages" *ngFor="let language of cv.languages">
-          <li><span class="bar-expand" [style.width.%]="language.languageKnowledge"></span><em>{{ language.language }}</em></li>
-        </ul>
-      </div><!-- end skill-bars -->
-
+      </div>
 
       <div class="languages__level" *ngIf="cv.languageDisplay === 'text'">
         <ul class="languages--text">
