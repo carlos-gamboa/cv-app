@@ -13,3 +13,47 @@
   overflow:auto;
   min-height: 100vh;
 }
+
+.latoTitle ::ng-deep h1,
+.latoTitle ::ng-deep h2,
+.latoTitle ::ng-deep h3,
+.latoTitle ::ng-deep h4,
+.latoTitle ::ng-deep h5,
+.latoTitle ::ng-deep h6,
+.latoText ::ng-deep p,
+.latoText ::ng-deep span{
+  font-family: "Lato", sans-serif !important;
+}
+
+.georgiaTitle ::ng-deep h1,
+.georgiaTitle ::ng-deep h2,
+.georgiaTitle ::ng-deep h3,
+.georgiaTitle ::ng-deep h4,
+.georgiaTitle ::ng-deep h5,
+.georgiaTitle ::ng-deep h6,
+.georgiaText ::ng-deep p,
+.georgiaText ::ng-deep span{
+  font-family: "Playfair Display", Georgia, serif !important;
+}
+
+.openTitle ::ng-deep h1,
+.openTitle ::ng-deep h2,
+.openTitle ::ng-deep h3,
+.openTitle ::ng-deep h4,
+.openTitle ::ng-deep h5,
+.openTitle ::ng-deep h6,
+.openText ::ng-deep p,
+.openText ::ng-deep span{
+  font-family:'opensans-bold', sans-serif !important;
+}
+
+.libreTitle ::ng-deep h1,
+.libreTitle ::ng-deep h2,
+.libreTitle ::ng-deep h3,
+.libreTitle ::ng-deep h4,
+.libreTitle ::ng-deep h5,
+.libreTitle ::ng-deep h6,
+.libreText ::ng-deep p,
+.libreText ::ng-deep span{
+  font-family: 'librebaskerville-regular', serif !important;
+}

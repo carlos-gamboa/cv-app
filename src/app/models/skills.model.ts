@@ -7,5 +7,4 @@ export class SkillsModel {
     this.skillName = skill.skillName;
     this.knowledge = skill.knowledge;
   }
-
 }

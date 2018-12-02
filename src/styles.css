@@ -82,6 +82,40 @@ hr {
   font-size: 2rem;
 }
 
+.dashboard__share-text {
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+.dashboard__share-group {
+  display: grid;
+  width: 90%;
+}
+
+.dashboard__share-link {
+  width: 100%;
+}
+
+.dashboard__button {
+  margin: 1rem 0;
+}
+
+.dashboard__group {
+  display: grid;
+}
+
+.dashboard__share-input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1rem 1.5rem;
+  border-radius: 2px;
+  background-color: rgba(238, 238, 238, 0.5);
+  width: 100%;
+  display: block;
+  transition: all .3s;
+  border: none;
+}
 
 /* --------------------------------------------- */
 /* CV */
@@ -264,6 +298,15 @@ hr {
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 }
 
+.cv__language-container {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cv__language-main {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+}
+
 .cv__skills-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -390,7 +433,7 @@ hr {
   color: inherit;
   padding: 1rem 1.5rem;
   border-radius: 2px;
-  background-color: rbga(#fff, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-bottom: 3px solid transparent;
   width: 90%;
@@ -482,9 +525,6 @@ hr {
   opacity: 1;
 }
 
-.form__dashboard{
-  display: grid;
-}
 .form__chronologic-group,
 .form__functional-group,
 .form__certifications-group {
@@ -526,11 +566,6 @@ hr {
   grid-row: 3 / 4;
 }
 
-.form__dashboard-button{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 .form__chronologic-button,
 .form__functional-button {
   grid-column: 3 / 4;
@@ -561,7 +596,7 @@ hr {
   grid-row: 1 / 2;
 }
 
-.form__skill-knowledge {
+.form__skill-display {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
@@ -595,6 +630,32 @@ hr {
   justify-self: center;
 }
 
+.form__configuration-group{
+  display: grid;
+  grid-template-columns: 4.5fr 4.5fr;
+}
+
+.form__select-title-font {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.form__example-title-font {
+  grid-column: 2 / 2;
+  grid-row: 1 / 2;
+}
+
+.form__select-text-font {
+  grid-column: 1 / 2;
+  grid-row: 2 / 2;
+}
+.form__example-text-font {
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
+}
+
+.example__text{
+  font-size: large;
+}
 /* --------------------------------------------- */
 /* SWITCH */
 /* --------------------------------------------- */
@@ -959,6 +1020,7 @@ a:active {
 
 .alert__text {
   font-size: 1.6rem;
+  margin-bottom: 0;
 }
 
 .alert--danger {
@@ -1161,7 +1223,7 @@ a:active {
 
   .form__chronologic-role,
   .form__functional-title,
-  .form__skill-knowledge,
+  .form__skill-display,
   .form__certification-date {
     grid-row: 2 / 3;
     grid-column: 1 / 2;

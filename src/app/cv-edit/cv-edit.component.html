@@ -427,6 +427,22 @@
         *ngIf="cvForm.get('skillsActive').value"
       >
         <div class="cv__main-edit">
+          <div class="form__group">
+            <select
+              class="form__input"
+              id="skillsDisplay"
+              formControlName="skillsDisplay"
+            >
+              <option *ngFor="let display of skillsDisplay" [value]="display.value">
+                {{display.viewValue}}
+              </option>
+            </select>
+            <label for="skillsDisplay" class="form__label">Forma de despliegue
+              <span *ngIf="!cvForm.get('skillsDisplay').valid && cvForm.get('skillsDisplay').touched">
+                      : Favor seleccione una forma de despliegue.
+                    </span>
+            </label>
+          </div>
           <div class="cv__main-edit-content" formArrayName="skills">
             <div
               class="form__skill-group"
@@ -498,8 +514,43 @@
         class="cv__functional"
         *ngIf="cvForm.get('languagesActive').value"
       >
-      <div class="cv__main-edit">
-        <div class="cv__main-edit-content" formArrayName="languages">
+      <div class="cv__main-edit cv__language-container">
+        <div class="form__group">
+          <select
+            class="form__input"
+            id="languageDisplay"
+            formControlName="languageDisplay"
+          >
+            <option *ngFor="let display of languageDisplays" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="languageDisplay" class="form__label">Tipo de despliegue
+            <span *ngIf="!cvForm.get('languageDisplay').valid && cvForm.get('languageDisplay').touched">
+                  : Favor seleccione un tipo de despliegue.
+                </span>
+          </label>
+        </div>
+        <div
+          class="form__group mt-medium"
+          *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
+        >
+          <select
+            class="form__input"
+            id="percentageDisplay"
+            formControlName="percentageDisplay"
+          >
+            <option *ngFor="let display of skillsDisplay" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="percentageDisplay" class="form__label">Forma de despliegue
+            <span *ngIf="!cvForm.get('percentageDisplay').valid && cvForm.get('percentageDisplay').touched">
+                  : Favor seleccione una forma de despliegue.
+                </span>
+          </label>
+        </div>
+        <div class="cv__main-edit-content cv__language-main" formArrayName="languages">
           <div
             class="form__skill-group"
             *ngFor="let languageCtrl of getLanguageControls(); let i = index"
@@ -520,7 +571,31 @@
                 </span>
               </label>
             </div>
-            <div class="form__group mt-0 form__skill-knowledge">
+
+            <div
+              class="form__group mt-0"
+              *ngIf="cvForm.get('languageDisplay').value === 'text'"
+            >
+              <select
+                class="form__input"
+                id="languageLevel"
+                formControlName="languageLevel"
+              >
+                <option *ngFor="let display of languageLevels" [value]="display.value">
+                  {{display.viewValue}}
+                </option>
+              </select>
+              <label for="languageLevel" class="form__label">Nivel
+                <span *ngIf="!languageCtrl.get('languageLevel').valid && languageCtrl.get('languageLevel').touched">
+                  : Favor seleccione el nivel del idioma.
+                </span>
+              </label>
+            </div>
+
+            <div
+              class="form__group mt-0 "
+              *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
+            >
               <input
                 type="number"
                 class="form__input"
@@ -531,8 +606,8 @@
               >
               <label for="knowledge" class="form__label">Porcentaje de Conocimiento
                 <span *ngIf="!languageCtrl.get('languageKnowledge').valid && languageCtrl.get('languageKnowledge').touched">
-                  : Favor introduzca su porcentaje de conocimiento en el idioma
-                </span>
+                    : Favor introduzca su porcentaje de conocimiento en el idioma
+                  </span>
               </label>
             </div>
 
@@ -998,6 +1073,54 @@
 
 
 
+      <!-- CV Configuration -->
+      <div class="cv__section-banner">
+        <h2  class="cv__banner-text">Configuración</h2>
+    </div>
+    <div class="cv__functional">
+      <div class="cv__main-edit">
+        <div class="cv__main-edit-content">
+          <div class="form__configuration-group">
+            <div class="form__group mt-0 form__select-title-font">
+                <select
+                  [(ngModel)]="selectedTitleFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="title-font"
+                  formControlName="titleFont"
+                >
+                  <option *ngFor="let font of fontsTitle" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="title-font" class="form__label">Fuente Título </label>
+            </div>
+            <div class="form__group form__example-title-font">
+              <p [ngClass]="selectedTitleFont" class="example__text">Esta es la fuente seleccionada para el título.</p>
+            </div>
+
+            <div class="form__group form__select-text-font">
+                <select
+                  [(ngModel)]="selectedTextFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="text-font"
+                  formControlName="textFont"
+                >
+                  <option *ngFor="let font of fontsText" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="text-font" class="form__label">Fuente Párrafo </label>
+            </div>
+            <div class="form__group form__example-text-font">
+              <p [ngClass]="selectedTextFont" class="example__text">Esta es la fuente seleccionada para el texto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Submit Area -->
       <div class="cv__submit-area">
         <button
           type="submit"

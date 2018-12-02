@@ -7,6 +7,7 @@ export class AuthService {
   private currentUserId: string;
   private user: any;
   loggedIn = new Subject<boolean>();
+  loginError = new Subject<boolean>();
 
   constructor() {
     this.token = null;
@@ -44,13 +45,14 @@ export class AuthService {
                 this.currentUserId = firebase.auth().currentUser.uid;
                 this.token = token;
                 this.loggedIn.next(true);
+                this.loginError.next(false);
                 return this.token;
               }
             );
         }
       )
       .catch(
-        error => console.log(error)
+        error => this.loginError.next(true)
       );
   }
 

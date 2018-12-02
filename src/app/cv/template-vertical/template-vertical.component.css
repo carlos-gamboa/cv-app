@@ -1685,3 +1685,31 @@ a {
 a {
   cursor: pointer;
 }
+
+.languages--text {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.language__text {
+  color: #777;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.languages__level {
+  padding-top: 2rem;
+}
+
+.language__name {
+  color: #333;
+  font-size: 2.1rem;
+}
+
+.grid__language {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
