@@ -33,6 +33,11 @@ export class Cv {
   languages: LanguagesModel[];
   template: string;
   theme: string;
+
+  // Custom
+  languageDisplay: string;
+  skillsDisplay: string;
+  percentageDisplay: string;
   titleFont: string;
   textFont: string;
 
@@ -65,6 +70,11 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
+
+    // Custom
+    this.languageDisplay = cv.languageDisplay;
+    this.skillsDisplay = cv.skillsDisplay;
+    this.percentageDisplay = cv.percentageDisplay;
     this.titleFont = cv.titleFont;
     this.textFont = cv. textFont;
   }

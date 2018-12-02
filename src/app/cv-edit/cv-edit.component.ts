@@ -5,21 +5,10 @@ import {CvService} from '../services/cv.service';
 import {AuthService} from '../services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
-export interface Theme {
+export interface SelectOption {
   value: string;
   viewValue: string;
 }
-
-export interface Template {
-  value: string;
-  viewValue: string;
-}
-
-export interface Font {
-  value: string;
-  viewValue: string;
-}
-
 
 @Component({
   selector: 'app-cv-edit',
@@ -43,37 +32,56 @@ export class CvEditComponent implements OnInit {
   selectedTitleFont = 'latoTitle';
   selectedTextFont = 'latoText';
 
-  templates: Template[] = [
+  templates: SelectOption[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
     {value: 'vertical', viewValue: 'Vertical'}
   ];
 
-  themesHorizontal: Theme[] = [
+  themesHorizontal: SelectOption[] = [
     {value: 'desert' , viewValue: 'Desierto'},
     {value: 'forest' , viewValue: 'Bosque'},
     {value: 'ocean' , viewValue: 'Océano'}
   ];
 
-  themesVertical: Theme[] = [
+  themesVertical: SelectOption[] = [
     {value: 'blue' , viewValue: 'Azul'},
     {value: 'green' , viewValue: 'Verde'},
     {value: 'orange' , viewValue: 'Naranja'}
   ];
 
-  fontsTitle: Font[] = [
+  fontsTitle: SelectOption[] = [
     {value: 'latoTitle', viewValue: 'Lato'},
     {value: 'georgiaTitle', viewValue: 'Georgia'},
     {value: 'openTitle', viewValue: 'OpenSans'},
     {value: 'libreTitle', viewValue: 'Libre Baskerville'}
   ];
 
-  fontsText: Font[] = [
+  fontsText: SelectOption[] = [
     {value: 'latoText', viewValue: 'Lato'},
     {value: 'georgiaText', viewValue: 'Georgia'},
     {value: 'openText', viewValue: 'OpenSans'},
     {value: 'libreText', viewValue: 'Libre Baskerville'}
   ];
 
+  skillsDisplay: SelectOption[] = [
+    {value: 'circle' , viewValue: 'Círculo'},
+    {value: 'bar' , viewValue: 'Barra'},
+    {value: 'stars' , viewValue: 'Estrellas'}
+  ];
+
+  languageDisplays: SelectOption[] = [
+    {value: 'percentage', viewValue: 'Porcentaje'},
+    {value: 'text', viewValue: 'Nivel'}
+  ];
+
+  languageLevels: SelectOption[] = [
+    {value: 'basico', viewValue: 'Básico'},
+    {value: 'competente', viewValue: 'Competente'},
+    {value: 'inter', viewValue: 'Intermedio'},
+    {value: 'tecnico', viewValue: 'Técnico'},
+    {value: 'experto', viewValue: 'Experto'},
+    {value: 'nativo', viewValue: 'Nativo'},
+  ];
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -171,7 +179,8 @@ export class CvEditComponent implements OnInit {
     (<FormArray>this.cvForm.get('languages')).push(
       new FormGroup({
         'language': new FormControl(null, [Validators.required]),
-        'languageKnowledge': new FormControl(null, [
+        'languageLevel': new FormControl('inter', Validators.required),
+        'languageKnowledge': new FormControl(0, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
         ])
@@ -195,7 +204,7 @@ export class CvEditComponent implements OnInit {
         'certificationDate': new FormControl(null, [Validators.required]),
         'certificationDescription': new FormControl(null, [Validators.required]),
         'certificationURL': new FormControl(null, [
-          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
         ]),
         'certificationSchool': new FormControl(null, Validators.required)
       })
@@ -219,7 +228,7 @@ export class CvEditComponent implements OnInit {
         'publicationDate': new FormControl(null, [Validators.required]),
         'publicationDescription': new FormControl(null, [Validators.required]),
         'publicationURL': new FormControl(null, [
-          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
         ]),
         'publicationSite': new FormControl(null, Validators.required)
       })
@@ -293,7 +302,7 @@ export class CvEditComponent implements OnInit {
       'address': new FormControl(null),
       'personalProfile': new FormControl(null, Validators.required),
       'websiteURL': new FormControl(null, [
-        Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
       // switchs
       'chronologicActive': new FormControl(false),
@@ -310,17 +319,20 @@ export class CvEditComponent implements OnInit {
       'skills': skills,
       'template': new FormControl(this.selectedTemplate, Validators.required),
       'theme':  new FormControl(this.selectedTheme, Validators.required),
-      'titleFont':  new FormControl(this.selectedTitleFont, Validators.required),
-      'textFont' : new FormControl(this.selectedTextFont, Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
-      'languages': languages
+      'languages': languages,
+      // Customization
+      'languageDisplay': new FormControl('percentage', Validators.required),
+      'skillsDisplay': new FormControl('circle', Validators.required),
+      'percentageDisplay': new FormControl('circle', Validators.required),
+      'titleFont':  new FormControl(this.selectedTitleFont, Validators.required),
+      'textFont' : new FormControl(this.selectedTextFont, Validators.required),
     });
   }
 
   changeSelect(e) {
-    console.log(e);
     if (this.selectedTemplate === 'vertical') {
       this.selectedTheme = 'desert';
     } else {
