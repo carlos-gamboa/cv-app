@@ -29,6 +29,8 @@ export class CvEditComponent implements OnInit {
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
   selectedTheme = 'blue';
+  selectedTitleFont = 'latoTitle';
+  selectedTextFont = 'latoText';
 
   templates: SelectOption[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
@@ -45,6 +47,20 @@ export class CvEditComponent implements OnInit {
     {value: 'blue' , viewValue: 'Azul'},
     {value: 'green' , viewValue: 'Verde'},
     {value: 'orange' , viewValue: 'Naranja'}
+  ];
+
+  fontsTitle: SelectOption[] = [
+    {value: 'latoTitle', viewValue: 'Lato'},
+    {value: 'georgiaTitle', viewValue: 'Georgia'},
+    {value: 'openTitle', viewValue: 'OpenSans'},
+    {value: 'libreTitle', viewValue: 'Libre Baskerville'}
+  ];
+
+  fontsText: SelectOption[] = [
+    {value: 'latoText', viewValue: 'Lato'},
+    {value: 'georgiaText', viewValue: 'Georgia'},
+    {value: 'openText', viewValue: 'OpenSans'},
+    {value: 'libreText', viewValue: 'Libre Baskerville'}
   ];
 
   skillsDisplay: SelectOption[] = [
@@ -310,7 +326,9 @@ export class CvEditComponent implements OnInit {
       // Customization
       'languageDisplay': new FormControl('percentage', Validators.required),
       'skillsDisplay': new FormControl('circle', Validators.required),
-      'percentageDisplay': new FormControl('circle', Validators.required)
+      'percentageDisplay': new FormControl('circle', Validators.required),
+      'titleFont':  new FormControl(this.selectedTitleFont, Validators.required),
+      'textFont' : new FormControl(this.selectedTextFont, Validators.required),
     });
   }
 

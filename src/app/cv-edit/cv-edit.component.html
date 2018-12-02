@@ -959,6 +959,54 @@
 
 
 
+      <!-- CV Configuration -->
+      <div class="cv__section-banner">
+        <h2  class="cv__banner-text">Configuración</h2>
+    </div>
+    <div class="cv__functional">
+      <div class="cv__main-edit">
+        <div class="cv__main-edit-content">
+          <div class="form__configuration-group">
+            <div class="form__group mt-0 form__select-title-font">
+                <select
+                  [(ngModel)]="selectedTitleFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="title-font"
+                  formControlName="titleFont"
+                >
+                  <option *ngFor="let font of fontsTitle" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="title-font" class="form__label">Fuente Título </label>
+            </div>
+            <div class="form__group form__example-title-font">
+              <p [ngClass]="selectedTitleFont" class="example__text">Esta es la fuente seleccionada para el título.</p>
+            </div>
+
+            <div class="form__group form__select-text-font">
+                <select
+                  [(ngModel)]="selectedTextFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="text-font"
+                  formControlName="textFont"
+                >
+                  <option *ngFor="let font of fontsText" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="text-font" class="form__label">Fuente Párrafo </label>
+            </div>
+            <div class="form__group form__example-text-font">
+              <p [ngClass]="selectedTextFont" class="example__text">Esta es la fuente seleccionada para el texto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Submit Area -->
       <div class="cv__submit-area">
         <button
           type="submit"

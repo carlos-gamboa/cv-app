@@ -2,3 +2,17 @@ p,
 a {
   word-break: break-all;
 }
+
+.latoTitle, .latoText{
+  font-family: "Lato", sans-serif !important;
+}
+.georgiaTitle, .georgiaText{
+  font-family: "Playfair Display", Georgia, serif !important;
+}
+.openTitle, .openText{
+  font-family:'opensans-bold', sans-serif !important;
+}
+.libreTitle, .libreText{
+  font-family: 'librebaskerville-regular', serif !important;
+}
+

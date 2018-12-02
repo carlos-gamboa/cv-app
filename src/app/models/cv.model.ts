@@ -38,6 +38,8 @@ export class Cv {
   languageDisplay: string;
   skillsDisplay: string;
   percentageDisplay: string;
+  titleFont: string;
+  textFont: string;
 
   constructor(cv: any) {
     this.name = cv.name;
@@ -73,5 +75,7 @@ export class Cv {
     this.languageDisplay = cv.languageDisplay;
     this.skillsDisplay = cv.skillsDisplay;
     this.percentageDisplay = cv.percentageDisplay;
+    this.titleFont = cv.titleFont;
+    this.textFont = cv. textFont;
   }
 }

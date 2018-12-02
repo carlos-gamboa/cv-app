@@ -10,7 +10,8 @@ import {Title} from '@angular/platform-browser';
     './template-vertical.component.css',
     './styles/animate.css',
     './styles/flexslider.css',
-    './styles/icomoon.css'
+    './styles/icomoon.css',
+    '../cv.component.css'
   ]
 })
 export class TemplateVerticalComponent implements OnInit {

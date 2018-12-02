@@ -630,6 +630,32 @@ hr {
   justify-self: center;
 }
 
+.form__configuration-group{
+  display: grid;
+  grid-template-columns: 4.5fr 4.5fr;
+}
+
+.form__select-title-font {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.form__example-title-font {
+  grid-column: 2 / 2;
+  grid-row: 1 / 2;
+}
+
+.form__select-text-font {
+  grid-column: 1 / 2;
+  grid-row: 2 / 2;
+}
+.form__example-text-font {
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
+}
+
+.example__text{
+  font-size: large;
+}
 /* --------------------------------------------- */
 /* SWITCH */
 /* --------------------------------------------- */
