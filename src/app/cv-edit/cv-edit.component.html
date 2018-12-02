@@ -444,6 +444,22 @@
         *ngIf="cvForm.get('skillsActive').value"
       >
         <div class="cv__main-edit">
+          <div class="form__group">
+            <select
+              class="form__input"
+              id="skillsDisplay"
+              formControlName="skillsDisplay"
+            >
+              <option *ngFor="let display of skillsDisplay" [value]="display.value">
+                {{display.viewValue}}
+              </option>
+            </select>
+            <label for="skillsDisplay" class="form__label">Forma de despliegue
+              <span *ngIf="!cvForm.get('skillsDisplay').valid && cvForm.get('skillsDisplay').touched">
+                      : Favor seleccione una forma de despliegue.
+                    </span>
+            </label>
+          </div>
           <div class="cv__main-edit-content" formArrayName="skills">
             <div
               class="form__skill-group"
@@ -481,22 +497,6 @@
                 </label>
               </div>
 
-              <div class="form__group mt-0 ">
-                  <select
-                  class="form__input"
-                  id="skillsDisplay"
-                  formControlName="skillsDisplay"
-                >
-                  <option *ngFor="let display of skillsDisplay" [value]="display.value">
-                    {{display.viewValue}}
-                  </option>
-                </select>
-                  <label for="skillsDisplay" class="form__label">Forma de despliegue
-                    <span *ngIf="!skillCtrl.get('skillsDisplay').valid && skillCtrl.get('skillsDisplay').touched">
-                      : Favor seleccione una forma de despliegue.
-                    </span>
-                  </label>
-                </div>
               <div class="form__skill-button">
                 <button
                   type="button"
@@ -531,7 +531,7 @@
         class="cv__functional"
         *ngIf="cvForm.get('languagesActive').value"
       >
-      <div class="cv__main-edit">
+      <div class="cv__main-edit cv__language-container">
         <div class="form__group">
           <select
             class="form__input"
@@ -542,13 +542,32 @@
               {{display.viewValue}}
             </option>
           </select>
-          <label for="languageDisplay" class="form__label">Forma de despliegue
+          <label for="languageDisplay" class="form__label">Tipo de despliegue
             <span *ngIf="!cvForm.get('languageDisplay').valid && cvForm.get('languageDisplay').touched">
+                  : Favor seleccione un tipo de despliegue.
+                </span>
+          </label>
+        </div>
+        <div
+          class="form__group mt-medium"
+          *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
+        >
+          <select
+            class="form__input"
+            id="percentageDisplay"
+            formControlName="percentageDisplay"
+          >
+            <option *ngFor="let display of skillsDisplay" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="percentageDisplay" class="form__label">Forma de despliegue
+            <span *ngIf="!cvForm.get('percentageDisplay').valid && cvForm.get('percentageDisplay').touched">
                   : Favor seleccione una forma de despliegue.
                 </span>
           </label>
         </div>
-        <div class="cv__main-edit-content" formArrayName="languages">
+        <div class="cv__main-edit-content cv__language-main" formArrayName="languages">
           <div
             class="form__skill-group"
             *ngFor="let languageCtrl of getLanguageControls(); let i = index"
@@ -608,22 +627,6 @@
                   </span>
               </label>
             </div>
-            <div class="form__group mt-0 ">
-                <select
-                class="form__input"
-                id="languagesDisplay"
-                formControlName="languagesDisplay"
-              >
-                <option *ngFor="let display of languagesDisplay" [value]="display.value">
-                  {{display.viewValue}}
-                </option>
-              </select>
-                <label for="languagesDisplay" class="form__label">Forma de despliegue
-                  <span *ngIf="!languageCtrl.get('languagesDisplay').valid && languageCtrl.get('languagesDisplay').touched">
-                    : Favor seleccione una forma de despliegue.
-                  </span>
-                </label>
-              </div>
 
             <div class="form__skill-button">
               <button

@@ -298,6 +298,15 @@ hr {
   font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 }
 
+.cv__language-container {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cv__language-main {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+}
+
 .cv__skills-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
