@@ -32,7 +32,6 @@ export class CvEditComponent implements OnInit {
 
   selectedTitleFont = 'latoTitle';
   selectedTextFont = 'latoText';
-  socialMediaData: FormGroup;
 
   templates: SelectOption[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
@@ -287,16 +286,28 @@ export class CvEditComponent implements OnInit {
     const publicationsData = new FormArray([]);
     const interestsData = new FormArray([]);
     const languages = new FormArray([]);
-    this.socialMediaData = new FormGroup({
-      'facebook': new FormControl(null),
-      'twitter': new FormControl(null),
-      'linkedin': new FormControl(null),
-      'instagram': new FormControl(null),
-      'googleplus': new FormControl(null),
-      'websiteURL': new FormControl(null, [
-        Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+    const socialMediaData = new FormGroup({
+      'facebook': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'skype':new FormControl(null)
+      'twitter': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ]),
+      'linkedin': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ]),
+      'instagram': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ]),
+      'googleplus': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ]),
+      'websiteURL': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ]),
+      'skype': new FormControl(null, [
+        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+      ])
     });
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
@@ -331,19 +342,19 @@ export class CvEditComponent implements OnInit {
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'template': new FormControl(this.selectedTemplate, Validators.required),
-      'theme':  new FormControl(this.selectedTheme, Validators.required),
+      'template': new FormControl('vertical', Validators.required),
+      'theme':  new FormControl('blue', Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
       'languages': languages,
-      'socialMediaData': this.socialMediaData,
+      'socialMediaData': socialMediaData,
       // Customization
       'languageDisplay': new FormControl('percentage', Validators.required),
       'skillsDisplay': new FormControl('circle', Validators.required),
       'percentageDisplay': new FormControl('circle', Validators.required),
-      'titleFont':  new FormControl(this.selectedTitleFont, Validators.required),
-      'textFont' : new FormControl(this.selectedTextFont, Validators.required),
+      'titleFont':  new FormControl('latoTitle', Validators.required),
+      'textFont' : new FormControl('latoText', Validators.required),
     });
   }
 

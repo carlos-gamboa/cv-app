@@ -95,8 +95,9 @@ figure figcaption {
 }
 
 #colorlib-aside {
-  padding-top: 144px;
-  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   float: left;
   width: 300px;
   position: fixed;
@@ -1712,4 +1713,42 @@ a {
 .grid__language {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.social {
+  margin: 2rem 1.5rem;
+  padding: 0;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+.social li {
+  display: inline-block;
+  margin: 0 .5rem;
+  padding: 0;
+}
+.social li a { color: #333; }
+
+.facebook:hover {
+  color: #3b5998 !important;
+}
+
+.twitter:hover {
+  color: #1da1f2 !important;
+}
+
+.instagram:hover {
+  color: #c32aa3 !important;
+}
+
+.skype:hover {
+  color: #00aff0 !important;
+}
+
+.linkedin:hover {
+  color: #007bb5 !important;
+}
+
+.google:hover {
+  color: #db4437 !important;
 }

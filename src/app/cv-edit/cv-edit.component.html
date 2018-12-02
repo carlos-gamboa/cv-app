@@ -952,19 +952,35 @@
         *ngIf="cvForm.get('socialMediaActive').value"
       >
         <div class="cv__main-edit">
-          <div class="cv__main-edit-content" [formGroup]="socialMediaData">
+          <div class="cv__main-edit-content social-media__group" formGroupName="socialMediaData">
+            <!-- Sitio Personal-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Sitio Web Personal"
+                id="websiteURL"
+                name="websiteURL"
+                formControlName="websiteURL"
+              >
+              <label for="websiteURL" class="form__label">Sitio Web Personal
+                <span *ngIf="!cvForm.get('socialMediaData').get('websiteURL').valid && cvForm.get('socialMediaData').get('websiteURL').touched">
+                    : Favor introduzca su URL personal válido
+                  </span>
+              </label>
+            </div>
             <!-- Facebook-->
             <div class="form__group form__group--big form__functional-year">
               <input
                 type="url"
                 class="form__input"
-                placeholder="URL: Facebook"
+                placeholder="Facebook URL"
                 id="facebook"
                 name="websiteURL"
                 formControlName="facebook"
               >
-              <label for="facebook" class="form__label">URL: Facebook
-                <span *ngIf="!socialMediaData.get('facebook').valid && socialMediaData.get('facebook').touched">
+              <label for="facebook" class="form__label">Facebook URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('facebook').valid && cvForm.get('socialMediaData').get('facebook').touched">
                     : Favor introduzca un URL válido
                 </span>
               </label>
@@ -974,13 +990,13 @@
               <input
                 type="url"
                 class="form__input"
-                placeholder="URL: Twitter"
+                placeholder="Twitter URL"
                 id="twitter"
                 name="twitter"
                 formControlName="twitter"
               >
-              <label for="twitter" class="form__label">URL: Twitter
-                <span *ngIf="!socialMediaData.get('twitter').valid && socialMediaData.get('twitter').touched">
+              <label for="twitter" class="form__label">Twitter URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('twitter').valid && cvForm.get('socialMediaData').get('twitter').touched">
                    : Favor introduzca un URL válido
                 </span>
               </label>
@@ -995,8 +1011,8 @@
                 name="linkedin"
                 formControlName="linkedin"
               >
-              <label for="linkedin" class="form__label">URL: Linkedin
-                <span *ngIf="!socialMediaData.get('linkedin').valid && socialMediaData.get('linkedin').touched">
+              <label for="linkedin" class="form__label">Linkedin  URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('linkedin').valid && cvForm.get('socialMediaData').get('linkedin').touched">
                    : Favor introduzca un URL válido
                   </span>
               </label>
@@ -1006,13 +1022,13 @@
               <input
                 type="url"
                 class="form__input"
-                placeholder="URL: Instagram"
+                placeholder="Instagram URL"
                 id="instagram"
                 name="instagram"
                 formControlName="instagram"
               >
-              <label for="instagram" class="form__label">URL: Instagram
-                <span *ngIf="!socialMediaData.get('instagram').valid && socialMediaData.get('instagram').touched">
+              <label for="instagram" class="form__label">Instagram URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('instagram').valid && cvForm.get('socialMediaData').get('instagram').touched">
                    : Favor introduzca un URL válido
                   </span>
               </label>
@@ -1022,30 +1038,14 @@
               <input
                 type="url"
                 class="form__input"
-                placeholder="URL: Google+"
+                placeholder="Google+ URL"
                 id="googleplus"
                 name="googleplus"
                 formControlName="googleplus"
               >
-              <label for="googleplus" class="form__label">URL: Google+
-                <span *ngIf="!socialMediaData.get('googleplus').valid && socialMediaData.get('googleplus').touched">
+              <label for="googleplus" class="form__label">Google+ URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('googleplus').valid && cvForm.get('socialMediaData').get('googleplus').touched">
                     : Favor introduzca un URL válido
-                  </span>
-              </label>
-            </div>
-            <!-- Sitio Personal-->
-            <div class="form__group form__group--big form__functional-year">
-              <input
-                type="url"
-                class="form__input"
-                placeholder="URL: Sitio Web Personal"
-                id="websiteURL"
-                name="websiteURL"
-                formControlName="websiteURL"
-              >
-              <label for="websiteURL" class="form__label">URL: Sitio Web Personal
-                <span *ngIf="!socialMediaData.get('websiteURL').valid && socialMediaData.get('websiteURL').touched">
-                    : Favor introduzca su URL personal válido
                   </span>
               </label>
             </div>
@@ -1054,13 +1054,13 @@
               <input
                 type="url"
                 class="form__input"
-                placeholder="URL: Skype"
+                placeholder="Skype URL"
                 id="skype"
                 name="skype"
                 formControlName="skype"
               >
-              <label for="skype" class="form__label">URL: Skype
-                <span *ngIf="!socialMediaData.get('skype').valid && socialMediaData.get('skype').touched">
+              <label for="skype" class="form__label">Skype URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('skype').valid && cvForm.get('socialMediaData').get('skype').touched">
                     : Favor introduzca un URL válido
                   </span>
               </label>
@@ -1069,9 +1069,6 @@
         </div>
       </div>
       <!-- Contacto -->
-
-
-
 
       <!-- CV Configuration -->
       <div class="cv__section-banner">

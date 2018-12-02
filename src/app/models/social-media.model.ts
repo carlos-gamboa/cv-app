@@ -6,6 +6,7 @@ export class SocialMediaModel {
   googleplus: string;
   websiteURL: string;
   skype: string;
+
   constructor(socialMedia: any) {
     this.facebook = socialMedia.facebook;
     this.twitter = socialMedia.twitter;
