@@ -6,6 +6,11 @@
       class="header__logo"
       routerLink="/home"
     >
+    <div
+      class="alert alert--danger"
+      *ngIf="showAlert">
+      <p class="alert__text">No se logró iniciar sesión.</p>
+    </div>
     <ul
       class="header__nav-list"
       [ngClass]="{hidden: !displayMenu}"

@@ -128,8 +128,14 @@
               <h2 class="colorlib-heading ">Mis Idiomas</h2>
             </div>
           </div>
-          <div class="row" >
-            <div class="col-md-6 " *ngFor="let language of cv.languages">
+          <div
+            class="row"
+            *ngIf="cv.languageDisplay === 'percentage'"
+          >
+            <div
+              class="col-md-6 "
+              *ngFor="let language of cv.languages"
+            >
               <div class="progress-wrap">
                 <h3>{{ language.language }}</h3>
                 <!-- Barras -->
@@ -164,6 +170,15 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            class="grid__language"
+            *ngIf="cv.languageDisplay === 'text'"
+          >
+            <p
+              *ngFor="let language of cv.languages"
+              class="language__text"
+            ><span class="language__name">{{language.language}}</span> &mdash; {{ getLanguageLevel(language.languageLevel) }}</p>
           </div>
         </div>
       </section>

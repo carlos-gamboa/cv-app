@@ -1,8 +1,8 @@
 <div class=" form__section">
-<h2 mat-dialog-title class="dashboard__heading-secondary">¡Comparte tu Curriculum!</h2>
-<div class="form__dashboard">
-  <input class="form__input form__input--full mb-medium" type="text" value="{{baseURL+cvId}}" #input readonly>
-  <button class="button button--primary form__dashboard-button" (click)="copyURL(input)" >Copiar URL</button>
-  <button class="button button--primary form__dashboard-button" (click)="close()">Listo</button>
+<h2 mat-dialog-title class="dashboard__share-text">¡Comparte tu Curriculum!</h2>
+<div class="dashboard__share-group">
+  <input class="dashboard__share-input mb-medium" type="text" value="{{baseURL+cvId}}" #input readonly>
+  <button class="button button--primary dashboard__button" (click)="copyURL(input)" >Copiar URL</button>
+  <button class="button button--primary dashboard__button" (click)="close()">Listo</button>
 </div>
 </div>

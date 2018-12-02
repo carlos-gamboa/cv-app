@@ -270,7 +270,7 @@ ul#nav li a:active { background-color: transparent !important; }
 }
 
 .forest .about {
-  background: #14281d;
+  background: #151D16;
   padding-top: 96px;
   padding-bottom: 66px;
   overflow: hidden;
@@ -659,7 +659,7 @@ ul#nav li a:active { background-color: transparent !important; }
 }
 
 .forest .publications {
-  background: #14281d;
+  background: #151D16;
   padding-top: 90px;
   padding-bottom: 72px;
   overflow: hidden;
@@ -675,11 +675,11 @@ ul#nav li a:active { background-color: transparent !important; }
 
 
 .desert .publications a, .publications a:visited  { color: #f5995c; }
-.forest .publications a, .publications a:visited  { color: #8caa7b; }
+.forest .publications a, .publications a:visited  { color: #DDF9EC; }
 .ocean .publications a, .publications a:visited  { color: #ffe787; }
 
 .desert .publications a:hover, .publications a:focus { color: #af6649; }
-.forest .publications a:hover, .publications a:focus { color: #667c5a; }
+.forest .publications a:hover, .publications a:focus { color: #94CCC0; }
 .ocean .publications a:hover, .publications a:focus { color: #a39356; }
 
 .publications h1 {
@@ -862,3 +862,25 @@ footer .social-links li:first-child { margin-left: 0; }
 .forest #go-top a:hover { background-color: #8caa7b; }
 .ocean #go-top a:hover { background-color: #2c98f0; }
 
+.languages--text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.language__text {
+  color: #666;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 3.5rem 0;
+}
+
+.languages__level {
+  padding-top: 2rem;
+}
+
+.language__name {
+  color: #333;
+  font-size: 2.3rem;
+}

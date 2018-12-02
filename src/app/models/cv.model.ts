@@ -34,6 +34,9 @@ export class Cv {
   template: string;
   theme: string;
 
+  // Custom
+  languageDisplay: string;
+
   constructor(cv: any) {
     this.name = cv.name;
     this.title = cv.title;
@@ -63,5 +66,8 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
+    
+    // Custom
+    this.languageDisplay = cv.languageDisplay;
   }
 }
