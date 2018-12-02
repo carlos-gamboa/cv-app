@@ -18,6 +18,20 @@ export class TemplateVerticalComponent implements OnInit {
   currentSection: string;
   currentFragment: string;
   id: string;
+  barColors = {
+    orange: {
+      inner: '#F29291',
+      outer: '#ec5453'
+    },
+    green: {
+      inner: '#7AC5BE',
+      outer: '#2fa499'
+    },
+    blue: {
+      inner: '#78BDF5',
+      outer: '#2c98f0'
+    },
+  };
 
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
