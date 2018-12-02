@@ -189,23 +189,6 @@
               </label>
             </div>
           </div>
-          <div class="cv__main-edit-content">
-            <div class="form__group form__group--big form__functional-year">
-              <input
-                type="url"
-                class="form__input"
-                placeholder="URL: Sitio Web Personal"
-                id="websiteURL"
-                name="websiteURL"
-                formControlName="websiteURL"
-              >
-              <label for="websiteURL" class="form__label">URL: Sitio Web Personal
-                <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
-                  : Favor introduzca su URL personal válido
-                </span>
-              </label>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -952,8 +935,139 @@
         </div>
       </div>
 
-
-
+      <!-- Redes sociales -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Redes sociales</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="socialMedia"
+            formControlName="socialMediaActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('socialMediaActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content" [formGroup]="socialMediaData">
+            <!-- Facebook-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Facebook"
+                id="facebook"
+                name="websiteURL"
+                formControlName="facebook"
+              >
+              <label for="facebook" class="form__label">URL: Facebook
+                <span *ngIf="!socialMediaData.get('facebook').valid && socialMediaData.get('facebook').touched">
+                    : Favor introduzca un URL válido
+                </span>
+              </label>
+            </div>
+            <!-- Twitter-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Twitter"
+                id="twitter"
+                name="twitter"
+                formControlName="twitter"
+              >
+              <label for="twitter" class="form__label">URL: Twitter
+                <span *ngIf="!socialMediaData.get('twitter').valid && socialMediaData.get('twitter').touched">
+                   : Favor introduzca un URL válido
+                </span>
+              </label>
+            </div>
+            <!-- Linkedin-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Linkedin"
+                id="linkedin"
+                name="linkedin"
+                formControlName="linkedin"
+              >
+              <label for="linkedin" class="form__label">URL: Linkedin
+                <span *ngIf="!socialMediaData.get('linkedin').valid && socialMediaData.get('linkedin').touched">
+                   : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Instragram-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Instagram"
+                id="instagram"
+                name="instagram"
+                formControlName="instagram"
+              >
+              <label for="instagram" class="form__label">URL: Instagram
+                <span *ngIf="!socialMediaData.get('instagram').valid && socialMediaData.get('instagram').touched">
+                   : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Google+-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Google+"
+                id="googleplus"
+                name="googleplus"
+                formControlName="googleplus"
+              >
+              <label for="googleplus" class="form__label">URL: Google+
+                <span *ngIf="!socialMediaData.get('googleplus').valid && socialMediaData.get('googleplus').touched">
+                    : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Sitio Personal-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Sitio Web Personal"
+                id="websiteURL"
+                name="websiteURL"
+                formControlName="websiteURL"
+              >
+              <label for="websiteURL" class="form__label">URL: Sitio Web Personal
+                <span *ngIf="!socialMediaData.get('websiteURL').valid && socialMediaData.get('websiteURL').touched">
+                    : Favor introduzca su URL personal válido
+                  </span>
+              </label>
+            </div>
+            <!-- Skype -->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Skype"
+                id="skype"
+                name="skype"
+                formControlName="skype"
+              >
+              <label for="skype" class="form__label">URL: Skype
+                <span *ngIf="!socialMediaData.get('skype').valid && socialMediaData.get('skype').touched">
+                    : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Contacto -->
 
 

@@ -5,6 +5,7 @@ import { CertificationsModel } from "./certifications.model";
 import { PublicationsModel } from "./publications.model";
 import { InterestsModel } from "./interests.model";
 import { LanguagesModel } from "./languages.model";
+import {SocialMediaModel} from './social-media.model';
 
 export class Cv {
   name: string;
@@ -31,6 +32,7 @@ export class Cv {
   interestsData: InterestsModel[];
   skills: SkillsModel[];
   languages: LanguagesModel[];
+  socialMediaData: SocialMediaModel;
   template: string;
   theme: string;
 
@@ -70,7 +72,8 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
-
+    this.socialMediaData = cv.socialMediaData;
+    
     // Custom
     this.languageDisplay = cv.languageDisplay;
     this.skillsDisplay = cv.skillsDisplay;
