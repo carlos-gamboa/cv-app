@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ShareUrlComponent } from './dashboard/share-url/share-url.component';
 import { TemplateHorizontalComponent } from './cv/template-horizontal/template-horizontal.component';
 import { TemplateVerticalComponent } from './cv/template-vertical/template-vertical.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TemplateVerticalComponent } from './cv/template-vertical/template-verti
     ReactiveFormsModule,
     MatDialogModule,
     MatSelectModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     CvService,

@@ -34,7 +34,7 @@ export class CvEditComponent implements OnInit {
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
   selectedTheme = 'blue';
-
+  socialMediaData: FormGroup;
   templates: Template[] = [
     {value: 'horizontal', viewValue: 'Horizontal'},
     {value: 'vertical', viewValue: 'Vertical'}
@@ -254,6 +254,17 @@ export class CvEditComponent implements OnInit {
     const publicationsData = new FormArray([]);
     const interestsData = new FormArray([]);
     const languages = new FormArray([]);
+    this.socialMediaData = new FormGroup({
+      'facebook': new FormControl(null),
+      'twitter': new FormControl(null),
+      'linkedin': new FormControl(null),
+      'instagram': new FormControl(null),
+      'googleplus': new FormControl(null),
+      'websiteURL': new FormControl(null, [
+        Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+      ]),
+      'skype':new FormControl(null)
+    });
     this.cvForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'title': new FormControl(null, Validators.required),
@@ -270,9 +281,6 @@ export class CvEditComponent implements OnInit {
       ),
       'address': new FormControl(null),
       'personalProfile': new FormControl(null, Validators.required),
-      'websiteURL': new FormControl(null, [
-        Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
-      ]),
       // switchs
       'chronologicActive': new FormControl(false),
       'functionalActive': new FormControl(false),
@@ -282,6 +290,7 @@ export class CvEditComponent implements OnInit {
       'publicationsActive': new FormControl(false),
       'interestsActive': new FormControl(false),
       'contactActive': new FormControl(false),
+      'socialMediaActive': new FormControl(),
       // datos
       'chronologicData': chronologicData,
       'functionalData': functionalData,
@@ -291,7 +300,8 @@ export class CvEditComponent implements OnInit {
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
-      'languages': languages
+      'languages': languages,
+      'socialMediaData': this.socialMediaData
     });
   }
 

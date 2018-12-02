@@ -25,14 +25,21 @@
       <h3>{{cv.introduction}}<br> Empieza a <a class="smoothscroll" (click)="onNavigateTo('about')">recorrer la página</a>
         y a aprender más <a class="smoothscroll" (click)="onNavigateTo('about')">acerca de mí.</a></h3>
       <hr />
-      <ul class="social" *ngIf="cv.websiteURL">
-        <!--<li><a ><i class="fa fa-facebook"></i></a></li>
-        <li><a ><i class="fa fa-twitter"></i></a></li>
-        <li><a ><i class="fa fa-google-plus"></i></a></li>
-        <li><a ><i class="fa fa-linkedin"></i></a></li>
-        <li><a ><i class="fa fa-instagram"></i></a></li>-->
-        <li><a [href]="convertURL(cv.websiteURL)"><i class="fa fa-dribbble"></i></a></li><!--
-        <li><a ><i class="fa fa-skype"></i></a></li>-->
+      <ul class="social" *ngIf="cv.socialMediaData">
+
+        <li *ngIf="cv.socialMediaData.facebook"><a [href]="convertURL(cv.socialMediaData.facebook)"><i class="fa fa-facebook"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.twitter"><a [href]="convertURL(cv.socialMediaData.twitter)"><i class="fa fa-twitter"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.linkedin"><a [href]="convertURL(cv.socialMediaData.linkedin)"><i class="fa fa-linkedin"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.instagram"><a [href]="convertURL(cv.socialMediaData.instagram)"><i class="fa fa-instagram"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.googleplus"><a [href]="convertURL(cv.socialMediaData.googleplus)"><i class="fa fa-google-plus"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.websiteURL"><a [href]="convertURL(cv.socialMediaData.websiteURL)"><i class="fa fa-dribbble"></i></a></li>
+
+        <li *ngIf="cv.socialMediaData.skype"><a [href]="convertURL(cv.socialMediaData.skype)"><i class="fa fa-skype"></i></a></li>
       </ul>
     </div>
   </div>
