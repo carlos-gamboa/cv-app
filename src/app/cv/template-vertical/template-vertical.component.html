@@ -7,7 +7,7 @@
         <div class="author-img" style="background-image: url(../../../assets/img/profile_default.png);"></div>
         <h1 id="colorlib-logo"><a >{{ cv.name }}</a></h1>
         <span class="position" *ngIf="cv.socialMediaData.websiteURL">
-          <a [href]="convertURL(cv.socialMediaData.websiteURL)">Visita mi Sitio Web</a>
+          <a class="web-site" [href]="convertURL(cv.socialMediaData.websiteURL)">Visita mi Sitio Web</a>
         </span>
         <span> <a href="mailto: {{cv.mail}}">{{ cv.mail }} </a></span><br>
         <span *ngIf="cv.address"> {{cv.address}} </span><br>
