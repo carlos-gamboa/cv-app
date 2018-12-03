@@ -53,14 +53,26 @@ export class CvEditComponent implements OnInit {
     {value: 'latoTitle', viewValue: 'Lato'},
     {value: 'georgiaTitle', viewValue: 'Georgia'},
     {value: 'openTitle', viewValue: 'OpenSans'},
-    {value: 'libreTitle', viewValue: 'Libre Baskerville'}
+    {value: 'libreTitle', viewValue: 'Libre Baskerville'},
+    {value: 'rokkittTitle', viewValue: 'Rokkitt'},
+    {value: 'sandTitle', viewValue: 'QuickSand'},
+    {value: 'playTitle', viewValue: 'PlayFair Display'},
+    {value: 'helveticaTitle', viewValue: 'Helvetica'},
+    {value: 'easterTitle', viewValue: 'Comic Sans MS'},
+    {value: 'oswaldTitle', viewValue: 'Oswald'}
   ];
 
   fontsText: SelectOption[] = [
     {value: 'latoText', viewValue: 'Lato'},
     {value: 'georgiaText', viewValue: 'Georgia'},
     {value: 'openText', viewValue: 'OpenSans'},
-    {value: 'libreText', viewValue: 'Libre Baskerville'}
+    {value: 'libreText', viewValue: 'Libre Baskerville'},
+    {value: 'rokkittText', viewValue: 'Rokkitt'},
+    {value: 'sandText', viewValue: 'QuickSand'},
+    {value: 'playText', viewValue: 'PlayFair Display'},
+    {value: 'helveticaText', viewValue: 'Helvetica'},
+    {value: 'easterText', viewValue: 'Comic Sans MS'},
+    {value: 'oswaldText', viewValue: 'Oswald'}
   ];
 
   skillsDisplay: SelectOption[] = [
