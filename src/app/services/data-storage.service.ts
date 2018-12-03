@@ -3,10 +3,13 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {CvService} from './cv.service';
 import {Cv} from '../models/cv.model';
+import * as firebase from 'firebase';
 
 
 @Injectable()
 export class DataStorageService {
+
+  storageRef = firebase.storage().ref();
   constructor(private http: HttpClient,
               private cvService: CvService,
               private authService: AuthService) {
@@ -40,6 +43,13 @@ export class DataStorageService {
       .catch(
         () => null
       );
+  }
+
+  storeImage(upload: File) {
+    const uid = this.authService.getCurrentUserId();
+    this.storageRef.child(uid + '/profile.jpg').put(upload).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
   }
 }
 

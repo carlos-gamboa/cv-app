@@ -31,6 +31,7 @@ export class CvEditComponent implements OnInit {
   contactActive = true;
   changesSaved = false;
   selectFileSrc = '../../../assets/img/profile_default.png';
+  selectedFile: File = null;
   cvForm: FormGroup;
   selectedTemplate = 'vertical';
   selectedTheme = 'blue';
@@ -79,6 +80,7 @@ export class CvEditComponent implements OnInit {
 
   onSubmit() {
     this.dataStorageService.storeCv(this.cvForm.value);
+    this.dataStorageService.storeImage(this.selectedFile);
     this.changesSaved = true;
   }
 
@@ -242,6 +244,8 @@ export class CvEditComponent implements OnInit {
       reader.onload = e => this.selectFileSrc = reader.result;
 
       reader.readAsDataURL(file);
+
+      this.selectedFile = <File>file;
     }
     console.log(event);
   }
