@@ -1,4 +1,4 @@
-<div class="cv">
+<div class="cv" *ngIf="readyToShow">
   <div class="cv__wrapper">
     <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
       <div class="cv__section-top-banner">
