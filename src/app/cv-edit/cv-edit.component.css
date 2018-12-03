@@ -7,7 +7,7 @@ a {
   font-family: "Lato", sans-serif !important;
 }
 .georgiaTitle, .georgiaText{
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: Georgia, serif !important;
 }
 .openTitle, .openText{
   font-family:'opensans-bold', sans-serif !important;
@@ -15,3 +15,22 @@ a {
 .libreTitle, .libreText{
   font-family: 'librebaskerville-regular', serif !important;
 }
+.rokkittTitle, .rokkittText{
+  font-family: "Rokkitt", sans-serif !important;
+}
+.sandTitle, .sandText{
+  font-family: "Quicksand", sans-serif !important;
+}
+.playTitle, .playText{
+  font-family: "Playfair Display", serif !important;
+}
+.helveticaTitle, .helveticaText{
+  font-family: "Helvetica", sans-serif !important;
+}
+.easterTitle, .easterText{
+  font-family: "Comic Sans MS", sans-serif !important;
+}
+.oswaldTitle, .oswaldText{
+  font-family: "Oswald", sans-serif !important;
+}
+
