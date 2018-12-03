@@ -4,6 +4,7 @@ import {DataStorageService} from '../services/data-storage.service';
 import {CvService} from '../services/cv.service';
 import {AuthService} from '../services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 export interface SelectOption {
   value: string;
@@ -49,6 +50,19 @@ export class CvEditComponent implements OnInit {
     {value: 'green' , viewValue: 'Verde'},
     {value: 'orange' , viewValue: 'Naranja'}
   ];
+
+  previewIds = {
+    vertical : {
+      blue: '2NFQLCRQBJXykpy3jqxylRQSkYY1',
+      green: '2NFQLCRQBJXykpy3jqxylRQSkYX2',
+      orange: '2NFQLCRQBJXykpy3jqxylRQSkYY3'
+    },
+    horizontal : {
+      desert: '2NFQLCRQBJXykpy3jqxylRQSkYY4',
+      forest: '2NFQLCRQBJXykpy3jqxylRQSkYY5',
+      ocean: '2NFQLCRQBJXykpy3jqxylRQSkYY6'
+    }
+  };
 
   fontsTitle: SelectOption[] = [
     {value: 'latoTitle', viewValue: 'Lato'},
@@ -180,8 +194,7 @@ export class CvEditComponent implements OnInit {
     (<FormArray>this.cvForm.get('languages')).push(
       new FormGroup({
         'language': new FormControl(null, [Validators.required]),
-        'languageLevel': new FormControl('inter', Validators.required),
-        'languageKnowledge': new FormControl(0, [
+        'languageKnowledge': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
         ])
@@ -205,7 +218,7 @@ export class CvEditComponent implements OnInit {
         'certificationDate': new FormControl(null, [Validators.required]),
         'certificationDescription': new FormControl(null, [Validators.required]),
         'certificationURL': new FormControl(null, [
-          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
         ]),
         'certificationSchool': new FormControl(null, Validators.required)
       })
@@ -229,7 +242,7 @@ export class CvEditComponent implements OnInit {
         'publicationDate': new FormControl(null, [Validators.required]),
         'publicationDescription': new FormControl(null, [Validators.required]),
         'publicationURL': new FormControl(null, [
-          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
         ]),
         'publicationSite': new FormControl(null, Validators.required)
       })
@@ -359,13 +372,41 @@ export class CvEditComponent implements OnInit {
   }
 
   changeSelect(e) {
+    console.log(e);
     if (this.selectedTemplate === 'vertical') {
       this.selectedTheme = 'desert';
     } else {
       this.selectedTheme = 'blue';
     }
   }
+
+  changeTheme(newValue) {
+    console.log(newValue);
+    this.selectedTheme = newValue;
+  }
+
+
   print() {
     console.log(this.cvForm.value);
   }
+
+  openPreview() {
+      if (this.selectedTemplate === 'vertical') {
+        if (this.selectedTheme === 'blue') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.blue, '_blank');
+        } else if (this.selectedTheme === 'green') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.green, '_blank');
+        } else { // orange
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.vertical.orange, '_blank');
+        }
+      } else { // horizontal
+        if (this.selectedTheme === 'desert') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.desert, '_blank');
+        } else if (this.selectedTheme === 'forest') {
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.forest, '_blank');
+        } else { // ocean
+          window.open(environment.activeUrl + '/cv/' + this.previewIds.horizontal.ocean, '_blank');
+        }
+      }
+    }
 }
