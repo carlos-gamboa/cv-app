@@ -51,6 +51,10 @@ export class DataStorageService {
       console.log('Uploaded a blob or file!');
     });
   }
+
+  getImage(key: string): Promise<any> {
+    return this.storageRef.child(key + '/profile.jpg').getDownloadURL();
+  }
 }
 
 

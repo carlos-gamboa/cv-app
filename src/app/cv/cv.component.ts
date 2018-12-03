@@ -43,7 +43,7 @@ export class CvComponent implements OnInit {
     );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.cvService.emitChangeHideHeader(false);
   }
 
