@@ -861,7 +861,7 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
 .progress-wrap h3 {
   font-size: 16px;
   font-family: "Quicksand", Arial, sans-serif;
-  margin-bottom: 10px; }
+  margin-bottom: 2.5rem; }
 
 .progress {
   height: 6px;
@@ -1756,6 +1756,6 @@ a {
 .web-site{
   font: 15px/1.1em 'opensans-bold', sans-serif;
   color: #fff;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   margin: 0 auto 18px auto;
 }
