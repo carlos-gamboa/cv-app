@@ -208,6 +208,7 @@ export class CvEditComponent implements OnInit {
     (<FormArray>this.cvForm.get('languages')).push(
       new FormGroup({
         'language': new FormControl(null, [Validators.required]),
+        'languageLevel': new FormControl('inter', Validators.required),
         'languageKnowledge': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
