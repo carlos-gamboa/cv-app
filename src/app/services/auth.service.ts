@@ -17,7 +17,6 @@ export class AuthService {
   signupUser(email: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((x: UserCredential) => {
-        console.log(firebase.auth().currentUser.toJSON());
         firebase.auth().currentUser.getIdToken()
           .then(
             (token: string) => {

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataStorageService} from '../services/data-storage.service';
 import {CvService} from '../services/cv.service';
 import {AuthService} from '../services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Cv} from '../models/cv.model';
 
 export interface SelectOption {
   value: string;
@@ -16,6 +17,10 @@ export interface SelectOption {
   styleUrls: ['./cv-edit.component.css']
 })
 export class CvEditComponent implements OnInit {
+  readyToShow = false;
+  uid: number;
+  cv: Cv = null;
+  editMode = false;
   chronologicActive = true;
   functionalActive = true;
   skillsActive = true;
@@ -93,16 +98,25 @@ export class CvEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initForm();
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/home']);
     }
     this.route.params.subscribe(
       (params: Params) => {
         if (params['id'] != null) {
+          this.editMode = true;
+          this.uid = params['id'];
           if (this.authService.getCurrentUserId() !== params['id']) {
             this.router.navigate([`/cv/${params['id']}`]);
           }
+          this.dataStorageService.getCv(this.uid.toString()).then((cv: Cv) => {
+            this.cv = cv;
+            this.initForm();
+            this.readyToShow = true;
+          });
+        } else {
+          this.initForm();
+          this.readyToShow = true;
         }
       }
     );
@@ -275,10 +289,41 @@ export class CvEditComponent implements OnInit {
 
       reader.readAsDataURL(file);
     }
-    console.log(event);
   }
 
   private initForm() {
+    let name = null;
+    let title = null;
+    let introduction = null;
+    let mail = null;
+    let phone1 = null;
+    let phone2 = null;
+    let address = null;
+    let personalProfile = null;
+    let chronologicActive = false;
+    let functionalActive = false;
+    let skillsActive = false;
+    let languagesActive = false;
+    let certificationsActive = false;
+    let publicationsActive = false;
+    let interestsActive = false;
+    let contactActive = false;
+    let socialMediaActive = false;
+    let template = 'vertical';
+    let theme = 'blue';
+    let languageDisplay = 'percentage';
+    let skillsDisplay = 'circle';
+    let percentageDisplay = 'circle';
+    let titleFont = 'latoTitle';
+    let textFont = 'latoText';
+    let facebook = null;
+    let twitter = null;
+    let linkedin = null;
+    let instagram = null;
+    let google = null;
+    let skype = null;
+    let website = null;
+
     const chronologicData = new FormArray([]);
     const functionalData = new FormArray([]);
     const skills = new FormArray([]);
@@ -286,75 +331,214 @@ export class CvEditComponent implements OnInit {
     const publicationsData = new FormArray([]);
     const interestsData = new FormArray([]);
     const languages = new FormArray([]);
+
+    if (this.editMode) {
+      name = this.cv.name;
+      title = this.cv.title;
+      introduction = this.cv.introduction;
+      mail = this.cv.mail;
+      phone1 = this.cv.phone1;
+      phone2 = this.cv.phone2;
+      address = this.cv.address;
+      personalProfile = this.cv.personalProfile;
+      chronologicActive = this.cv.chronologicActive;
+      functionalActive = this.cv.functionalActive;
+      skillsActive = this.cv.skillsActive;
+      languagesActive = this.cv.languagesActive;
+      certificationsActive = this.cv.certificationsActive;
+      publicationsActive = this.cv.publicationsActive;
+      interestsActive = this.cv.interestsActive;
+      contactActive = this.cv.contactActive;
+      socialMediaActive = this.cv.socialMediaActive;
+      template = this.cv.template;
+      theme = this.cv.theme;
+      languageDisplay = this.cv.languageDisplay;
+      skillsDisplay = this.cv.skillsDisplay;
+      percentageDisplay = this.cv.percentageDisplay;
+      titleFont = this.cv.titleFont;
+      textFont = this.cv.textFont;
+
+      this.selectedTemplate = template;
+      this.selectedTextFont = textFont;
+      this.selectedTheme = theme;
+      this.selectedTitleFont = titleFont;
+
+      if (this.cv['socialMediaData']) {
+        facebook = this.cv.socialMediaData.facebook;
+        twitter = this.cv.socialMediaData.twitter;
+        linkedin = this.cv.socialMediaData.linkedin;
+        instagram = this.cv.socialMediaData.instagram;
+        google = this.cv.socialMediaData.googleplus;
+        website = this.cv.socialMediaData.websiteURL;
+        skype = this.cv.socialMediaData.skype;
+      }
+
+      if (this.cv['chronologicData']) {
+        for (const chrono of this.cv.chronologicData) {
+          chronologicData.push(
+            new FormGroup({
+              'companyName': new FormControl(chrono.companyName, Validators.required),
+              'companyRole': new FormControl(chrono.companyRole, [Validators.required]),
+              'companyStart': new FormControl(chrono.companyStart, [Validators.required]),
+              'companyFinish': new FormControl(chrono.companyFinish),
+              'companyFunction': new FormControl(chrono.companyFunction, [Validators.required])
+            })
+          );
+        }
+      }
+
+      if (this.cv['functionalData']) {
+        for (const func of this.cv.functionalData) {
+          functionalData.push(
+            new FormGroup({
+              'schoolName': new FormControl(func.schoolName, Validators.required),
+              'schoolTitle': new FormControl(func.schoolTitle, [Validators.required]),
+              'schoolCity': new FormControl(func.schoolCity, [Validators.required]),
+              'schoolYear': new FormControl(func.schoolYear, [Validators.required])
+            })
+          );
+        }
+      }
+
+      if (this.cv['skills']) {
+        for (const skill of this.cv.skills) {
+          skills.push(
+            new FormGroup({
+              'skillName': new FormControl(skill.skillName, Validators.required),
+              'knowledge': new FormControl(skill.knowledge, [
+                Validators.required,
+                Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
+              ])
+            })
+          );
+        }
+      }
+
+      if (this.cv['certificationsData']) {
+        for (const cert of this.cv.certificationsData) {
+          certificationsData.push(
+            new FormGroup({
+              'certificationName': new FormControl(cert.certificationName, Validators.required),
+              'certificationDate': new FormControl(cert.certificationDate, [Validators.required]),
+              'certificationDescription': new FormControl(cert.certificationDescription, [Validators.required]),
+              'certificationURL': new FormControl(cert.certificationURL, [
+                Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+              ]),
+              'certificationSchool': new FormControl(cert.certificationSchool, Validators.required)
+            })
+          );
+        }
+      }
+
+      if (this.cv['publicationsData']) {
+        for (const publication of this.cv.publicationsData) {
+          publicationsData.push(
+            new FormGroup({
+              'publicationName': new FormControl(publication.publicationName, Validators.required),
+              'publicationDate': new FormControl(publication.publicationDate, [Validators.required]),
+              'publicationDescription': new FormControl(publication.publicationDescription, [Validators.required]),
+              'publicationURL': new FormControl(publication.publicationURL, [
+                Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
+              ]),
+              'publicationSite': new FormControl(publication.publicationSite, Validators.required)
+            })
+          );
+        }
+      }
+
+      if (this.cv['interestsData']) {
+        for (const interest of this.cv.interestsData) {
+          interestsData.push(
+            new FormGroup({
+              'interestText': new FormControl(interest.interestText, Validators.required),
+              'interestName': new FormControl(interest.interestName, Validators.required)
+            })
+          );
+        }
+      }
+
+      if (this.cv['languages']) {
+        for (const lang of this.cv.languages) {
+          languages.push(
+            new FormGroup({
+              'language': new FormControl(lang.language, [Validators.required]),
+              'languageLevel': new FormControl(lang.languageLevel, Validators.required),
+              'languageKnowledge': new FormControl(lang.languageKnowledge, [
+                Validators.required,
+                Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
+              ])
+            })
+          );
+        }
+      }
+    }
+
     const socialMediaData = new FormGroup({
-      'facebook': new FormControl(null, [
+      'facebook': new FormControl(facebook, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'twitter': new FormControl(null, [
+      'twitter': new FormControl(twitter, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'linkedin': new FormControl(null, [
+      'linkedin': new FormControl(linkedin, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'instagram': new FormControl(null, [
+      'instagram': new FormControl(instagram, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'googleplus': new FormControl(null, [
+      'googleplus': new FormControl(google, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'websiteURL': new FormControl(null, [
+      'websiteURL': new FormControl(website, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ]),
-      'skype': new FormControl(null, [
+      'skype': new FormControl(skype, [
         Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
       ])
     });
     this.cvForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'title': new FormControl(null, Validators.required),
-      'introduction': new FormControl(null, Validators.required),
-      'mail': new FormControl(null, [
+      'name': new FormControl(name, Validators.required),
+      'title': new FormControl(title, Validators.required),
+      'introduction': new FormControl(introduction, Validators.required),
+      'mail': new FormControl(mail, [
         Validators.required,
         Validators.email
       ]),
-      'phone1': new FormControl(null, [
+      'phone1': new FormControl(phone1, [
         Validators.required,
         Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
       ]),
-      'phone2': new FormControl(null, Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+      'phone2': new FormControl(phone2, Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
       ),
-      'address': new FormControl(null),
-      'personalProfile': new FormControl(null, Validators.required),
-      'websiteURL': new FormControl(null, [
-        Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
-      ]),
+      'address': new FormControl(address),
+      'personalProfile': new FormControl(personalProfile, Validators.required),
       // switchs
-      'chronologicActive': new FormControl(false),
-      'functionalActive': new FormControl(false),
-      'skillsActive': new FormControl(false),
-      'languagesActive': new FormControl(false),
-      'certificationsActive': new FormControl(false),
-      'publicationsActive': new FormControl(false),
-      'interestsActive': new FormControl(false),
-      'contactActive': new FormControl(false),
-      'socialMediaActive': new FormControl(),
+      'chronologicActive': new FormControl(chronologicActive),
+      'functionalActive': new FormControl(functionalActive),
+      'skillsActive': new FormControl(skillsActive),
+      'languagesActive': new FormControl(languagesActive),
+      'certificationsActive': new FormControl(certificationsActive),
+      'publicationsActive': new FormControl(publicationsActive),
+      'interestsActive': new FormControl(interestsActive),
+      'contactActive': new FormControl(contactActive),
+      'socialMediaActive': new FormControl(socialMediaActive),
       // datos
       'chronologicData': chronologicData,
       'functionalData': functionalData,
       'skills': skills,
-      'template': new FormControl('vertical', Validators.required),
-      'theme':  new FormControl('blue', Validators.required),
       'certificationsData': certificationsData,
       'publicationsData': publicationsData,
       'interestsData': interestsData,
       'languages': languages,
       'socialMediaData': socialMediaData,
       // Customization
-      'languageDisplay': new FormControl('percentage', Validators.required),
-      'skillsDisplay': new FormControl('circle', Validators.required),
-      'percentageDisplay': new FormControl('circle', Validators.required),
-      'titleFont':  new FormControl('latoTitle', Validators.required),
-      'textFont' : new FormControl('latoText', Validators.required),
+      'template': new FormControl(template, Validators.required),
+      'theme':  new FormControl(theme, Validators.required),
+      'languageDisplay': new FormControl(languageDisplay, Validators.required),
+      'skillsDisplay': new FormControl(skillsDisplay, Validators.required),
+      'percentageDisplay': new FormControl(percentageDisplay, Validators.required),
+      'titleFont':  new FormControl(titleFont, Validators.required),
+      'textFont' : new FormControl(textFont, Validators.required),
     });
   }
 
@@ -364,8 +548,5 @@ export class CvEditComponent implements OnInit {
     } else {
       this.selectedTheme = 'blue';
     }
-  }
-  print() {
-    console.log(this.cvForm.value);
   }
 }

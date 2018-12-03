@@ -24,6 +24,7 @@ export class Cv {
   publicationsActive: boolean;
   interestsActive: boolean;
   contactActive: boolean;
+  socialMediaActive: boolean;
   chronologicData: ChronologicModel[];
   functionalData: FunctionalModel[];
   certificationsData: CertificationsModel[];
@@ -61,6 +62,7 @@ export class Cv {
     this.interestsActive = cv.interestsActive;
     this.contactActive = cv.contactActive;
     this.publicationsActive = cv.publicationsActive;
+    this.socialMediaActive = cv.socialMediaActive;
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
