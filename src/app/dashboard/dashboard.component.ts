@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
   }
 
   goToView() {
-    window.open(environment.activeUrl + `/cv/${this.uid}`, '_blank'); //use this to open in a new tab
-    //this.router.navigate([`/cv/${this.uid}`]); //use this to navigate
+    window.open(environment.activeUrl + `/cv/${this.uid}`, '_blank'); // use this to open in a new tab
+    // this.router.navigate([`/cv/${this.uid}`]); // use this to navigate
   }
 
   goToCreate() {

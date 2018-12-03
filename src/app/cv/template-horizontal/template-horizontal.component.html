@@ -25,15 +25,28 @@
       <h3>{{cv.introduction}}<br> Empieza a <a class="smoothscroll" (click)="onNavigateTo('about')">recorrer la página</a>
         y a aprender más <a class="smoothscroll" (click)="onNavigateTo('about')">acerca de mí.</a></h3>
       <hr />
-      <ul class="social" *ngIf="cv.websiteURL">
-        <!--<li><a ><i class="fa fa-facebook"></i></a></li>
-        <li><a ><i class="fa fa-twitter"></i></a></li>
-        <li><a ><i class="fa fa-google-plus"></i></a></li>
-        <li><a ><i class="fa fa-linkedin"></i></a></li>
-        <li><a ><i class="fa fa-instagram"></i></a></li>-->
-        <li><a [href]="convertURL(cv.websiteURL)"><i class="fa fa-dribbble"></i></a></li><!--
-        <li><a ><i class="fa fa-skype"></i></a></li>-->
+      <ul class="social" *ngIf="cv.socialMediaData">
+
+        <li *ngIf="cv.socialMediaData.facebook">
+          <a [href]="convertURL(cv.socialMediaData.facebook)" class="facebook"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li *ngIf="cv.socialMediaData.twitter">
+          <a [href]="convertURL(cv.socialMediaData.twitter)" class="twitter"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li *ngIf="cv.socialMediaData.linkedin">
+          <a [href]="convertURL(cv.socialMediaData.linkedin)" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        </li>
+        <li *ngIf="cv.socialMediaData.instagram">
+          <a [href]="convertURL(cv.socialMediaData.instagram)" class="instagram"><i class="fa fa-instagram"></i></a>
+        </li>
+        <li *ngIf="cv.socialMediaData.googleplus">
+          <a [href]="convertURL(cv.socialMediaData.googleplus)" class="google"><i class="fa fa-google-plus"></i></a>
+        </li>
+        <li *ngIf="cv.socialMediaData.skype">
+          <a [href]="convertURL(cv.socialMediaData.skype)" class="skype"><i class="fa fa-skype"></i></a>
+        </li>
       </ul>
+      <span *ngIf="cv.socialMediaData"> <a *ngIf="cv.socialMediaData.websiteURL" class="web-site" [href]="convertURL(cv.socialMediaData.websiteURL)">Mi Sitio Web</a> </span>
     </div>
   </div>
 
@@ -73,7 +86,7 @@
             <span *ngIf="cv.address"> {{cv.address}} </span><br>
             <span><a href="tel: {{cv.phone1}}">{{ cv.phone1 }} </a></span><br>
             <span *ngIf="cv.phone2"><a href="tel: {{cv.phone1}}">{{ cv.phone2 }} </a></span><br>
-            <span *ngIf="cv.websiteURL"> <a [href]="convertURL(cv.websiteURL)">Mi Sitio Web</a> </span>
+            <span *ngIf="cv.socialMediaData"> <a *ngIf="cv.socialMediaData.websiteURL" [href]="convertURL(cv.socialMediaData.websiteURL)">Mi Sitio Web</a> </span>
           </p>
 
         </div>

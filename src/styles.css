@@ -346,7 +346,29 @@ hr {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
 
+.cv__preview-container {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
 
+.cv__preview-button {
+  display: block;
+  background-color: #eee;
+  color: #cf8a05 !important;
+  border: 2px solid #cf8a05;
+}
+
+.cv__preview-button:hover {
+  background-color: #cf8a05;
+  color: #eee !important;
+  border: 2px solid #eee;
+  box-shadow: 0 1rem 3rem #393939 !important;
+}
+
+.social-media__group .form__group {
+  margin-top: 2.5rem;
+}
 
 /* --------------------------------------------- */
 /* INPUT FILE */
@@ -843,6 +865,10 @@ a:active {
 
 .mt-medium {
   margin-top: 2.5rem;
+}
+
+.display-block {
+  display: block;
 }
 
 /* --------------------------------------------- */

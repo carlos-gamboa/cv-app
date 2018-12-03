@@ -5,6 +5,7 @@ import { CertificationsModel } from "./certifications.model";
 import { PublicationsModel } from "./publications.model";
 import { InterestsModel } from "./interests.model";
 import { LanguagesModel } from "./languages.model";
+import {SocialMediaModel} from './social-media.model';
 
 export class Cv {
   name: string;
@@ -15,7 +16,6 @@ export class Cv {
   address: string;
   personalProfile: string;
   introduction: string;
-  websiteURL: string;
   chronologicActive: boolean;
   functionalActive: boolean;
   skillsActive: boolean;
@@ -24,6 +24,7 @@ export class Cv {
   publicationsActive: boolean;
   interestsActive: boolean;
   contactActive: boolean;
+  socialMediaActive: boolean;
   chronologicData: ChronologicModel[];
   functionalData: FunctionalModel[];
   certificationsData: CertificationsModel[];
@@ -31,6 +32,7 @@ export class Cv {
   interestsData: InterestsModel[];
   skills: SkillsModel[];
   languages: LanguagesModel[];
+  socialMediaData: SocialMediaModel;
   template: string;
   theme: string;
 
@@ -50,7 +52,6 @@ export class Cv {
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
     this.introduction = cv.introduction;
-    this.websiteURL = cv.websiteURL;
     this.address = cv.address;
     this.personalProfile = cv.personalProfile;
     this.chronologicActive = cv.chronologicActive;
@@ -61,6 +62,7 @@ export class Cv {
     this.interestsActive = cv.interestsActive;
     this.contactActive = cv.contactActive;
     this.publicationsActive = cv.publicationsActive;
+    this.socialMediaActive = cv.socialMediaActive;
     this.chronologicData = cv.chronologicData;
     this.functionalData = cv.functionalData;
     this.skills = cv.skills;
@@ -70,6 +72,7 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
+    this.socialMediaData = cv.socialMediaData;
 
     // Custom
     this.languageDisplay = cv.languageDisplay;

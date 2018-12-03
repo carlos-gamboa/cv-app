@@ -30,6 +30,7 @@ import { TemplateVerticalComponent } from './cv/template-vertical/template-verti
 import { NgCircleProgressModule } from 'ng-circle-progress';
 //star bars
 import { BarRatingModule } from "ngx-bar-rating";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { BarRatingModule } from "ngx-bar-rating";
       animationDuration: 300,
       showSubtitle: false
     }),
-    BarRatingModule
+    BarRatingModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     CvService,
