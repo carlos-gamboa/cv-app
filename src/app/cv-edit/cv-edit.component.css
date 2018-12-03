@@ -15,25 +15,3 @@ a {
 .libreTitle, .libreText{
   font-family: 'librebaskerville-regular', serif !important;
 }
-
-
-.cv__template-preview-area {
-  padding: 3rem;
-  display: grid;
-  grid-row-gap: 1rem;
-  justify-content: center;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.template-preview-button--primary {
-  background-color: #eee;
-  color: #cf8a05;
-  border: 1px solid #eee;
-}
-
-.template-preview-button--primary:hover {
-  background-color: #eee;
-  color: #cf8a05;
-  border: 1px solid #cf8a05;
-}
