@@ -12,7 +12,9 @@ export class SignupComponent implements OnInit {
 
   @ViewChild('f') signinForm: NgForm;
   user: any = null;
-  registerError = false;
+  showAlert = false;
+  alertType = false;
+  alertMessage = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -20,23 +22,39 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
+    this.showAlert = false;
     this.authService.signupUser(this.signinForm.controls['username2'].value, this.signinForm.controls['password2'].value)
       .then((user: any) => {
       this.user = user;
       if (this.user != null) {
+        this.showMessage(true, 'Se ha registrado exitosamente.');
         setTimeout(
           () => {
             this.router.navigate(['/home']);
         }
         , 1500);
       } else {
-        this.registerError = true;
-        console.log('Register Failed');
+        this.showMessage(false, 'Los datos ingresados no son válidos.');
+        this.hideMessage();
       }
     }).catch( reason => {
-      this.registerError = true;
-      console.log('Register Failed');
+      this.showMessage(false, 'No fue posible registrarse, vuélvelo a intentar.');
+      this.hideMessage();
     });
+  }
+
+  private showMessage (type: boolean, text: string) {
+    this.alertType = type;
+    this.alertMessage = text;
+    this.showAlert = true;
+  }
+
+  private hideMessage () {
+    setTimeout(
+      () => {
+        this.showAlert = false;
+      }
+      , 5000);
   }
 
 }

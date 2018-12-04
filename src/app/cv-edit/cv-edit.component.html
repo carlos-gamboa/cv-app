@@ -1,4 +1,4 @@
-<div class="cv">
+<div class="cv" *ngIf="readyToShow">
   <div class="cv__wrapper">
     <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
       <div class="cv__section-top-banner">
@@ -17,6 +17,9 @@
             </option>
           </select>
         </div>
+        <div class="cv__preview-container">
+          <a class="button cv__preview-button" (click)="openPreview()">Previsualizar plantilla</a>
+        </div>
         <div *ngIf="selectedTemplate.match('horizontal')" class="cv__banner-select">
           <label for="theme1" class="cv__top-banner-text">Temas: </label>
           <select
@@ -34,6 +37,7 @@
         <div *ngIf="selectedTemplate.match('vertical')" class="cv__banner-select">
           <label for="theme2" class="cv__top-banner-text">Temas: </label>
           <select
+            [(ngModel)]="selectedTheme"
             class="form__input"
             placeholder="Temas"
             id="theme2"
@@ -186,23 +190,6 @@
               <label for="personalProfile" class="form__label">Perfil Personal
                 <span *ngIf="!cvForm.get('personalProfile').valid && cvForm.get('personalProfile').touched">
                   : Favor introduzca información referente a su perfil personal
-                </span>
-              </label>
-            </div>
-          </div>
-          <div class="cv__main-edit-content">
-            <div class="form__group form__group--big form__functional-year">
-              <input
-                type="url"
-                class="form__input"
-                placeholder="URL: Sitio Web Personal"
-                id="websiteURL"
-                name="websiteURL"
-                formControlName="websiteURL"
-              >
-              <label for="websiteURL" class="form__label">URL: Sitio Web Personal
-                <span *ngIf="!cvForm.get('websiteURL').valid && cvForm.get('websiteURL').touched">
-                  : Favor introduzca su URL personal válido
                 </span>
               </label>
             </div>
@@ -445,6 +432,22 @@
         *ngIf="cvForm.get('skillsActive').value"
       >
         <div class="cv__main-edit">
+          <div class="form__group">
+            <select
+              class="form__input"
+              id="skillsDisplay"
+              formControlName="skillsDisplay"
+            >
+              <option *ngFor="let display of skillsDisplay" [value]="display.value">
+                {{display.viewValue}}
+              </option>
+            </select>
+            <label for="skillsDisplay" class="form__label">Forma de despliegue
+              <span *ngIf="!cvForm.get('skillsDisplay').valid && cvForm.get('skillsDisplay').touched">
+                      : Favor seleccione una forma de despliegue.
+                    </span>
+            </label>
+          </div>
           <div class="cv__main-edit-content" formArrayName="skills">
             <div
               class="form__skill-group"
@@ -516,8 +519,43 @@
         class="cv__functional"
         *ngIf="cvForm.get('languagesActive').value"
       >
-      <div class="cv__main-edit">
-        <div class="cv__main-edit-content" formArrayName="languages">
+      <div class="cv__main-edit cv__language-container">
+        <div class="form__group">
+          <select
+            class="form__input"
+            id="languageDisplay"
+            formControlName="languageDisplay"
+          >
+            <option *ngFor="let display of languageDisplays" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="languageDisplay" class="form__label">Tipo de despliegue
+            <span *ngIf="!cvForm.get('languageDisplay').valid && cvForm.get('languageDisplay').touched">
+                  : Favor seleccione un tipo de despliegue.
+                </span>
+          </label>
+        </div>
+        <div
+          class="form__group mt-medium"
+          *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
+        >
+          <select
+            class="form__input"
+            id="percentageDisplay"
+            formControlName="percentageDisplay"
+          >
+            <option *ngFor="let display of skillsDisplay" [value]="display.value">
+              {{display.viewValue}}
+            </option>
+          </select>
+          <label for="percentageDisplay" class="form__label">Forma de despliegue
+            <span *ngIf="!cvForm.get('percentageDisplay').valid && cvForm.get('percentageDisplay').touched">
+                  : Favor seleccione una forma de despliegue.
+                </span>
+          </label>
+        </div>
+        <div class="cv__main-edit-content cv__language-main" formArrayName="languages">
           <div
             class="form__skill-group"
             *ngFor="let languageCtrl of getLanguageControls(); let i = index"
@@ -538,7 +576,31 @@
                 </span>
               </label>
             </div>
-            <div class="form__group mt-0 form__skill-knowledge">
+
+            <div
+              class="form__group mt-0"
+              *ngIf="cvForm.get('languageDisplay').value === 'text'"
+            >
+              <select
+                class="form__input"
+                id="languageLevel"
+                formControlName="languageLevel"
+              >
+                <option *ngFor="let display of languageLevels" [value]="display.value">
+                  {{display.viewValue}}
+                </option>
+              </select>
+              <label for="languageLevel" class="form__label">Nivel
+                <span *ngIf="!languageCtrl.get('languageLevel').valid && languageCtrl.get('languageLevel').touched">
+                  : Favor seleccione el nivel del idioma.
+                </span>
+              </label>
+            </div>
+
+            <div
+              class="form__group mt-0 "
+              *ngIf="cvForm.get('languageDisplay').value === 'percentage'"
+            >
               <input
                 type="number"
                 class="form__input"
@@ -549,8 +611,8 @@
               >
               <label for="knowledge" class="form__label">Porcentaje de Conocimiento
                 <span *ngIf="!languageCtrl.get('languageKnowledge').valid && languageCtrl.get('languageKnowledge').touched">
-                  : Favor introduzca su porcentaje de conocimiento en el idioma
-                </span>
+                    : Favor introduzca su porcentaje de conocimiento en el idioma
+                  </span>
               </label>
             </div>
 
@@ -878,13 +940,189 @@
         </div>
       </div>
 
-
-
+      <!-- Redes sociales -->
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Redes sociales</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="socialMedia"
+            formControlName="socialMediaActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div
+        class="cv__functional"
+        *ngIf="cvForm.get('socialMediaActive').value"
+      >
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content social-media__group" formGroupName="socialMediaData">
+            <!-- Sitio Personal-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Sitio Web Personal"
+                id="websiteURL"
+                name="websiteURL"
+                formControlName="websiteURL"
+              >
+              <label for="websiteURL" class="form__label">Sitio Web Personal
+                <span *ngIf="!cvForm.get('socialMediaData').get('websiteURL').valid && cvForm.get('socialMediaData').get('websiteURL').touched">
+                    : Favor introduzca su URL personal válido
+                  </span>
+              </label>
+            </div>
+            <!-- Facebook-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Facebook URL"
+                id="facebook"
+                name="websiteURL"
+                formControlName="facebook"
+              >
+              <label for="facebook" class="form__label">Facebook URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('facebook').valid && cvForm.get('socialMediaData').get('facebook').touched">
+                    : Favor introduzca un URL válido
+                </span>
+              </label>
+            </div>
+            <!-- Twitter-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Twitter URL"
+                id="twitter"
+                name="twitter"
+                formControlName="twitter"
+              >
+              <label for="twitter" class="form__label">Twitter URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('twitter').valid && cvForm.get('socialMediaData').get('twitter').touched">
+                   : Favor introduzca un URL válido
+                </span>
+              </label>
+            </div>
+            <!-- Linkedin-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="URL: Linkedin"
+                id="linkedin"
+                name="linkedin"
+                formControlName="linkedin"
+              >
+              <label for="linkedin" class="form__label">Linkedin  URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('linkedin').valid && cvForm.get('socialMediaData').get('linkedin').touched">
+                   : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Instragram-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Instagram URL"
+                id="instagram"
+                name="instagram"
+                formControlName="instagram"
+              >
+              <label for="instagram" class="form__label">Instagram URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('instagram').valid && cvForm.get('socialMediaData').get('instagram').touched">
+                   : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Google+-->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Google+ URL"
+                id="googleplus"
+                name="googleplus"
+                formControlName="googleplus"
+              >
+              <label for="googleplus" class="form__label">Google+ URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('googleplus').valid && cvForm.get('socialMediaData').get('googleplus').touched">
+                    : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+            <!-- Skype -->
+            <div class="form__group form__group--big form__functional-year">
+              <input
+                type="url"
+                class="form__input"
+                placeholder="Skype URL"
+                id="skype"
+                name="skype"
+                formControlName="skype"
+              >
+              <label for="skype" class="form__label">Skype URL
+                <span *ngIf="!cvForm.get('socialMediaData').get('skype').valid && cvForm.get('socialMediaData').get('skype').touched">
+                    : Favor introduzca un URL válido
+                  </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Contacto -->
 
+      <!-- CV Configuration -->
+      <div class="cv__section-banner">
+        <h2  class="cv__banner-text">Configuración</h2>
+    </div>
+    <div class="cv__functional">
+      <div class="cv__main-edit">
+        <div class="cv__main-edit-content">
+          <div class="form__configuration-group">
+            <div class="form__group mt-0 form__select-title-font">
+                <select
+                  [(ngModel)]="selectedTitleFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="title-font"
+                  formControlName="titleFont"
+                >
+                  <option *ngFor="let font of fontsTitle" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="title-font" class="form__label">Fuente Título </label>
+            </div>
+            <div class="form__group form__example-title-font">
+              <p [ngClass]="selectedTitleFont" class="example__text">Esta es la fuente seleccionada para el título.</p>
+            </div>
 
-
-
+            <div class="form__group form__select-text-font">
+                <select
+                  [(ngModel)]="selectedTextFont"
+                  (input)="changeSelect($event)"
+                  class="form__input"
+                  id="text-font"
+                  formControlName="textFont"
+                >
+                  <option *ngFor="let font of fontsText" [value]="font.value">
+                    {{font.viewValue}}
+                  </option>
+                </select>
+              <label for="text-font" class="form__label">Fuente Párrafo </label>
+            </div>
+            <div class="form__group form__example-text-font">
+              <p [ngClass]="selectedTextFont" class="example__text">Esta es la fuente seleccionada para el texto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Submit Area -->
       <div class="cv__submit-area">
         <button
           type="submit"
