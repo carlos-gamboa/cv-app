@@ -34,6 +34,7 @@ export class TemplateHorizontalComponent implements OnInit {
     },
   };
 
+  @Input() profile_picture;
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
     this.elements['home'] = content;

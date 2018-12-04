@@ -14,7 +14,7 @@ export class CvComponent implements OnInit {
   cvId: string;
   cv: Cv;
   readyToShow = false;
-
+  profile_picture = null;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -32,6 +32,17 @@ export class CvComponent implements OnInit {
         this.dataStorageService.getCv(this.cvId).then((cv: Cv) => {
           if (cv) {
             this.cv = cv;
+            if (this.cv.hasProfilePic) {
+              this.dataStorageService.getImage(this.cvId).then((image: any) => {
+                if (image) {
+                  this.profile_picture = image;
+                } else {
+                  this.profile_picture = null;
+                }
+              }).catch(reason => {
+                this.profile_picture = null;
+              });
+            }
             this.readyToShow = true;
           } else {
             this.router.navigate(['/']);

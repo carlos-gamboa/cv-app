@@ -65,7 +65,7 @@
 
     <div class="three columns">
 
-      <img class="profile-pic"  src="./../../../assets/img/template-horizontal/profilepic.jpg" alt="" />
+      <img *ngIf="profile_picture" class="profile-pic"  [src]="profile_picture" alt="" />
 
     </div>
 

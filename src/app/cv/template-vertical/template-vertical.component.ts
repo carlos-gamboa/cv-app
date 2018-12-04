@@ -19,6 +19,7 @@ export class TemplateVerticalComponent implements OnInit {
   currentSection: string;
   currentFragment: string;
   id: string;
+
   barColors = {
     orange: {
       inner: '#F29291',
@@ -34,6 +35,7 @@ export class TemplateVerticalComponent implements OnInit {
     },
   };
 
+  @Input() profile_picture;
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
     this.elements['home'] = content;

@@ -35,6 +35,7 @@ export class Cv {
   socialMediaData: SocialMediaModel;
   template: string;
   theme: string;
+  hasProfilePic: boolean;
 
   // Custom
   languageDisplay: string;
@@ -72,6 +73,7 @@ export class Cv {
     this.certificationsData = cv.certificationsData;
     this.publicationsData = cv.publicationsData;
     this.interestsData = cv.interestsData;
+    this.hasProfilePic = cv.hasProfilePic;
     this.socialMediaData = cv.socialMediaData;
 
     // Custom
