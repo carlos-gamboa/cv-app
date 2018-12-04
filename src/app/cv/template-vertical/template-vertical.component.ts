@@ -17,7 +17,7 @@ export class TemplateVerticalComponent implements OnInit {
   currentSection: string;
   currentFragment: string;
   id: string;
-
+  @Input() profile_picture;
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
     this.elements['home'] = content;

@@ -117,14 +117,13 @@ figure figcaption {
     transform: translateX(-300px);
     padding-top: 4em; } }
 #colorlib-aside .author-img {
-  width: 150px;
-  height: 150px;
+  width: 60%;
   margin: 0 auto;
   margin-bottom: 30px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
-  border-radius: 50%; }
+  border-radius: 300px; }
 #colorlib-aside .position {
   display: block;
   margin-bottom: 2em;

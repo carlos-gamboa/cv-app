@@ -18,6 +18,7 @@ export class TemplateHorizontalComponent implements OnInit {
   currentFragment: string;
   id: string;
 
+  @Input() profile_picture;
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
     this.elements['home'] = content;

@@ -4,7 +4,7 @@
     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
     <aside id="colorlib-aside" role="complementary" class="border js-fullheight" style="min-height: 100vh">
       <div class="text-center">
-        <div class="author-img" style="background-image: url(../../../assets/img/profile_default.png);"></div>
+        <img *ngIf="profile_picture" class="author-img" [src]="profile_picture" alt="">
         <h1 id="colorlib-logo"><a >{{ cv.name }}</a></h1>
         <span class="position" *ngIf="cv.websiteURL"><a [href]="convertURL(cv.websiteURL)">Visita mi Sitio Web</a></span>
       </div>

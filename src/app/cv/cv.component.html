@@ -1,10 +1,12 @@
 <div class="cv" *ngIf="readyToShow">
   <app-template-horizontal
     [cv]="cv"
+    [profile_picture]="profile_picture"
     *ngIf="cv.template === 'horizontal'"
   ></app-template-horizontal>
   <app-template-vertical
     [cv]="cv"
+    [profile_picture]="profile_picture"
     *ngIf="cv.template === 'vertical'"
   ></app-template-vertical>
 </div>
