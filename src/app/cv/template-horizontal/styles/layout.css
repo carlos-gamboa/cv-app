@@ -793,11 +793,24 @@ footer .copyright {
     padding: 0;
  }
 footer .copyright li {
+  color: #aaa;
     display: inline-block;
     margin: 0;
     padding: 0;
     line-height: 24px;
 }
+
+footer .copyright li a:link,
+footer .copyright li a:visited {
+  color: #888;
+  margin-left: .5rem;
+}
+
+footer .copyright li a:hover,
+footer .copyright li a:active {
+  color: #ddd;
+}
+
 .ie footer .copyright li {
    display: inline;
 }

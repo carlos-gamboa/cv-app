@@ -1077,15 +1077,27 @@
       </div>
       <!-- Contacto -->
 
+      <div class="cv__section-banner">
+        <h2 class="cv__banner-text">Contacto</h2>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="contact"
+            formControlName="contactActive"
+          >
+          <span class="slider round"></span>
+        </label>
+      </div>
+
       <!-- CV Configuration -->
       <div class="cv__section-banner">
         <h2  class="cv__banner-text">Configuración</h2>
-    </div>
-    <div class="cv__functional">
-      <div class="cv__main-edit">
-        <div class="cv__main-edit-content">
-          <div class="form__configuration-group">
-            <div class="form__group mt-0 form__select-title-font">
+      </div>
+      <div class="cv__functional">
+        <div class="cv__main-edit">
+          <div class="cv__main-edit-content">
+            <div class="form__configuration-group">
+              <div class="form__group mt-0 form__select-title-font">
                 <select
                   [(ngModel)]="selectedTitleFont"
                   (input)="changeSelect($event)"
