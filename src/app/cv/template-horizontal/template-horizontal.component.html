@@ -65,7 +65,9 @@
 
     <div class="three columns">
 
-      <img *ngIf="profile_picture" class="profile-pic"  [src]="profile_picture" alt="" />
+      <div class="crop">
+        <img *ngIf="profile_picture" class="profile-pic"  [src]="profile_picture" alt="" />
+      </div>
 
     </div>
 

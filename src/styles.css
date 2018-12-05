@@ -25,7 +25,13 @@ body {
   color: #fff; }
 
 .user__image{
-  width: 90%;
+  width: 100%;
+}
+
+.crop {
+  overflow: hidden;
+  height: 15rem;
+  width: 15rem;
   border-radius: 300px;
   margin-bottom: 2rem;
 }

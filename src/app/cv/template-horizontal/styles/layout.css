@@ -306,9 +306,15 @@ ul#nav li a:active { background-color: transparent !important; }
   line-height: 30px;
   color: #bac7d8;
 }
+
+.crop {
+  width: 20rem;
+  height: 20rem;
+}
+
 .about .profile-pic {
    position: relative;
-   border-radius: 300px;
+  width: 100%;
 }
 .about .contact-details { width: 41.66667%; }
 .about .download {

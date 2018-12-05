@@ -53,7 +53,9 @@
         <div class="form">
           <div class="form__section">
             <div class="form__group form__group--image">
-              <img class="user__image" id="preview" [src]="selectFileSrc || '../../assets/img/profile_default.png'" alt="Alan Smith" />
+              <div class="crop">
+                <img class="user__image" id="preview" [src]="selectFileSrc || '../../assets/img/profile_default.png'" alt="Alan Smith" />
+              </div>
               <input type="file" accept=".jpg" name="file" id="file" class="inputfile" (change)="onFileSelect($event)" />
               <label for="file" class="button button--primary">Elije un archivo</label>
               <label for="preview">*No se mostrará imagen en el CV en caso de no seleccionar una.</label>
