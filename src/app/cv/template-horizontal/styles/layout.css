@@ -193,6 +193,12 @@ header .scrolldown a {
 }
 header .scrolldown a:hover { color: #11ABB0; }
 
+.ocean header .scrolldown a:hover { color: #2c98f0; }
+
+.desert header .scrolldown a:hover { color: #F06000; }
+
+.forest header .scrolldown a:hover { color: #8caa7b; }
+
 /* primary navigation
 --------------------------------------------------------------------- */
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {
@@ -670,12 +676,12 @@ ul#nav li a:active { background-color: transparent !important; }
 
 
 .desert .publications a, .publications a:visited  { color: #f5995c; }
-.forest .publications a, .publications a:visited  { color: #DDF9EC; }
-.ocean .publications a, .publications a:visited  { color: #ffe787; }
+.forest .publications a, .publications a:visited  { color: #c0d0b7; }
+.ocean .publications a, .publications a:visited  { color: #ffeda7; }
 
-.desert .publications a:hover, .publications a:focus { color: #af6649; }
-.forest .publications a:hover, .publications a:focus { color: #94CCC0; }
-.ocean .publications a:hover, .publications a:focus { color: #a39356; }
+.desert .publications a:hover, .publications a:focus { color: #F06000; }
+.forest .publications a:hover, .publications a:focus { color: #8caa7b; }
+.ocean .publications a:hover, .publications a:focus { color: #fff146; }
 
 .publications h1 {
   font: 18px/24px 'opensans-bold', sans-serif;
@@ -820,6 +826,19 @@ footer .copyright li:before {
     padding-right: 10px;
     color: #095153;
 }
+
+.ocean footer .copyright li:before {
+  color: #2c98f0;
+}
+
+.forest footer .copyright li:before {
+  color: #8caa7b;
+}
+
+.desert footer .copyright li:before {
+  color: #F06000;
+}
+
 footer .copyright  li:first-child:before {
     display: none;
 }
@@ -922,4 +941,43 @@ footer .social-links li:first-child { margin-left: 0; }
 
 .google:hover {
   color: #db4437 !important;
+}
+
+.web-site:link,
+.web-site:visited {
+  font: 20px/1.1em 'opensans-bold', sans-serif;
+  letter-spacing: 0;
+  word-spacing: 0.1rem;
+  margin: 0 auto 18px auto;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .8);
+}
+
+.ocean .web-site:link,
+.ocean .web-site:visited {
+  color: #c1e1fa !important;
+}
+
+.ocean .web-site:hover,
+.ocean .web-site:active {
+  color: #9fd0f8 !important;
+}
+
+.desert .web-site:link,
+.desert .web-site:visited {
+  color: #f9c5a2 !important;
+}
+
+.desert .web-site:hover,
+.desert .web-site:active {
+  color: #F06000 !important;
+}
+
+.forest .web-site:link,
+.forest .web-site:visited {
+  color: #c0d0b7 !important;
+}
+
+.forest .web-site:hover,
+.forest .web-site:active {
+  color: #8caa7b !important;
 }

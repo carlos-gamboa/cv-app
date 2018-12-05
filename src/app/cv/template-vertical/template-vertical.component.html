@@ -64,7 +64,7 @@
       <section id="colorlib-hero" style="height: 100vh" #home>
         <div class="flexslider js-fullheight">
           <ul class="slides">
-            <li class="slide-item" style="background-image: url(../../../assets/img/template-vertical/header-vertical.jpg);">
+            <li class="slide-item hero-background">
               <div class="overlay"></div>
               <div class="container-fluid">
                 <div class="row">
@@ -382,7 +382,7 @@
                   <i class="icon-globe-outline"></i>
                 </div>
                 <div class="colorlib-text">
-                  <p><a href="#">{{cv.mail}}</a></p>
+                  <p><a href="mailto: {{cv.mail}}">{{cv.mail}}</a></p>
                 </div>
               </div>
 
@@ -400,8 +400,7 @@
                 <i class="icon-phone"></i>
               </div>
               <div class="colorlib-text">
-                <p><a href="tel://">{{ cv.phone1 }}</a></p>
-                <br>
+                <p><a href="tel: {{ cv.phone1 }}">{{ cv.phone1 }}</a></p>
                 <p *ngIf="cv.phone2"><a href="tel://">{{ cv.phone2 }}</a></p>
               </div>
             </div>
