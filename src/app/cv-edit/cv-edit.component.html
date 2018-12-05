@@ -56,7 +56,7 @@
               <img class="user__image" id="preview" [src]="selectFileSrc || '../../assets/img/profile_default.png'" alt="Alan Smith" />
               <input type="file" accept=".jpg" name="file" id="file" class="inputfile" (change)="onFileSelect($event)" />
               <label for="file" class="button button--primary">Elije un archivo</label>
-              <label for="preview">*Dejar la imagen por defecto si no quiere foto de perfil.</label>
+              <label for="preview">*No se mostrará imagen en el CV en caso de no seleccionar una.</label>
             </div>
           </div>
           <div class="form__section form__section--full ">
