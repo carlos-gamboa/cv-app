@@ -586,7 +586,6 @@ export class CvEditComponent implements OnInit {
   }
 
   changeSelect(e) {
-    console.log(e);
     if (this.selectedTemplate === 'vertical') {
       this.selectedTheme = 'desert';
     } else {
