@@ -676,11 +676,11 @@ ul#nav li a:active { background-color: transparent !important; }
 
 
 .desert .publications a, .publications a:visited  { color: #f5995c; }
-.forest .publications a, .publications a:visited  { color: #c0d0b7; }
+.forest .publications a, .publications a:visited  { color: #ffffff; }
 .ocean .publications a, .publications a:visited  { color: #ffeda7; }
 
 .desert .publications a:hover, .publications a:focus { color: #F06000; }
-.forest .publications a:hover, .publications a:focus { color: #8caa7b; }
+.forest .publications a:hover, .publications a:focus { color: #e0e0e0; }
 .ocean .publications a:hover, .publications a:focus { color: #fff146; }
 
 .publications h1 {
