@@ -4,9 +4,17 @@
     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
     <aside id="colorlib-aside" role="complementary" class="border js-fullheight" style="min-height: 100vh">
       <div class="text-center">
-        <div class="author-img" style="background-image: url(../../../assets/img/profile_default.png);"></div>
+        <div class="crop">
+          <img *ngIf="profile_picture" class="author-img" [src]="profile_picture" alt="">
+        </div>
         <h1 id="colorlib-logo"><a >{{ cv.name }}</a></h1>
-        <span class="position" *ngIf="cv.websiteURL"><a [href]="convertURL(cv.websiteURL)">Visita mi Sitio Web</a></span>
+        <span class="position" *ngIf="cv.socialMediaData && cv.socialMediaData.websiteURL">
+          <a class="web-site" [href]="convertURL(cv.socialMediaData.websiteURL)">Visita mi Sitio Web</a>
+        </span>
+        <span> <a href="mailto: {{cv.mail}}">{{ cv.mail }} </a></span><br>
+        <span *ngIf="cv.address"> {{cv.address}} </span><br>
+        <span><a href="tel: {{cv.phone1}}">{{ cv.phone1 }} </a></span><br>
+        <span *ngIf="cv.phone2"><a href="tel: {{cv.phone1}}">{{ cv.phone2 }} </a></span><br>
       </div>
       <nav id="colorlib-main-menu" role="navigation" class="navbar">
         <div id="navbar" class="collapse">
@@ -22,10 +30,32 @@
           </ul>
         </div>
       </nav>
+      <div class="social__container">
+        <ul class="social" *ngIf="cv.socialMediaData">
+          <li *ngIf="cv.socialMediaData.facebook">
+            <a [href]="convertURL(cv.socialMediaData.facebook)" class="facebook"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li *ngIf="cv.socialMediaData.twitter">
+            <a [href]="convertURL(cv.socialMediaData.twitter)" class="twitter"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li *ngIf="cv.socialMediaData.linkedin">
+            <a [href]="convertURL(cv.socialMediaData.linkedin)" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          </li>
+          <li *ngIf="cv.socialMediaData.instagram">
+            <a [href]="convertURL(cv.socialMediaData.instagram)" class="instagram"><i class="fa fa-instagram"></i></a>
+          </li>
+          <li *ngIf="cv.socialMediaData.googleplus">
+            <a [href]="convertURL(cv.socialMediaData.googleplus)" class="google"><i class="fa fa-google-plus"></i></a>
+          </li>
+          <li *ngIf="cv.socialMediaData.skype">
+            <a [href]="convertURL(cv.socialMediaData.skype)" class="skype"><i class="fa fa-skype"></i></a>
+          </li>
+        </ul>
+      </div>
       <div class="colorlib-footer">
         <p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --><span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></span></small></p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small></p>
       </div>
 
     </aside>
@@ -34,7 +64,7 @@
       <section id="colorlib-hero" style="height: 100vh" #home>
         <div class="flexslider js-fullheight">
           <ul class="slides">
-            <li class="slide-item" style="background-image: url(../../../assets/img/template-vertical/header-vertical.jpg);">
+            <li class="slide-item hero-background">
               <div class="overlay"></div>
               <div class="container-fluid">
                 <div class="row">
@@ -79,37 +109,98 @@
               <h2 class="colorlib-heading ">Mis Habilidades</h2>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 " *ngFor="let skill of cv.skills">
-              <div class="progress-wrap">
-                <h3>{{ skill.skillName }}</h3>
-                <div class="progress">
-                  <div class="progress-bar color-1"  [style.width.%]="skill.knowledge">
-                    <span>{{skill.knowledge}}%</span>
+          <div class="row" >
+              <div class="col-md-6 mb-5" *ngFor="let skill of cv.skills">
+                <div class="progress-wrap">
+                  <h3>{{ skill.skillName }}</h3>
+                  <!-- Barras -->
+                  <div *ngIf = "cv.skillsDisplay == 'bar'">
+                    <div class="progress">
+                      <div class="progress-bar color-1"  [style.width.%]="skill.knowledge">
+                        <span>{{skill.knowledge}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Circulo -->
+                  <div *ngIf = "cv.skillsDisplay == 'circle'">
+                    <div class="circle">
+                      <circle-progress
+                        [percent]="skill.knowledge"
+                        [outerStrokeColor]="barColors[cv.theme]['outer']"
+                        [innerStrokeColor]="barColors[cv.theme]['inner']"
+                      ></circle-progress>
+                    </div>
+                  </div>
+                  <!-- Estrellas -->
+                  <div *ngIf = "cv.skillsDisplay == 'stars'">
+                    <div class="stars">
+                      <bar-rating
+                        [theme]="'default'"
+                        [readOnly]="true"
+                        [rate]="skill.knowledge / 20"
+                      ></bar-rating>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
-        <div class="colorlib-narrow-content" *ngIf="cv.languagesActive">
+        <div class="colorlib-narrow-content mt-5" *ngIf="cv.languagesActive">
           <div class="row">
             <div class="col-md-6 col-md-offset-3 col-md-pull-3 " >
-              <span class="heading-meta">Mi Especialidad</span>
+              <span class="heading-meta">Mi Conocimiento</span>
               <h2 class="colorlib-heading ">Mis Idiomas</h2>
             </div>
           </div>
-          <div class="row" >
-            <div class="col-md-6 " *ngFor="let language of cv.languages">
+          <div
+            class="row"
+            *ngIf="cv.languageDisplay === 'percentage'"
+          >
+            <div
+              class="col-md-6 mb-5"
+              *ngFor="let language of cv.languages"
+            >
               <div class="progress-wrap">
                 <h3>{{ language.language }}</h3>
-                <div class="progress">
-                  <div class="progress-bar color-1"  [style.width.%]="language.languageKnowledge">
-                    <span>{{language.languageKnowledge}}%</span>
+                <!-- Barras -->
+                <div *ngIf = "cv.percentageDisplay == 'bar'">
+                  <div class="progress">
+                    <div class="progress-bar color-1"  [style.width.%]="language.languageKnowledge">
+                      <span>{{language.languageKnowledge}}%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Circulo -->
+                <div *ngIf = "cv.percentageDisplay == 'circle'">
+                  <div class="circle">
+                    <circle-progress
+                      [percent]="language.languageKnowledge"
+                      [outerStrokeColor]="barColors[cv.theme]['outer']"
+                      [innerStrokeColor]="barColors[cv.theme]['inner']"
+                    ></circle-progress>
+                  </div>
+                </div>
+                <!-- Estrellas -->
+                <div *ngIf = "cv.percentageDisplay == 'stars'">
+                  <div class="stars">
+                    <bar-rating
+                      [theme]="'default'"
+                      [readOnly]="true"
+                      [rate]="language.languageKnowledge / 20"
+                    ></bar-rating>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            class="grid__language"
+            *ngIf="cv.languageDisplay === 'text'"
+          >
+            <p
+              *ngFor="let language of cv.languages"
+              class="language__text"
+            ><span class="language__name">{{language.language}}</span> &mdash; {{ getLanguageLevel(language.languageLevel) }}</p>
           </div>
         </div>
       </section>
@@ -291,7 +382,7 @@
                   <i class="icon-globe-outline"></i>
                 </div>
                 <div class="colorlib-text">
-                  <p><a href="#">{{cv.mail}}</a></p>
+                  <p><a href="mailto: {{cv.mail}}">{{cv.mail}}</a></p>
                 </div>
               </div>
 
@@ -309,8 +400,7 @@
                 <i class="icon-phone"></i>
               </div>
               <div class="colorlib-text">
-                <p><a href="tel://">{{ cv.phone1 }}</a></p>
-                <br>
+                <p><a href="tel: {{ cv.phone1 }}">{{ cv.phone1 }}</a></p>
                 <p *ngIf="cv.phone2"><a href="tel://">{{ cv.phone2 }}</a></p>
               </div>
             </div>
