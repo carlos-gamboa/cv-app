@@ -229,7 +229,7 @@ export class CvEditComponent implements OnInit {
       new FormGroup({
         'language': new FormControl(null, [Validators.required]),
         'languageLevel': new FormControl('inter', Validators.required),
-        'languageKnowledge': new FormControl(null, [
+        'languageKnowledge': new FormControl(0, [
           Validators.required,
           Validators.pattern(/^[1-9]?[0-9]{1}$|^100$/)
         ])
