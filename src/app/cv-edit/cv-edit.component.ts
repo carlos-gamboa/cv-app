@@ -253,7 +253,7 @@ export class CvEditComponent implements OnInit {
         'certificationDate': new FormControl(null, [Validators.required]),
         'certificationDescription': new FormControl(null, [Validators.required]),
         'certificationURL': new FormControl(null, [
-          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
         ]),
         'certificationSchool': new FormControl(null, Validators.required)
       })
@@ -277,7 +277,7 @@ export class CvEditComponent implements OnInit {
         'publicationDate': new FormControl(null, [Validators.required]),
         'publicationDescription': new FormControl(null, [Validators.required]),
         'publicationURL': new FormControl(null, [
-          Validators.pattern(/(^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+).[a-z]{2,5}(:[0-9]{1,5})?(\/.)?$)/)
+          Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
         ]),
         'publicationSite': new FormControl(null, Validators.required)
       })
