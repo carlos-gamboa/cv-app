@@ -13,3 +13,113 @@
   overflow:auto;
   min-height: 100vh;
 }
+
+.latoTitle ::ng-deep h1,
+.latoTitle ::ng-deep h2,
+.latoTitle ::ng-deep h3,
+.latoTitle ::ng-deep h4,
+.latoTitle ::ng-deep h5,
+.latoTitle ::ng-deep h6,
+.latoText ::ng-deep p,
+.latoText ::ng-deep span{
+  font-family: "Lato", sans-serif !important;
+}
+
+.georgiaTitle ::ng-deep h1,
+.georgiaTitle ::ng-deep h2,
+.georgiaTitle ::ng-deep h3,
+.georgiaTitle ::ng-deep h4,
+.georgiaTitle ::ng-deep h5,
+.georgiaTitle ::ng-deep h6,
+.georgiaText ::ng-deep p,
+.georgiaText ::ng-deep span{
+  font-family: Georgia, serif !important;
+}
+
+.playTitle ::ng-deep h1,
+.playTitle ::ng-deep h2,
+.playTitle ::ng-deep h3,
+.playTitle ::ng-deep h4,
+.playTitle ::ng-deep h5,
+.playTitle ::ng-deep h6,
+.playText ::ng-deep p,
+.playText ::ng-deep span{
+  font-family: "Playfair Display", serif !important;
+}
+
+.openTitle ::ng-deep h1,
+.openTitle ::ng-deep h2,
+.openTitle ::ng-deep h3,
+.openTitle ::ng-deep h4,
+.openTitle ::ng-deep h5,
+.openTitle ::ng-deep h6,
+.openText ::ng-deep p,
+.openText ::ng-deep span{
+  font-family:'opensans-bold', sans-serif !important;
+}
+
+.libreTitle ::ng-deep h1,
+.libreTitle ::ng-deep h2,
+.libreTitle ::ng-deep h3,
+.libreTitle ::ng-deep h4,
+.libreTitle ::ng-deep h5,
+.libreTitle ::ng-deep h6,
+.libreText ::ng-deep p,
+.libreText ::ng-deep span{
+  font-family: 'librebaskerville-regular', serif !important;
+}
+
+.rokkittTitle ::ng-deep h1,
+.rokkittTitle ::ng-deep h2,
+.rokkittTitle ::ng-deep h3,
+.rokkittTitle ::ng-deep h4,
+.rokkittTitle ::ng-deep h5,
+.rokkittTitle ::ng-deep h6,
+.rokkittText ::ng-deep p,
+.rokkittText ::ng-deep span{
+  font-family: "Rokkitt", sans-serif !important;
+}
+
+.sandTitle ::ng-deep h1,
+.sandTitle ::ng-deep h2,
+.sandTitle ::ng-deep h3,
+.sandTitle ::ng-deep h4,
+.sandTitle ::ng-deep h5,
+.sandTitle ::ng-deep h6,
+.sandText ::ng-deep p,
+.sandText ::ng-deep span{
+  font-family: "Quicksand", sans-serif !important;
+}
+
+.helveticaTitle ::ng-deep h1,
+.helveticaTitle ::ng-deep h2,
+.helveticaTitle ::ng-deep h3,
+.helveticaTitle ::ng-deep h4,
+.helveticaTitle ::ng-deep h5,
+.helveticaTitle ::ng-deep h6,
+.helveticaText ::ng-deep p,
+.helveticaText ::ng-deep span{
+  font-family: "Helvetica", sans-serif !important;
+}
+
+.easterTitle ::ng-deep h1,
+.easterTitle ::ng-deep h2,
+.easterTitle ::ng-deep h3,
+.easterTitle ::ng-deep h4,
+.easterTitle ::ng-deep h5,
+.easterTitle ::ng-deep h6,
+.easterText ::ng-deep p,
+.easterText ::ng-deep span{
+  font-family: "Comic Sans MS", sans-serif !important;
+}
+
+.oswaldTitle ::ng-deep h1,
+.oswaldTitle ::ng-deep h2,
+.oswaldTitle ::ng-deep h3,
+.oswaldTitle ::ng-deep h4,
+.oswaldTitle ::ng-deep h5,
+.oswaldTitle ::ng-deep h6,
+.oswaldText ::ng-deep p,
+.oswaldText ::ng-deep span{
+  font-family: "Oswald", sans-serif !important;
+}

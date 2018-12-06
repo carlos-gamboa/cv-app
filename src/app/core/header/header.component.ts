@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loggedIn = false;
   token: any = null;
   subscription: Subscription;
+  alertSubscription: Subscription;
+  showAlert = false;
 
   constructor(
     private authService: AuthService,
@@ -28,10 +30,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.loggedIn = logged;
         }
       );
+    this.alertSubscription = this.authService.loginError
+      .subscribe(
+        (error: boolean) => {
+          this.showAlert = error;
+          if (this.showAlert) {
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 5000);
+          }
+        }
+      );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.alertSubscription.unsubscribe();
   }
 
   onLogOut() {

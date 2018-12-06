@@ -1,6 +1,7 @@
 import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {Cv} from '../../models/cv.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-template-horizontal',
@@ -9,7 +10,8 @@ import {ActivatedRoute, Router} from '@angular/router';
     './template-horizontal.component.css',
     './styles/layout.css',
     './styles/media-queries.css',
-    './styles/magnific-popup.css'
+    './styles/magnific-popup.css',
+    '../cv.component.css'
   ]
 })
 export class TemplateHorizontalComponent implements OnInit {
@@ -17,7 +19,22 @@ export class TemplateHorizontalComponent implements OnInit {
   currentSection: string;
   currentFragment: string;
   id: string;
+  barColors = {
+    desert: {
+      inner: '#F5995C',
+      outer: '#F06000'
+    },
+    forest: {
+      inner: '#85916D',
+      outer: '#40531b'
+    },
+    ocean: {
+      inner: '#88D1E5',
+      outer: '#45B7D7'
+    },
+  };
 
+  @Input() profile_picture;
   @Input() cv: Cv;
   @ViewChild('home') set contentHome(content: ElementRef) {
     this.elements['home'] = content;
@@ -49,12 +66,14 @@ export class TemplateHorizontalComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     this.currentFragment = '';
     this.currentSection = 'home';
+    this.titleService.setTitle('EZCV - ' + this.cv.name);
     this.route.fragment.subscribe(
       (fragment: string) => {
         if (fragment) {
@@ -70,10 +89,14 @@ export class TemplateHorizontalComponent implements OnInit {
   }
 
   convertURL (url: string) {
-    if (url.startsWith('http://') || url.startsWith('https://')){
-      return url;
+    if (url) {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+      } else {
+        return '//' + url;
+      }
     } else {
-      return '//' + url;
+      return url;
     }
   }
 
@@ -129,6 +152,23 @@ export class TemplateHorizontalComponent implements OnInit {
       this.currentSection = 'about';
     } else if (this.elements['home']) {
       this.currentSection = 'home';
+    }
+  }
+
+  getLanguageLevel(level: string) {
+    switch (level) {
+      case 'basico':
+        return 'Básico';
+      case 'competente':
+        return 'Competente';
+      case 'inter':
+        return 'Intermedio';
+      case 'tecnico':
+        return 'Técnico';
+      case 'experto':
+        return 'Experto';
+      case 'nativo':
+        return 'Nativo';
     }
   }
 
